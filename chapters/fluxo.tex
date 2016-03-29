@@ -1,0 +1,67 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O  1 1 %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Fluxo em Redes}
+
+Os fluxos em redes, são estudados normalmente em um tipo de grafo não abordado com profundidade nesse livro, os \emph{grafos dirigidos}. Um grafo é dito dirigido se ele possui um par \textbf{ordenado} de vértices de tal forma que uma aresta possui um certo sentido. Então podemos dizer que a aresta $\{u,v\}$ se torna diferente (nesse caso) da aresta $\{v,u\}$. Os fluxos tem comportamento ainda melhor com \emph{grafos orientados}. Um grafo é dito orientado se o sentido de suas arestas não forma um ciclo no grafo, ou seja, uma aresta que aponta para um sucessor de um vértice $v$ não terá nenhum de seus sucessores que apontam para um predecessor de $v$.
+
+Ao se trabalhar com Fluxo em Redes, ainda é necessário atribuir pesos nas arestas de tal forma que um grafo $G = (V,E,\omega)$ tal que $\displaystyle E = \binom{V}{2}$ e $E$ é um par ordenado. $\omega : E \rightarrow \mathbb{R}$ é uma função que atribui um peso a cada aresta.
+
+\paragraph*{Notação:} Arestas em grafos dirigidos são chamadas de arcos.
+
+\section{Definições}
+
+Os fluxos estão intimamente ligados com os pesos nas arestas que incidem em determinado vértice. Suponha dado um grafo dirigido $G$ e uma função $\omega$ que atribui um número inteiro a cada arco de $G$. Diremos que o valor de $\omega$ num arco é o \emph{fluxo no arco}. Para qualquer vértice $v$ de $G$, o \emph{influxo} (denotado por $inf$) em $v$ é a soma dos fluxos nos arcos que entram em $v$. O \emph{efluxo} (denotado por $ef$) de $v$ é a soma dos fluxos nos arcos que saem de $v$.
+
+O saldo em $v$ é a diferença do \emph{efluxo} com o \emph{influxo}.
+
+$$ S = ef(v) - inf(v) $$
+
+Portando, o saldo em $v$ é o que sai de $v$ menos o que entrou em $v$.
+
+\paragraph*{Observaçõo:} Não confundir com a diferença $inf(v) - en(v)$.
+
+\section{Fluxo Máximo}
+
+O problema a ser estudado solicita que se encontre o \emph{fluxo máximo}, que pode ser identificado entre dois vértices, aqui nomeados de $s$ e $t$.
+
+Encontrar o fluxo máximo diz respeito a encontrar o máximo de fluxo que $t$ poderá receber a partir de $s$ levando em consideração os pesos estipulados pela função $\omega$.
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[height=5cm]{grafos_yed/g_54.jpg}
+	\caption{caption}
+	\label{fig:54}
+\end{figure}
+
+A Figura \ref{fig:54} mostra exemplos de fluxos.
+
+No grafo $G$ da Figura \ref{fig:54} fica claro que o fluxo máximo de $t$ partindo de $s$ é $a$. No grafo $H$ pode-se observar que o fluxo máximo que chega em $s$ é 2. Pois o \textbf{fluxo máximo é limitado pelo menor peso do caminho escolhido entre $s$ e $t$}. No grafo $I$ podemos observar que o fluxo que chega em $t$ é no máximo 3.
+
+\paragraph*{Observação:} Os vértices escolhidos para fazer o papel de $s$ e $t$ não precisam ter quaisquer propriedades especiais. Na prática, entretanto, não há mal em supor que $s$ é uma fonte e $t$ é um sorvedouro. Poderíamos até mesmo supor que $s$ é a única fonte e $t$ o único sorvedouro do grafo dirigido.
+
+\section{Corte Mínimo}
+
+Uma outra definição mais restrita para corte se dá por: Dado um grafo dirigido com vértice inicial $s$ e vértice final $t$, um  corte é qualquer partição $E = (A,B)$ do conjunto de vértices tal que $s$ está em $A$ e $t$ está em $B$.
+
+Em um grafo com peso nas arestas o corte mínimo é definido por um corte $E(S,\overline{S})$ tal que esse corte seja feito onde minimize-se o custo das arestas.
+
+\subsection{Teorema do Corte}
+
+Qualquer corte $E(s,t)$ é maior ou igual ao fluxo entre $(s,t)$. Isso pois em qualquer corte feito no grafo, o número resultante da somatória das arestas do corte nunca poderá ser maior que o fluxo final que $t$ irá receber.
+
+\subsection{Teorema do Fluxo Máximo}
+
+O fluxo máximo é igual ao corte mínimo.
+
+\section{Algoritmo de Ford e Fulkerson}
+
+O algoritmo foi publicado por Ford e Fulkerson em 1962, e propõe que se encontre caminhos de $s$ a $t$ de modo que esses caminhos possam ser modificados de forma a achar o corte mínimo e consequentemente o fluxo máximo.
+
+
+
+
+
+
+

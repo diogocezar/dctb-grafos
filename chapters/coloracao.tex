@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O  1 0 %
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Coloração}
+
+O problema da coloração em grafos surgiu da necessidade que os desenvolvedores de mapas da antiguidade tinham em obter cores diferentes. Quanto menos cores pudessem usar, melhor. Para colorir os mapas usavam cores de modo que nenhuma região que tivesse fronteira com outra ficasse com a mesma cor. Com isso perceberam que utilizando 4 cores era possível colorir todo o mapa, mas esse questionamento perdurou por muito tempo até que fosse provado em 2004.
+
+Como os mapas formam grafos planares, tem-se então o teorema das 4 cores.
+
+\section{Teorema das 4 Cores}
+
+Se $G$ é um grafo planar, então pode ser colorido com $4$ cores.
+
+A prova do teorema é complicada e não se aplica no alvo de estudos desse livro.
+
+\section{Definição de Coloração}
+
+Dado um grafo $G$, define-se como uma coloração, uma função $c : v(G)$ tal que se $\{u,v\} \in E(G)$ então $c(u) \neq c(v)$.
+
+O número de cores de uma coloração $c$ é o tamanho da imagem de $c$ ou seja: $|c| = |c(V(g))|$.
+
+\paragraph*{Observação:} Toda coloração $c$ de tamanho $k$ pode ser representada (trocada) por $c' : V(G) \rightarrow \{1, \ldots, k\}$. Ou seja, a coloração pode se representada por um número natural.
+
+\subsection{Número Cromático}
+
+O número cromático de um grafo $G$ é definido por $\chi(G)$ que é o menor número de cores de uma coloração de $G$.
+
+\paragraph*{Observações:} Um ciclo de tamanho par pode ser colorido com duas cores.
+
+Um ciclo de tamanho ímpar pode ser colorido com 3 cores.
+
+\subsection{Conjuntos Independentes}
+
+Uma coloração $C$ divide o grafo $G$ em conjuntos independentes, para cada cor $i$ o conjunto indepentende $C^{-1}(i)$, ou seja, todo $v \in V(G) \therefore C(v) = i$ é um conjunto independente. Ou seja, classificar um grafo em conjuntos independentes é também colori-lo, pois o número de conjuntos independentes de um grafo é também seu número cromático.
+
+\subsection{Teorema da Coloração para Grafos Bipartidos}
+
+Todo grafo bipartido se pinta com duas cores.
+
+\paragraph*{Prova:} Como um grafo bipartido separa dois conjuntos de vértices que não possuem arestas entre sí, pode-se inferir que os elementos do mesmo conjunto podem estar em uma mesma coloração.
+
+\subsection{Teorema da Coloração para Grafos K-partidos}
+
+Todo grafo k-partido pode ser pintado com $\chi(G) = k$.
+
+\paragraph*{Prova:} Assim como o grafo bipartido um k-partido possui $k$ conjuntos de vértices que não possuem arestas entre sí, ou seja, $k$ conjuntos independentes. Com isso infere-se $k$ colorações.
+
+\subsection{Teorema da Clique Máxima}
+
+O número cromático de $G$ é maior ou igual a clique máxima de $G$. Ou formalmente, $\chi(G) \geqslant \omega(G)$.
+
+\subsection{Teorema  do Conjunto Independente Máximo}
+
+O número cromático de $G$ é menor ou igual a $\displaystyle \frac{n}{\alpha(G)}$. Ou formalmente, $\displaystyle \chi(G) \leqslant \frac{n}{\alpha(G)}$.
+
+\section{Grafos Perfeitos}
+
+Um grafo é dito perfeito se $\chi(G) = \omega(G)$, ou seja quando seu número cromático é igual a clique máxima em $G$. A classificação desses grafos é interessante pois, apesar de muitos algoritmo estarem na classe de dificuldade de resolução $np$, quando se detecta um grafo perfeito é possível resolver muitos dos algoritmos estudados em tempo polinomial.
+
+\section{Aplicações}
+
+Escrever as aplicações de coloração.

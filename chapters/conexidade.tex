@@ -1,0 +1,387 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   6 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Conexidade}
+
+A conexidade diz respeito a quão \emph{conexo} é um grafo.
+
+Um \textbf{grafo conexo} ou simplesmente \textbf{conexo} ou ainda \textbf{1-conexo} é um grafo que não contém partes separadas, ou formalmente: $G$ é conexo se é não vazio e quaisquer $2$ vértices de $G$ são extremos de um caminho em $G$.
+
+Um grafo vazio por definição não é conexo, e um grafo de 1 vértice apenas, por definição é conexo.
+
+\section{Componente Conexa}
+
+Uma componente conexa é um subgrafo maximal conexo de $G$. Um subgrafo é maximal se não existe outro subgrafo maior que ele que tenha a mesma propriedade (no caso conexidade).
+
+Uma definição formal para maximal é:
+
+$X$ é maximal em uma propriedade $P$, se $X$ tem a propriedade $P$ e não pertence a $Y$ tal que $X \subset Y$ e $Y$ é $P$.
+
+Para ilustrar o conceito de componente conexa vamos utilizar o grafo $G$ da Figura \ref{fig:g_39}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=6cm]{grafos_yed/g_39.jpg}
+    \caption{Exemplo de componente conexa.}
+    \label{fig:g_39}
+\end{figure}
+
+A componente conexa do grafo $G$ é dada pela indução $G[S] \therefore S = \{4,5,6,7\}$. Pois essa é a maior componente conexa possível no grafo $G$. Se pegássemos um fragmento $S' = \{4,5\}$ poderíamos dizer que $G[S']$ é conexo entretanto não é uma componente conexa pois existe uma outra indução que também é conexa e maior que ela. Por esse motivo o formato triangular não pode ser considerado componente conexa, pois existe um quadrado que possui mais vértices que o triângulo.
+
+\section{Relação Binária}
+
+Seja $\sim_G$ a relação binária entre dois vértices $u$ e $v$ definida como $u \sim_G v$ se e somente se:
+
+\begin{itemize}
+    \item existe um caminho em $G$ com extremos $u$ e $v$.
+\end{itemize}
+
+A relação $\sim_G$ é \emph{reflexiva}, \emph{simétrica} e \emph{transitiva} o que define uma relação de equivalência.
+
+\subsection{Fecho Transitivo}
+
+O \textbf{fecho transitivo direto} de um vértice $v$ é o conjunto de todos os vértices que podem ser alcansáveis por algum caminho iniciando em $v$.
+
+Seja o grafo $G$ da Figura \ref{fig:g_40}, então:
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=3.5cm]{grafos_yed/g_40.jpg}
+    \caption{Exemplo fecho transitivo.}
+    \label{fig:g_40}
+\end{figure}
+
+\begin{itemize}
+    \item O \textbf{fecho transitivo} do vértice $5$ do grafo $G$, por exemplo, é o conjunto: $\{1, 2, 3, 4, 5, 6\}$. Note que o próprio vértice faz parte do fecho transitivo já que ele é alcançável partindo-se dele mesmo.
+\end{itemize}
+
+\section{Definições}
+
+\begin{enumerate}
+    \item Se $G$ é um grafo e $e$ é uma aresta de $G$, então defina $G \smallsetminus e = (V(G), E(G) \smallsetminus \{e\})$.
+
+    \item Se $G$ é um grafo e $v$ é um vértice de $G$, então defina $G \smallsetminus v = (V(G) \smallsetminus \{v\}, E(G) \smallsetminus E_g(v))$.
+\end{enumerate}
+
+\section{Teorema do Ciclo}
+
+Se $G = (V, E)$ é conexo então $G \smallsetminus e$ é conexo para toda aresta $e$ que faz parte de um ciclo.
+
+Para provar o teorema vamos ilustrar o teorema com o grafo $G$ da Figura \ref{fig:g_41}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=6cm]{grafos_yed/g_41.jpg}
+    \caption{Teorema: grafo conexo remoção de aresta em ciclos.}
+    \label{fig:g_41}
+\end{figure}
+
+É fácil perceber que se removermos qualquer uma das arestas que está no ciclo formado pelos vértices $\{2,3,4,5\}$ ainda poderemos obter um outro caminho de $u$ a $v$.
+
+\paragraph*{Prova:} $u$ e $v \in V(G)$. Em $G$ existe um caminho de $u$ a $v$, esse caminho é dado por $C = (u = u_1, u_2, \ldots, u_k = v)$.
+
+Podemos deduzir duas situações:
+
+\begin{enumerate}
+    \item Se $e$ não faz parte de $C$ então $C$ também é caminho de $u$ a $v$ em $G \smallsetminus e$. Ou seja, se a aresta retirada não faz parte do meu caminho, não terá influência nesse caminho.
+
+    \item Se $e$ faz parte de $C$, então:
+
+    \begin{itemize}
+	\item Define-se $e = \{x,y\}$;
+	\item Defini-se $C = (u = u_1, u_2, \ldots, u_i = x, u_{i+1} = y, \ldots, u_k = v)$;
+	\item Seja $C_1 = (u = u_1, u_2, \ldots, u_i)$;
+	\item Seja $C_2 = (u_{i+1}, u_{i+2}, \ldots, u_k = v)$;
+    \end{itemize}
+\end{enumerate}
+
+Como $e$ está em um ciclo $L = (x, w_1, w_2, \ldots, w_n = y, x)$, então existe um caminho $P$ de $x$ a $y$ que não contém a aresta removida.
+
+Seja $T = (u = u_1, u_2, \ldots, u_i = x, w_1, \ldots, w_n = y, u_{i+2}, \ldots, w_k = v)$ um passeio formado por $T = (C_1 + P + C_2)$.
+
+Então existe um caminho entre dois vértices $u$ e $v$ em um passeio que contenha os vértices $u$ e $v$.
+
+Defini-se $C'$ o caminho que é a simplificação de $T$, então temos $C'$ um caminho de $u$ a $v$ em $G \smallsetminus e$.
+
+\section{Articulação}
+
+Um vértice $v$ de um grafo conexo $G$ é uma \textbf{articulação} (ou vértice de corte) se $G \smallsetminus v$ é não conexo.
+
+O grafo $G$ da Figura \ref{fig:g_42} ilustra um vértice de articulação:
+
+  \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5cm]{grafos_yed/g_42.jpg}
+    \caption{Vértice de articulação.}
+    \label{fig:g_42}
+\end{figure}
+
+O vértice $5$ é um vértice de articulação, pois se o vértice $5$ for tirado do grafo o resultado será um grafo não conexo.
+
+\section{Conexidade}
+
+A \textbf{conexidade}, é o número de vértices necessários para desconectar um grafo. O grafo da Figura \ref{fig:g_42} é 1-conexo, pois se removermos apenas um vértice (no caso o vértice 5) desconectamos o grafo.
+
+Se $U \subseteq V(G)$ então $G \smallsetminus U = G[V(G) \smallsetminus U]$.
+
+Para todo $K \in \mathbb{N}$ dizemos que $G$ é K-conexo:
+
+\begin{itemize}
+    \item Se $|V(G)| [\geqslant, >] K$;
+    \item Para todo $U \subset V(G)$, se $|U| < K$ então $G \smallsetminus U$ é conexo;
+\end{itemize}
+
+A conexidade de um grafo $G$ é um número $K(G)$ tal que $K(G) = \mbox{max}\{K \in \mathbb{N} \therefore G \mbox{ é conexo}\}$.
+
+\paragraph*{Observação:} Pode-se definir também os mesmos conceitos de conexidade para arestas.
+
+\section{Grafos Eulerianos}
+
+Um grafo \emph{euleriano} é um grafo que pode ser desenhado sem retirar o lápis do papel, dessa forma, uma aresta nunca será repetida.
+
+\paragraph*{Definição Formal:} Um grafo $G$ é euleriano se em $G$ existe um passeio fechado (começa e termina no mesmo lugar) sem repetições de arestas (trilha fechada) que passa por todas as arestas de $G$ e é conexo.
+
+Uma \emph{trilha fechada} é um ciclo (circuito).
+
+O grafo da Figura \ref{fig:g_43} é um grafo euleriano.
+
+  \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=4.5cm]{grafos_yed/g_43.jpg}
+    \caption{Exemplo de Grafo Euleriano.}
+    \label{fig:g_43}
+\end{figure}
+
+\subsection{Teorema de Euler}
+
+Um grafo $G$ é \emph{euleriano} se e somente se $G$ é conexo e todo vértice tem grau par:
+
+\paragraph*{Prova:} Ser euleriano implica em ser conexo e ter grau par ($\rightarrow$).
+
+Se $G$ é euleriano, logo ele também é conexo.
+
+Podemos assumir que existe uma trilha fechada que passa por todas a arestas de $G$.
+
+Seja $v$ um vértice de $G$.
+
+Se $v$ aparece na trilha $k$ vezes, então o grau de $v$ é $2k$. Pois existe arestas que chegam e arestas que saem de $v$.
+
+$G$ é conexo e todos os vértices têm grau par ($\leftarrow$).
+
+Seja $T = (v_0, v_1, v_2, \ldots, v_l)$ uma trilha com o maior número possível de arestas em $G$. $T$ passa por todas as arestas com extremos $v_0$ e $v_1$.
+
+Se $v_0 \neq v_1$ o grau de $v_0$ deveria ser ímpar.
+
+Como $v_0$ deve ter grau par, então $v_0$ deve ser igual a $v_l$.
+
+Logo, $T$ é fechado.
+
+Suponha que existe uma aresta $e$ que não está em $T$.
+
+Pode-se assumir que $e = \{v_i,x\}$, já que $G$ é conexo.
+
+Pode-se re-escrever $T$ para que $v_i$ seja o primeiro vértice, portanto a trilha $T = (x, v_i, v_{i+1}, \ldots, v_l = v_0, v_1, v_2, \ldots, v_k)$ tem uma aresta a mais que $T$.
+
+Logo, não existe aresta fora de $T$.
+
+Logo, $T$ é fechada e passa por todas as arestas.
+
+Portanto $G$ é euleriano.
+
+\section{Grafos Hamiltorianos}
+
+$G$ é \emph{hamiltoriano} se em $G$ existe um ciclo (circuito) que passa por todos os vértices.
+
+\subsection{Teorema de Dirac}
+
+Para todo grafo $G$ com 3 ou mais vértices se $\delta(G) \geqslant \frac{n}{2}$ então $G$ é hamiltoriano.
+
+\paragraph*{Prova:} Seja $P = (v_0, v_1, \ldots, v_l)$ o maior caminho em $G$ e defina os conjuntos:
+
+\begin{itemize}
+    \item $A = \{v_i em P \therefore \{v_0, v_{i+1} \in E(G)\}$
+    \item $B = \{v_j em P \therefore \{v_l, v_j \in E(G)\}$
+\end{itemize}
+
+$A$ e $B$ são subconjuntos de $\{v_0,v_i,\ldots,v_{l-1}\}$.
+
+$|A| \geqslant \frac{n}{2}$ e $|B| \geqslant \frac{n}{2}$.
+
+$A \cap B \neq \emptyset$.
+
+Seja $P = \{v_0, \ldots, v_k, v_{k+1}, \ldots, v_l\}$ se retirarmos a aresta $\{v_k, v_{k+1}\}$ e inserirmos uma equivalente $u$, então podemos re-escrever $P$, e assim ele não é máximo.
+
+\paragraph*{Observação:} O problema do caixeiro viajante tem uma relação com os grafos hamiltorianos, pois passar por todas as cidades sem repetições, é também uma característica da propriedade estudada.
+
+\section{Caminhos Mínimos em Grafos com Pesos nas Arestas}
+
+Nessa seção iremos estudar grafos que possuem pesos em suas arestas, ou seja, o fator que deixa um caminho maior ou menos não está apenas na contagem de arestas, mas no somatórios dos pesos de todas as arestas que fazem parte desse caminho.
+
+Uma \emph{definição formal} diz que um grafo com pesos nas arestas é uma terna $(V,E,\omega)$ onde $V$ e $E$ são os usuais conjuntos de vértices e arestas, respectivamente, e $\omega: E(G) \rightarrow \mathbb{R}^+$ é uma função que atribui peso a cada aresta de $E(G)$.
+
+Por exemplo o grafo $G$ da Figura \ref{fig:g_44}.
+
+  \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=4.5cm]{grafos_yed/g_44.jpg}
+    \caption{Exemplo de Grafo com Pesos nas Arestas.}
+    \label{fig:g_44}
+\end{figure}
+
+O \emph{comprimento de um caminho} $C = (x_0, x_1, \ldots, x_k)$ em $(V,E,\omega)$ é a soma dos pesos (comprimentos) das arestas do caminho, ou seja:
+
+$$ \mbox{custo}(C) = \sum_{i=0}^{k-1} p(\{x_i, x_{i+1}\}) $$
+
+E a \emph{distância} entre dois vértices $u$ e $v$ é dada por:
+
+$$ \mbox{dist}(u,v) = min\{ \mbox{custo}(C) \} $$
+
+Sendo que  $C$ é um caminho com extremos em $u$ e $v$.
+
+Se não existe um caminho de $u$ a $v$ então assume-se que $ \mbox{dist}(u,v) = \infty $.
+
+\subsection{Algoritmo de Dijkstra para Caminhos Mínimos}
+
+Suponha que é dado um grafo com pesos nas arestas do tipo $G = (V,E, \omega)$ e um vértice $s \in V(G)$. Pede-se para determinar a distância de $s$ a todos os vértices de $G$, ou formalmente: $\mbox{dist}(u,v) \therefore v \in V(G)$.
+
+As estruturas de dados que serão utilizadas são:
+
+\begin{itemize}
+    \item $P[v]$: Predecessor de $v$ em um caminho \emph{candidato} a ser mínimo de $s$ a $v$;
+    \item $D[v]$: Custo do caminho \emph{candidato} a ser mínimo;
+    \item $S$: Conjunto dos vértices para os quais $D[v]$ é equivalente a $\mbox{dist}(s,v)$.
+\end{itemize}
+
+Inicialmente, as estruturas estão:
+
+\begin{itemize}
+    \item $P[v] = \lambda$ para todo $v \in V(G)$;
+    \item $D[v] = \emptyset$ para todo $v \in V(G) \smallsetminus \{s\}$;
+    \item $S    = \emptyset$;
+\end{itemize}
+
+Uma etapa importante chamada de relaxação é definida pelo algoritmo do Algoritmo \ref{alg:6}.
+
+\begin{algorithm}
+    \SetAlgoNoEnd
+    $Relaxacao(u,t)$\;
+    \Inicio{
+	\Se{ $d[t] > d[u] + \omega(\{u,t\})$ }{
+	    $dt[t] \leftarrow d[u] + \omega(\{u,t\})$\;
+	}
+    }
+    \caption{Relaxação($u,t$)}
+    \label{alg:6}
+\end{algorithm}
+
+Essa função de \emph{Relaxação($u,v$)} compara se a distância de determinado vértice a outro é menor, se for atribui a ele a nova distância.
+
+O algoritmo completo de Dijkstra está representado pelo Algoritmo \ref{alg:7}.
+
+O algoritmo começa com um conjunto $S$ vazio. A cada iteração do algoritmo, busca-se em uma lista de prioridades o vértice que possui a menor distância. Por esse motivo o primeiro passo é adicionar $u$ ao conjunto $S$ (que tem a distância inicial $0$, pois $\mbox{dist}(u,u) = 0$). A distância para qualquer outro $v \in V(G) = \infty$. Um conjunto $\overline{S}$ contém os demais vértices de $V(G)$. O próximo passo é listar os vizinhos $v$ de $u$ e executar a subrotina de \emph{relaxação} para garantir que se houver um caminho mais curto, esse será o novo $D[v]$, permitindo assim que em uma próxima iteração esse seja o menor na lista de prioridades e seja escolhido.
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    \Inicio{
+	$D[u] \leftarrow \infty$\;
+	$P[u] \leftarrow \lambda$\;
+	$D[s] \leftarrow \emptyset$\;
+	$S \leftarrow \{\}$\;
+	\Enqto{existir $u \in \overline{S}$ tal que $D[u] \neq \infty$}{
+	    seja $u$ tal que $d[u] = \mbox{min}\{d[v] \therefore v \in \overline{S}\}$\;
+	    \ParaCada{$t \in N_G(u)$}{
+		Relaxação($u,t$)\;
+	    }
+	    $S \leftarrow S \cup \{u\}$\;
+	}
+    }
+    \caption{Dijkstra($G,u$)}
+    \label{alg:7}
+    }
+\end{algorithm}
+
+O custo do algoritmo de Dijkstra para obtenção do caminho mínimo é $\Theta((n+m)\log_n)$.
+
+\subsection{Algoritmo de Floyd-Warshall para caminhos mínimos}
+
+Seja $G = (V, E, \omega)$ um grafo com pesos nas arestas. Apresenta-se um algoritmo
+para resolver o seguinte problema: dado $G = (V, E, \omega)$ computar $dist_G(i, j)$ para todos $i, j \in V$.
+
+Uma alternativa para realizar essa tarefa é utilizar $n$ vezes com $n = |V(G)|$ o algoritmo de Dijkstra.
+
+Seja a representação de $G$ dada pela matriz:
+
+$$
+a _{i,j} =   \left\{ \begin{array}{cll}
+			0 & \mbox{se} & i = j \\
+			\omega(\{i,j\}) & \mbox{se} & \{i,j\} \in E(G) \\
+			\infty & & \mbox{caso contrário.}
+		    \end{array}\right.
+$$
+
+\paragraph*{Definições:}
+
+\begin{enumerate}
+    \item Para todo $k \in \{0,1,\ldots,|V|\}$ denotamos por $[k]$ o subconjunto $\{1, 2, \ldots, k\} \subseteq V$, com $[0] = \emptyset$;
+
+    \item Dizemos que o caminho $P = (i, v_0, \ldots, v_t, j)$ é um [k]-caminho se o seus vértices internos $\{v_0, \ldots, v_t\}$ pertencem a $[k]$;
+
+    \item Uma [k]-distância entre $i$ e $j$ é o comprimento do menor [k]-caminho com extremos em $i$ e $j$. Denotada por $dist_k(i,j)$, com $dist_0(i,j) = a_{i,j}$.
+\end{enumerate}
+
+\paragraph*{Exemplo 11:} Seja o grafo $G$ representado pela Figura \ref{fig:g_45}.
+
+  \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=4cm]{grafos_yed/g_45.jpg}
+    \caption{Exemplo dos conceitos para algoritmo de Floyd-Warshall.}
+    \label{fig:g_45}
+\end{figure}
+
+Para entender melhor vamos analisar o grafo $G$.
+
+\begin{itemize}
+    \item o único [0]-caminho com extremos $3$ e $4$ é $\{3,4\}$;
+
+    \item os [1]-caminhos com extremos $3$ e $4$ são $\{3,4\}$ e $\{3,1,4\}$;
+
+    \item os [2]-caminhos com extremos $3$ e $4$ são $\{3,4\}$ e $\{3,1,4\}$;
+
+    \item os [3]-caminhos com extremos $3$ e $4$ são $\{3,2,4\}, \{3,1,4\}$;
+
+    \item os [4] caminhos com extremos $3$ e $4$ são $\{3,1,2,4\}, \\ \{3,2,1,4\}$.
+\end{itemize}
+
+No grafo $G$ temos $dist_0(3,4) = 5$, $dist_1(3,4) = 4$ e $dist_2(3,4) = dist_3(3,4) = dist_4(3,4) = 3$. E ainda, $dist_0(1,2) = dist_1(1,2) = dist_2(1,2) = 10$, $dist_3(1,2) = 4$ e $dist_4(1,2) = 3$.
+
+\subsection{Algoritmo de Floyd-Warshall}
+
+A idéia principal do algoritmo é que podemos obter $dist_{k+1}$ a partir de $dist_k$ da seguinte maneira: por definição, a $dist[k+1]-dist$ é o comprimento do menor $[k+1]$-caminho e a $[k]$-distância é o comprimento do menor $[k]$-caminho; logo, a diferença entre esses caminhos é que no primeiro, os $[k+1]$-caminhos, é possível que o vértice $k+1$ seja o vértice interno e no segundo não, pois $[k + 1] = [k] \cup \{k + 1\}$.
+
+Assim temos:
+
+$$ dist_{k+1}(i,j) = min\{dist_k(i,j), (dist_k(i,k+1) + dist_k(k+1,j))\} $$
+
+Escrevendo o algoritmo, obtemos o Algoritmo \ref{alg:8}.
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    \Entrada{um grafo $G$ com peso $\omega$ nas arestas.}
+    \Saida{$dist_G{i,j}$ para todos $(i,j) \in V(G)$.}
+    \Inicio{
+	\ParaCada{$(i,j) \in V(G)^2$}{
+	    $dist_0(i,j) \leftarrow a_{i,j}$\;
+	    \ParaCada{$k$ de 1 até $|V(G)|$}{
+		\ParaCada{$(i,j) \in V(G)^2$}{
+		    $dist_k(i,j) \leftarrow min\{dist_{k-1}(i,j), (dist_{k-1}(i,k) + dist_{k-1}(k,j))\}$\;
+		}
+	    }
+	}
+    }
+    \caption{Floyd-Warshall($G$)}
+    \label{alg:8}
+    }
+\end{algorithm}

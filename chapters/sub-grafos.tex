@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   2 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Subgrafos}
+
+Um subgrafo de um grafo $G$ é um grafo $H$ tal que:
+
+\begin{itemize}
+    \item $V(H) \subseteq V(G)$
+    \item $E(H) \subseteq E(G)$
+    \item $H$ deve ser um grafo
+\end{itemize}
+
+Seja um grafo $G$ definido por:
+
+\begin{eqnarray*}
+    G_c &=& (V(G_c), E(G_c)) \\
+    V(G_c) &=& \{1,2,3,4\} \\
+    E(G_c) &=& \{\{1,2\}, \{2,3\}, \{3,4\}, \{4,1\}\}
+\end{eqnarray*}
+
+Representado graficamente por pela Figura \ref{fig:g_4}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=4cm]{grafos_yed/g_4.jpg}
+    \caption{Representação geométrica (ou diagrama) do grafo $G_c$.}
+    \label{fig:g_4}
+\end{figure}
+
+São representações de subgrafos?
+
+\begin{enumerate}
+    \item   \label{sub:1} $V(H_c) = \{1,2,3\} \\ E(H_c) = \{\{3,4\},\{1,2\}\}$ \\
+	    O elemento \ref{sub:1} não é um subgrafo de $G_c$, pois a aresta $\{3,4\}$ contém um vértice não definido no conjunto de vértices dado, ou seja, não é um grafo.
+    \item   \label{sub:2} $V(H_c) = \{1,2,3\} \\ E(H_c) = \{\{1,2\}\}$ \\
+	    O elemento \ref{sub:2} é um subgrafo de $G_c$.
+    \item   \label{sub:3} $V(H_c) = \{1,2,3,4\} \\ E(H_c) = \{\varnothing\}$ \\
+	    O elemento \ref{sub:3} é um subgrafo de $G_c$.
+    \item   \label{sub:4} $V(H_c) = \{1,2,3,4\} \\ E(H_c) = \{\{1,3\}\}$ \\
+	    O elemento \ref{sub:4} não é um subgrafo de $G_c$, pois a aresta definida não existe no grafo original, ou seja, não é um grafo.
+\end{enumerate}
+
+\section{Subgrafo Gerador}
+
+$H$ é um subgrafo gerador de $G$ se $H$ é um subgrafo de $G$ e $V(H) = V(G)$. A restrição para um subgrafo ser gerador de algum grafo é que ele deve possuir os mesmos vértices do grafo original.
+
+Por exemplo, a Figura \ref{fig:g_7} mostra dois grafos $G$ e $H$, no qual $H$ é gerador de $G$.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5cm]{grafos_yed/g_7.jpg}
+    \caption{$H$ é um subgrafo gerador de $G$.}
+    \label{fig:g_7}
+\end{figure}
+
+Note que o grafo $H$ possui todos os vértices de $G$, entretanto não possui as mesmas arestas.
+
+\section{Subgrafo Induzido}
+
+Um subgrafo induzido $H$ é um subgrafo de um grafo $G$, no qual a partir de um conjunto de vértices ou arestas pertencentes ao grafo original $G$, é possível se obter sua indução, denotada por $G[K]$, onde $K$ é o conjunto de arestas ou vértices que servirá para a indução.
+
+\subsection{Por um Conjunto de Vértices}
+
+Um subgrafo induzido por um conjunto de vértices de $G$ é um subgrafo $G[S]$ de $G$ tal que:
+
+\begin{eqnarray*}
+    S &\subseteq& V(G) \\
+    G[S] &=& (S,E')\\
+    E'   &=& \{e \in E(G) \therefore e \subseteq S\} \mbox{ ou}\\
+    E'   &=& \{e \in E(G) \therefore e \in \binom{S}{2}\} \mbox{ ou}\\
+    E'   &=& E(G)\cap\binom{S}{2}
+\end{eqnarray*}
+
+As três definições de $E'$ representam todas as arestas possíveis em $S$ que pertencem a $E(G)$.
+
+Em um subgrafo induzido por um conjunto de vértices, seu conjunto de vértices (V(G[S]) passa a ser o próprio conjunto dado, ou seja $S$. O seu conjunto de arestas é formado por todas as arestas possíveis que interligam os vértices de $S$, desde que elas também estejam no grafo original $G$.
+
+Para exemplificar, a extração de um subgrafo induzido por um conjunto de vértices é dado um grafo $G$, composto por:
+
+\begin{eqnarray*}
+    G &=& (V,E)\\
+    V &=& \{1,2,3,4,5,6\}\\
+    E &=& \{\{1,6\},\{1,2\},\{2,5\},\{2,4\},\{2,3\}\\
+	  &&\{5,6\}\}
+\end{eqnarray*}
+
+Representado graficamente pela Figura \ref{fig:g_8}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5cm]{grafos_yed/g_8.jpg}
+    \caption{Representação gráfica do grafo $G$.}
+    \label{fig:g_8}
+\end{figure}
+
+\paragraph*{Demonstração:} Obtenha o grafo induzido $G[S]$ com $S=\{1,2,5,6\}$.
+
+Devemos então copiar os vértices passados pelo conjunto $S$ e então ligar todas as arestas possíveis que também estão em $G$. E assim obtemos o grafo $G[S]$ representado pela Figura \ref{fig:g_9}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=3cm]{grafos_yed/g_9.jpg}
+    \caption{Representação gráfica do grafo $G[S]$.}
+    \label{fig:g_9}
+\end{figure}
+
+Sua representação formal é dada por:
+
+\begin{eqnarray*}
+    G[S] &=& (V_s,E_s)\\
+    V_s  &=& \{1,2,5,6\}\\
+    E_s  &=& \{e \in E(G) \therefore e \subseteq S\}\\
+    E_s  &=& \{\{1,6\},\{1,2\},\{2,5\},\{5,6\}\}
+\end{eqnarray*}
+
+\subsection{Por um Conjunto de Arestas}
+
+Um subgrafo induzido por um conjunto de arestas $M$ de $G$ é um subgrafo $G[M]$ de $G$ tal que:
+
+\begin{eqnarray*}
+    M &\subseteq& E(G) \\
+    G[M] &=& (V',M)\\
+    V'   &=& \bigcup_{e \in M}e\\
+\end{eqnarray*}
+
+Em um subgrafo induzido pelo conjunto de arestas seu conjunto de arestas (E(G[M]) passa a ser o próprio conjunto dado, ou seja $M$. O seu conjunto de vértices é formado pela união exclusiva do seu conjunto de arestas, o que resulta em um conjunto com todos os vértices necessários para as ligações entre as arestas passadas como parâmetro.
+
+\paragraph*{Demonstração:} Utilizando o exemplo da Figura \ref{fig:g_8}, obtenha o grafo induzido $G[M]$ com $M=\{\{1,2\},\{2,5\},\{1,6\}\}$.
+
+Devemos então verificar o que resulta de $\displaystyle\bigcup_{e \in M}e$.
+
+Obtemos então o conjunto $V'=\{1,2,5,6\}$, sua representação gráfica está na Figura \ref{fig:g_10}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=3cm]{grafos_yed/g_10.jpg}
+    \caption{Representação gráfica do grafo $G[M]$.}
+    \label{fig:g_10}
+\end{figure}

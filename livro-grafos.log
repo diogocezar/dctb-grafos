@@ -1,0 +1,798 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009) (format=pdflatex 2010.8.2)  17 NOV 2010 09:46
+entering extended mode
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**livro-grafos.tex
+(./livro-grafos.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, german-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, ar
+abic, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutc
+h, esperanto, estonian, farsi, finnish, french, galician, german, ngerman, mono
+greek, greek, hungarian, icelandic, indonesian, interlingua, irish, italian, ku
+rmanji, latin, latvian, lithuanian, mongolian, mongolian2a, bokmal, nynorsk, po
+lish, portuguese, romanian, russian, sanskrit, serbian, slovak, slovenian, span
+ish, swedish, turkish, ukenglish, ukrainian, uppersorbian, welsh, loaded.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/extsizes/extbook.cls
+Document Class: extbook 1999/01/07 v1.4a NON-Standard LaTeX document class
+(/usr/local/texlive/2009/texmf-dist/tex/latex/extsizes/size9.clo
+File: size9.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/exscale.sty
+Package: exscale 2007/10/29 v2.1h Standard LaTeX package exscale
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 52.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 52.
+\big@size=\dimen102
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen103
+)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/babel/portuges.ldf
+Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen104
+)
+\l@brazil = a dialect from \language\l@portuges 
+Package babel Info: Making " an active character on input line 145.
+))
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
+\Gread@gobject=\count89
+))
+\Gin@req@height=\dimen105
+\Gin@req@width=\dimen106
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2008/00/00 v3.10 algorithms environments
+\c@AlgoLine=\count90
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/ltxmisc/relsize.sty
+Package: relsize 2003/07/04 ver 3.1
+)
+********************************************************
+Package `algorithm2e' Release 4.01 -- december 14 2009 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (fiorio@lirmm.fr)
+********************************************************
+\skiptotal=\skip43
+\skiplinenumber=\skip44
+\skiprule=\skip45
+\skiphlne=\skip46
+\skiptext=\skip47
+\skiplength=\skip48
+\algomargin=\skip49
+\skipalgocfslide=\skip50
+\algowidth=\dimen107
+\inoutsize=\dimen108
+\inoutline=\dimen109
+\interspacetitleruled=\dimen110
+\interspacealgoruled=\dimen111
+\interspacetitleboxruled=\dimen112
+\algocf@inoutbox=\box26
+\algocf@inputbox=\box27
+\AlCapSkip=\skip51
+\AlCapHSkip=\skip52
+\algocf@nlbox=\box28
+\algocf@hangingbox=\box29
+\algocf@capbox=\box30
+\algoheightruledefault=\skip53
+\algoheightrule=\skip54
+\algotitleheightruledefault=\skip55
+\algotitleheightrule=\skip56
+\c@algocfline=\count91
+\c@algocfproc=\count92
+\c@algocf=\count93
+\algocf@algoframe=\box31
+\algocf@algobox=\box32
+) (/usr/local/texlive/2009/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen113
+\WF@size=\dimen114
+\c@WF@wrappedlines=\count94
+\WF@box=\box33
+\WF@everypar=\toks17
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip57
+\f@ncyO@elh=\skip58
+\f@ncyO@erh=\skip59
+\f@ncyO@olh=\skip60
+\f@ncyO@orh=\skip61
+\f@ncyO@elf=\skip62
+\f@ncyO@erf=\skip63
+\f@ncyO@olf=\skip64
+\f@ncyO@orf=\skip65
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip66
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks18
+\ex@=\dimen115
+))
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen116
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count95
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count96
+\leftroot@=\count97
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count98
+\DOTSCASE@=\count99
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box34
+\strutbox@=\box35
+\big@size=\dimen117
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count100
+\c@MaxMatrixCols=\count101
+\dotsspace@=\muskip10
+\c@parentequation=\count102
+\dspbrk@lvl=\count103
+\tag@help=\toks19
+\row@=\count104
+\column@=\count105
+\maxfields@=\count106
+\andhelp@=\toks20
+\eqnshift@=\dimen118
+\alignsep@=\dimen119
+\tagshift@=\dimen120
+\tagwidth@=\dimen121
+\totwidth@=\dimen122
+\lineht@=\dimen123
+\@envbody=\toks21
+\multlinegap=\skip67
+\multlinetaggap=\skip68
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count107
+\lst@gtempboxa=\box36
+\lst@token=\toks23
+\lst@length=\count108
+\lst@currlwidth=\dimen124
+\lst@column=\count109
+\lst@pos=\count110
+\lst@lostspace=\dimen125
+\lst@width=\dimen126
+\lst@newlines=\count111
+\lst@lineno=\count112
+\lst@maxwidth=\dimen127
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count113
+\lst@skipnumbers=\count114
+\lst@framebox=\box37
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2008/12/21 v4.2 Page Geometry
+
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count115
+\Gm@cntv=\count116
+\c@Gm@tempcnt=\count117
+\Gm@bindingoffset=\dimen128
+\Gm@wd@mp=\dimen129
+\Gm@odd@mp=\dimen130
+\Gm@even@mp=\dimen131
+\Gm@dimlist=\toks24
+
+(/usr/local/texlive/2009/texmf-dist/tex/xelatex/xetexconfig/geometry.cfg))
+(/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/avant.sty
+Package: avant 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(./livro-grafos.aux
+
+LaTeX Warning: Label `tab:t_2' multiply defined.
+
+)
+\openout1 = `livro-grafos.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 91.
+LaTeX Font Info:    ... okay on input line 91.
+LaTeX Font Info:    Try loading font information for T1+pag on input line 91.
+ (/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/t1pag.fd
+File: t1pag.fd 2001/06/04 font definitions for T1/pag.
+)
+(/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count118
+\scratchdimen=\dimen132
+\scratchbox=\box38
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen133
+\MPnumerator=\count122
+\everyMPtoPDFconversion=\toks26
+)
+\c@lstlisting=\count123
+
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
+-------------------- Geometry parameters
+paper: a4paper
+landscape: --
+twocolumn: --
+twoside: true
+asymmetric: --
+h-parts: 71.13188pt, 455.24411pt, 71.13188pt
+v-parts: 71.13188pt, 674.33032pt, 99.58464pt
+hmarginratio: --
+vmarginratio: --
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  597.50787pt
+\paperheight 845.04684pt
+\textwidth  455.24411pt
+\textheight 674.33032pt
+\oddsidemargin  -1.1381pt
+\evensidemargin -1.1381pt
+\topmargin  -38.1381pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 121.0pt
+\marginparsep   10.0pt
+\columnsep  10.0pt
+\skip\footins  8.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twosidetrue \@mparswitchtrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+LaTeX Font Info:    Font shape `T1/pag/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/pag/b/n' tried instead on input line 105.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <17.28> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 105.
+LaTeX Font Info:    Font shape `T1/pag/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/pag/b/n' tried instead on input line 109.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <14.4> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 109.
+[1
+
+{/usr/local/texlive/2009/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./livro-grafos.toc
+LaTeX Font Info:    Font shape `T1/pag/bx/n' in size <9> not available
+(Font)              Font shape `T1/pag/b/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <9> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 2.
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) [2
+
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 12.59099pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[3])
+\tf@toc=\write3
+\openout3 = `livro-grafos.toc'.
+
+ [4] (./livro-grafos.lof [5
+
+])
+\tf@lof=\write4
+\openout4 = `livro-grafos.lof'.
+
+ [6] (./chapters/definicoes-iniciais.tex
+Cap\'{\i }tulo 1.
+LaTeX Font Info:    Font shape `T1/pag/m/it' in size <9> not available
+(Font)              Font shape `T1/pag/m/sl' tried instead on input line 9.
+<grafos_yed/g_1.jpg, id=27, 258.9675pt x 272.01625pt>
+File: grafos_yed/g_1.jpg Graphic file (type jpg)
+ <use grafos_yed/g_1.jpg>
+LaTeX Font Info:    Try loading font information for OMS+pag on input line 34.
+
+(/usr/local/texlive/2009/texmf-dist/tex/latex/psnfss/omspag.fd
+File: omspag.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pag/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 34.
+ [7
+
+ <./grafos_yed/g_1.jpg>]
+LaTeX Font Info:    Font shape `T1/pag/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/pag/b/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <10.95> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 48.
+ <grafos_yed/g_5.jpg, id=34, 330.23375pt x 145.54375pt>
+File: grafos_yed/g_5.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_5.jpg> [8 <./grafos_yed/g_5.jpg>]
+<grafos_yed/g_2.jpg, id=40, 339.2675pt x 232.87pt>
+File: grafos_yed/g_2.jpg Graphic file (type jpg)
+ <use grafos_yed/g_2.jpg>
+[9 <./grafos_yed/g_2.jpg>]
+LaTeX Font Info:    Font shape `T1/pag/bx/n' in size <10> not available
+(Font)              Font shape `T1/pag/b/n' tried instead on input line 142.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <10> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 142.
+ [10] [11]
+<grafos_yed/g_3.jpg, id=51, 257.96375pt x 191.71625pt>
+File: grafos_yed/g_3.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_3.jpg> [12 <./grafos_yed/g_3.jpg>])
+(./chapters/sub-grafos.tex [13]
+Cap\'{\i }tulo 2.
+<grafos_yed/g_4.jpg, id=59, 216.81pt x 194.7275pt>
+File: grafos_yed/g_4.jpg Graphic file (type jpg)
+ <use grafos_yed/g_4.jpg>
+[14
+
+ <./grafos_yed/g_4.jpg>]
+<grafos_yed/g_7.jpg, id=63, 317.185pt x 356.33125pt>
+File: grafos_yed/g_7.jpg Graphic file (type jpg)
+ <use grafos_yed/g_7.jpg>
+Underfull \vbox (badness 2680) has occurred while \output is active []
+
+ [15 <./grafos_yed/g_7.jpg>] <grafos_yed/g_8.jpg, id=67, 317.185pt x 140.525pt>
+File: grafos_yed/g_8.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_8.jpg>
+<grafos_yed/g_9.jpg, id=68, 195.73125pt x 139.52126pt>
+File: grafos_yed/g_9.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_9.jpg> [16 <./grafos_yed/g_8.jpg> <./grafos_yed/g_9.jpg>]
+Overfull \hbox (39.64871pt too wide) in paragraph at lines 130--131
+ \T1/pag/db/n/9 De-mons-tra-ção: \T1/pag/m/n/9 Uti-li-zando o exem-plo da Fi-gu
+ra 2.3[], ob-te-nha o grafo in-du-zido $\OML/cmm/m/it/9 G\OT1/cmr/m/n/9 [\OML/c
+mm/m/it/9 M\OT1/cmr/m/n/9 ]$ \T1/pag/m/n/9 com $\OML/cmm/m/it/9 M \OT1/cmr/m/n/
+9 = \OMS/cmsy/m/n/9 ff\OT1/cmr/m/n/9 1\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 2\OMS/cm
+sy/m/n/9 g\OML/cmm/m/it/9 ; \OMS/cmsy/m/n/9 f\OT1/cmr/m/n/9 2\OML/cmm/m/it/9 ; 
+\OT1/cmr/m/n/9 5\OMS/cmsy/m/n/9 g\OML/cmm/m/it/9 ; \OMS/cmsy/m/n/9 f\OT1/cmr/m/
+n/9 1\OML/cmm/m/it/9 ; \OT1/cmr/m/n/9 6\OMS/cmsy/m/n/9 gg$\T1/pag/m/n/9 . 
+ []
+
+<grafos_yed/g_10.jpg, id=72, 195.73125pt x 139.52126pt>
+File: grafos_yed/g_10.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_10.jpg>) (./chapters/propriedades.tex [17 <./grafos_yed/g_10.
+jpg>]
+Cap\'{\i }tulo 3.
+<grafos_yed/g_11.jpg, id=76, 347.2975pt x 140.525pt>
+File: grafos_yed/g_11.jpg Graphic file (type jpg)
+ <use grafos_yed/g_11.jpg>
+<grafos_yed/g_20.jpg, id=77, 317.185pt x 174.6525pt>
+File: grafos_yed/g_20.jpg Graphic file (type jpg)
+ <use grafos_yed/g_20.jpg>
+[18
+
+ <./grafos_yed/g_11.jpg>] [19 <./grafos_yed/g_20.jpg>]
+<grafos_yed/g_21.jpg, id=85, 299.1175pt x 301.125pt>
+File: grafos_yed/g_21.jpg Graphic file (type jpg)
+ <use grafos_yed/g_21.jpg>
+LaTeX Font Info:    Font shape `T1/pag/bx/n' in size <8> not available
+(Font)              Font shape `T1/pag/b/n' tried instead on input line 117.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <8> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 117.
+LaTeX Font Info:    Font shape `T1/pag/bx/n' in size <6> not available
+(Font)              Font shape `T1/pag/b/n' tried instead on input line 117.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <6> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 117.
+LaTeX Font Info:    Font shape `T1/pag/bx/n' in size <5.55556> not available
+(Font)              Font shape `T1/pag/b/n' tried instead on input line 117.
+LaTeX Font Info:    Font shape `T1/pag/b/n' in size <5.55556> not available
+(Font)              Font shape `T1/pag/db/n' tried instead on input line 117.
+LaTeX Font Info:    Font shape `T1/pag/m/it' in size <8> not available
+(Font)              Font shape `T1/pag/m/sl' tried instead on input line 133.
+
+Overfull \hbox (0.79999pt too wide) detected at line 137
+|[]|
+ []
+
+[20 <./grafos_yed/g_21.jpg>]
+<grafos_yed/g_26.jpg, id=92, 299.1175pt x 301.125pt>
+File: grafos_yed/g_26.jpg Graphic file (type jpg)
+ <use grafos_yed/g_26.jpg>
+<grafos_yed/g_22.jpg, id=93, 430.60875pt x 299.1175pt>
+File: grafos_yed/g_22.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_22.jpg> [21 <./grafos_yed/g_26.jpg>]
+<grafos_yed/g_28.jpg, id=97, 287.0725pt x 140.525pt>
+File: grafos_yed/g_28.jpg Graphic file (type jpg)
+ <use grafos_yed/g_28.jpg>
+[22 <./grafos_yed/g_22.jpg> <./grafos_yed/g_28.jpg>]
+<grafos_yed/g_27.jpg, id=101, 527.9725pt x 205.76875pt>
+File: grafos_yed/g_27.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_27.jpg> [23 <./grafos_yed/g_27.jpg>] [24]
+<grafos_yed/g_32.jpg, id=108, 378.41376pt x 325.215pt>
+File: grafos_yed/g_32.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_32.jpg>) (./chapters/representacoes-computacionais.tex
+[25 <./grafos_yed/g_32.jpg>]
+Cap\'{\i }tulo 4.
+[26
+
+] <grafos_yed/g_29.jpg, id=116, 240.9pt x 180.675pt>
+File: grafos_yed/g_29.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_29.jpg> [27]) (./chapters/percursos.tex [28 <./grafos_yed/g_2
+9.jpg>]
+Cap\'{\i }tulo 5.
+<grafos_yed/g_33.jpg, id=123, 287.0725pt x 260.975pt>
+File: grafos_yed/g_33.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_33.jpg> [29
+
+ <./grafos_yed/g_33.jpg>] [30]
+Overfull \hbox (0.79999pt too wide) detected at line 129
+|[]|
+ []
+
+[31]
+Overfull \hbox (0.79999pt too wide) detected at line 200
+|[]|
+ []
+
+[32] <grafos_yed/g_34.jpg, id=137, 210.7875pt x 140.525pt>
+File: grafos_yed/g_34.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_34.jpg> <grafos_yed/g_35.jpg, id=138, 80.3pt x 170.6375pt>
+File: grafos_yed/g_35.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_35.jpg>
+
+LaTeX Warning: Reference `alg:buscapro' on page 33 undefined on input line 271.
+
+
+<grafos_yed/g_36.jpg, id=139, 166.6225pt x 170.6375pt>
+File: grafos_yed/g_36.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_36.jpg>
+<grafos_yed/g_37.jpg, id=140, 142.5325pt x 170.6375pt>
+File: grafos_yed/g_37.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_37.jpg>
+
+LaTeX Warning: Reference `alg:busca' on page 33 undefined on input line 320.
+
+[33 <./grafos_yed/g_34.jpg> <./grafos_yed/g_35.jpg>]
+<grafos_yed/g_38.jpg, id=144, 377.41pt x 170.6375pt>
+File: grafos_yed/g_38.jpg Graphic file (type jpg)
+ <use grafos_yed/g_38.jpg>
+[34 <./grafos_yed/g_36.jpg> <./grafos_yed/g_37.jpg> <./grafos_yed/g_38.jpg>]
+Overfull \hbox (0.79999pt too wide) detected at line 400
+|[]|
+ []
+
+
+Overfull \hbox (0.79999pt too wide) detected at line 430
+|[]|
+ []
+
+[35]) (./chapters/conexidade.tex [36]
+Cap\'{\i }tulo 6.
+<grafos_yed/g_39.jpg, id=154, 377.41pt x 175.65625pt>
+File: grafos_yed/g_39.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_39.jpg> [37
+
+ <./grafos_yed/g_39.jpg>]
+<grafos_yed/g_40.jpg, id=159, 226.8475pt x 205.76875pt>
+File: grafos_yed/g_40.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_40.jpg> <grafos_yed/g_41.jpg, id=160, 361.35pt x 170.6375pt>
+File: grafos_yed/g_41.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_41.jpg>
+Overfull \hbox (0.87825pt too wide) in paragraph at lines 82--83
+ \T1/pag/db/n/9 Prova: $\OML/cmm/m/it/9 u$ \T1/pag/m/n/9 e $\OML/cmm/m/it/9 v \
+OMS/cmsy/m/n/9 2 \OML/cmm/m/it/9 V\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 G\OT1/cmr/m/n
+/9 )$\T1/pag/m/n/9 . Em $\OML/cmm/m/it/9 G$ \T1/pag/m/n/9 existe um ca-mi-nho d
+e $\OML/cmm/m/it/9 u$ \T1/pag/m/n/9 a $\OML/cmm/m/it/9 v$\T1/pag/m/n/9 , esse c
+a-mi-nho é dado por $\OML/cmm/m/it/9 C \OT1/cmr/m/n/9 = (\OML/cmm/m/it/9 u \OT1
+/cmr/m/n/9 = \OML/cmm/m/it/9 u[]; u[]; [] ; u[] \OT1/cmr/m/n/9 =
+ []
+
+[38 <./grafos_yed/g_40.jpg> <./grafos_yed/g_41.jpg>]
+<grafos_yed/g_42.jpg, id=164, 299.1175pt x 170.6375pt>
+File: grafos_yed/g_42.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_42.jpg> [39 <./grafos_yed/g_42.jpg>]
+<grafos_yed/g_43.jpg, id=168, 226.8475pt x 260.975pt>
+File: grafos_yed/g_43.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_43.jpg> [40 <./grafos_yed/g_43.jpg>]
+<grafos_yed/g_44.jpg, id=172, 226.8475pt x 170.6375pt>
+File: grafos_yed/g_44.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_44.jpg> [41 <./grafos_yed/g_44.jpg>]
+Overfull \hbox (0.79999pt too wide) detected at line 276
+|[]|
+ []
+
+
+Overfull \hbox (0.79999pt too wide) detected at line 303
+|[]|
+ []
+
+[42] <grafos_yed/g_45.jpg, id=179, 226.8475pt x 152.57pt>
+File: grafos_yed/g_45.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_45.jpg> [43 <./grafos_yed/g_45.jpg>]
+Overfull \hbox (0.79999pt too wide) detected at line 387
+|[]|
+ []
+
+) (./chapters/arvores.tex [44]
+Cap\'{\i }tulo 7.
+<grafos_yed/g_46.jpg, id=187, 347.2975pt x 204.765pt>
+File: grafos_yed/g_46.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_46.jpg> [45
+
+ <./grafos_yed/g_46.jpg>] [46] [47] [48] [49]
+Overfull \hbox (27.48338pt too wide) in paragraph at lines 270--271
+[]\T1/pag/m/n/9 Sejam $\OML/cmm/m/it/9 x$ \T1/pag/m/n/9 e $\OML/cmm/m/it/9 y$ \
+T1/pag/m/n/9 não ad-ja-cen-tes em $\OML/cmm/m/it/9 G$\T1/pag/m/n/9 , como $\OML
+/cmm/m/it/9 G$ \T1/pag/m/n/9 é co-nexo, en-tão existe um ca-mi-nho $\OML/cmm/m/
+it/9 C \OT1/cmr/m/n/9 = (\OML/cmm/m/it/9 x \OT1/cmr/m/n/9 = \OML/cmm/m/it/9 v[]
+; v[]; [] ; v[]; v[] \OT1/cmr/m/n/9 =
+ []
+
+[50]
+Overfull \hbox (0.79999pt too wide) detected at line 346
+|[]|
+ []
+
+[51]
+Overfull \hbox (0.79999pt too wide) detected at line 378
+|[]|
+ []
+
+[52]
+Overfull \hbox (0.79999pt too wide) detected at line 483
+|[]|
+ []
+
+[53]
+Overfull \hbox (0.79999pt too wide) detected at line 516
+|[]|
+ []
+
+[54]) (./chapters/emparelhamentos.tex [55]
+Cap\'{\i }tulo 8.
+<grafos_yed/g_47.jpg, id=226, 166.6225pt x 299.1175pt>
+File: grafos_yed/g_47.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_47.jpg> [56
+
+ <./grafos_yed/g_47.jpg>]
+<grafos_yed/g_48.jpg, id=230, 226.8475pt x 204.765pt>
+File: grafos_yed/g_48.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_48.jpg> [57 <./grafos_yed/g_48.jpg>] [58])
+(./chapters/planaridade.tex [59]
+Cap\'{\i }tulo 9.
+<grafos_yed/g_49.jpg, id=241, 527.9725pt x 295.1025pt>
+File: grafos_yed/g_49.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_49.jpg>
+<grafos_yed/g_51.jpg, id=242, 347.2975pt x 174.6525pt>
+File: grafos_yed/g_51.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_51.jpg> [60
+
+ <./grafos_yed/g_49.jpg>]
+<grafos_yed/g_50.jpg, id=246, 407.5225pt x 234.8775pt>
+File: grafos_yed/g_50.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_50.jpg> [61 <./grafos_yed/g_51.jpg> <./grafos_yed/g_50.jpg>]
+<grafos_yed/g_52.jpg, id=251, 349.305pt x 198.7425pt>
+File: grafos_yed/g_52.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_52.jpg> <grafos_yed/g_53.jpg, id=252, 289.08pt x 319.1925pt>
+File: grafos_yed/g_53.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_53.jpg> [62 <./grafos_yed/g_52.jpg> <./grafos_yed/g_53.jpg>])
+(./chapters/coloracao.tex [63]
+Cap\'{\i }tulo 10.
+
+Overfull \hbox (6.18993pt too wide) in paragraph at lines 23--24
+ \T1/pag/db/n/9 Ob-ser-va-ção: \T1/pag/m/n/9 Toda co-lo-ra-ção $\OML/cmm/m/it/9
+ c$ \T1/pag/m/n/9 de ta-ma-nho $\OML/cmm/m/it/9 k$ \T1/pag/m/n/9 pode ser re-pr
+e-sen-tada (tro-cada) por $\OML/cmm/m/it/9 c[] \OT1/cmr/m/n/9 : \OML/cmm/m/it/9
+ V\OT1/cmr/m/n/9 (\OML/cmm/m/it/9 G\OT1/cmr/m/n/9 ) \OMS/cmsy/m/n/9 ! f\OT1/cmr
+/m/n/9 1\OML/cmm/m/it/9 ; [] ; k\OMS/cmsy/m/n/9 g$\T1/pag/m/n/9 .
+ []
+
+[64
+
+]) (./chapters/fluxo.tex [65]
+Cap\'{\i }tulo 11.
+<grafos_yed/g_54.jpg, id=265, 698.61pt x 268.00125pt>
+File: grafos_yed/g_54.jpg Graphic file (type jpg)
+
+<use grafos_yed/g_54.jpg> [66
+
+] [67 <./grafos_yed/g_54.jpg>])
+(./chapters/simbolos.tex [68]
+Ap\^endice A.
+) [69
+
+] (./livro-grafos.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5989 strings out of 493848
+ 81144 string characters out of 3149208
+ 160514 words of memory out of 3000000
+ 9084 multiletter control sequences out of 15000+200000
+ 59014 words of font info for 72 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 36i,24n,43p,741b,648s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2009/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2009/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/loca
+l/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
+/texlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/t
+exlive/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/tex
+live/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texli
+ve/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive
+/2009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+009/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2009
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2009/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2009/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2009/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2009/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2009/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2009/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2009/texmf-di
+st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2009/texm
+f-dist/fonts/type1/urw/avantgar/uagd8a.pfb></usr/local/texlive/2009/texmf-dist/
+fonts/type1/urw/avantgar/uagk8a.pfb></usr/local/texlive/2009/texmf-dist/fonts/t
+ype1/urw/avantgar/uagko8a.pfb>
+Output written on livro-grafos.pdf (69 pages, 1054804 bytes).
+PDF statistics:
+ 341 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
+

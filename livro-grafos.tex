@@ -1,0 +1,175 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AUTOR: DIOGO CEZAR TEIXEIRA BATISTA                     %   
+% DATA: OUTUBRO-2010                                      % 
+% LIVRO: INTRODUÇÃO A TEORIA DOS GRAFOS E SEUS ALGORITMOS %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[9pt,openany,twoside,a4paper]{extbook}
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage[boxruled,noline,linesnumbered,portuguese,onelanguage,algoruled]{algorithm2e}
+\usepackage{wrapfig}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage[lmargin=2.5cm,rmargin=2.5cm,tmargin=2.5cm,bmargin=3.5cm]{geometry}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{avant}
+\renewcommand*\familydefault{\sfdefault}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% C O N F I G U R A Ç Õ E S  D O S   A L G O R I T M O S  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\IncMargin{0.2cm}
+\SetNlSkip{0.1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% E S P A Ç A M E N T O   A U M E N T A D O %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\baselinestretch}{1.4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% C O M A N D O S   D E   S U B S T I T U I Ç Ã O %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\titulo}        [1]{\def\imprimetitulo{#1}}
+\newcommand{\subtitulo}     [1]{\def\imprimesubtitulo{#1}}
+\newcommand{\autor}         [1]{\def\imprimeautor{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  S U B S T I T U I N D O   C O N S T A N T E S %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titulo{INTRODUÇÃO A TEORIA DOS GRAFOS E SEUS ALGORITMOS}
+\subtitulo{Uma visão introdutória da teoria dos grafos}
+\autor{Diogo Cezar Teixera Batista \\ \vspace{0.5cm}  Robson Gomes de Melo \\ \vspace{0.7cm} André Luiz Pires Guedes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% C O N F I G U R A N D O   O   F A N C Y   H E A D E R  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{fancy}                       
+\fancyfoot{}                            
+\renewcommand{\chaptermark}[1]{         
+  \markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{         
+  \markright{\thesection.\ #1}}         
+\fancyhead[LE,RO]{\bfseries\thepage}    
+
+\fancyhead[RE]{\bfseries\leftmark}      
+\fancyhead[LO]{\bfseries\rightmark}     
+\renewcommand{\headrulewidth}{0.3pt}    
+
+\makeatletter 
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else% 
+    \hbox{} 
+    \thispagestyle{empty}
+    \newpage 
+    \if@twocolumn\hbox{}\newpage\fi\fi\fi} 
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% R O D A P É  C O M   C O N T E Ú D O  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\setfooter}{
+    \pagestyle{fancy}
+    \lfoot{}
+    \cfoot{\thepage}
+    \rfoot{}
+}
+
+\begin{document}
+
+%%%%%%%%%%%
+% C A P A %
+%%%%%%%%%%%
+
+    \begin{flushright}
+    \end{flushright}
+
+    \thispagestyle{empty}
+
+    \vspace{3cm}
+
+    \begin{center}
+    {\Huge \textbf{\imprimetitulo}}
+
+    \vspace{5cm}
+
+    {\huge \textbf{\imprimesubtitulo}}
+
+    \vspace{5cm}
+
+    {\Large \imprimeautor}
+
+    \vspace{2cm}
+
+    \end{center}
+
+    \newpage
+
+%%%%%%%%%%%%%%%%%%%
+% S U M Á R I O S %
+%%%%%%%%%%%%%%%%%%%
+
+    \thispagestyle{empty}
+
+    \tableofcontents
+
+    \newpage
+
+    \thispagestyle{empty}
+
+    \listoffigures
+
+    \newpage
+
+    \setfooter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% D O C U M E N T O   P R I N C I P A L  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \input{chapters/definicoes-iniciais.tex}
+
+    \input{chapters/sub-grafos.tex}
+
+    \input{chapters/propriedades.tex}
+
+    \input{chapters/representacoes-computacionais.tex}
+
+    \input{chapters/percursos.tex}
+
+    \input{chapters/conexidade.tex}
+
+    \input{chapters/arvores.tex}
+
+    \input{chapters/emparelhamentos.tex}
+
+    \input{chapters/planaridade.tex}
+
+	\input{chapters/coloracao.tex}
+	
+	\input{chapters/fluxo.tex}
+
+%%%%%%%%%%%%%%%%%%%%%
+% A P Ê N D I C E S % 
+%%%%%%%%%%%%%%%%%%%%%
+
+    \appendix
+
+    \input{chapters/simbolos.tex}
+
+    %\input{chapters/exercicios.tex}
+
+\end{document} 

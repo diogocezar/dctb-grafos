@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   4 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Representações Computacionais de Grafos}
+
+Para representar os grafos estudados em um ambiente computacional devemos estudar qual estrutura devemos utilizar. Em geral, a estrutura de dados adotada está relacionada com qual a função do algoritmo que irá atuar no grafo.
+
+Em casos gerais, com uma estrutura básica deveríamos ser capazes de responder as perguntas:
+
+\begin{enumerate}
+    \item \label{rc:p1} qual é o tamanho do conjunto de vértices de um grafo $G$? $|V(G)|$
+    \item \label{rc:p2} qual é o tamanho do conjunto de arestas de um grafo $G$? $|E(G)|$
+    \item \label{rc:p3} qual é o grau de um determinado vértice de um grafo $G$? $d_G(u) \therefore u \in V(G)$
+    \item \label{rc:p4} uma aresta $\{u,v\}$ pertence ao conjunto de arestas do grafo $G$? $\{u,v\} \in E(G)$
+    \item \label{rc:p5} qual a vizinhança de um vértice $u$ do conjunto de vértices do grafo $G$? $N_G(u) \therefore u \in V(G)$
+\end{enumerate}
+
+Algumas perguntas, como a \ref{rc:p3}, são \emph{perguntas secundárias}, por exemplo o grau de um vértice está ligado com a quantidade de vizinhos desse vértice, outro exemplo de \emph{pergunta secundária} é uma pergunta do tipo: \emph{O grafo $G$ é completo?}, pois também depende de outras informações obtidas por perguntas primárias.
+
+Para representação computacional de um grafo, é necessário trechos de algoritmos que percorram os vizinhos de um determinado vértice, assim respondendo tanto perguntas primárias quanto secundárias.
+
+Uma das perguntas mais recorrentes nos algoritmos que percorrem os nodos de um grafo é: "para todo $u \in N_g(v)$ faça"{}. Essa pergunta pode ser traduzida de duas formas diferentes:
+
+\begin{itemize}
+    \item "para todo $u \in V(G) \therefore \{u,v\} \in E$ faça";
+    \item "$u \leftarrow$ primeiro vizinho $(v)$"{} + "$u \leftarrow$ próximo vizinho $(v)$".
+\end{itemize}
+
+O primeiro laço necessita que se responda a pergunta \ref{rc:p4}, enquanto que a segunda necessita que se responda a pergunta \ref{rc:p5}.
+
+Uma questão interessante ao se codificar a estrutura de dados de um grafo é o método de indexação, \textbf{vértices x arestas}. Mesmo assim existem casos particulares em que algum tipo de indexação pode ser mais eficiente que outro.
+
+\section{Lista de Arestas}
+
+É uma representação de um grafo na qual é dado um vetor ou lista com pares de vértices representando as arestas desse grafo.
+
+\paragraph*{Exemplo 7:}
+\label{rc:exemplo}
+
+Seja um grafo $G$ de exemplo, definido por:
+
+\begin{eqnarray*}
+    V(G) &=& \{1,2,3,4,5\}\\
+    E(G) &=& \{\{1,2\},\{2,5\},\{5,4\},\{4,3\},\{4,2\}\}
+\end{eqnarray*}
+
+Sua representação por lista de arestas é dada por:
+
+$$ \{1,2\}, \{2,5\}, \{5,4\}, \{4,3\}, \{4,2\} $$
+
+Para representar os vértices nessa notação utiliza-se um vetor de vértices de 1 a $n$ com $n = |V(G)|$.
+
+$$ V = \{1,2,3,4,5\} $$
+
+Com essa estrutura, responder a pergunta \ref{rc:p4} ($\{u,v\} \in E(G)$) custa $\Theta(m)$ onde $m = |E(G)|$.
+
+Responder a pergunta \ref{rc:p5} ($N_G(u) \therefore u \in V(G)$), também tem o custo $\Theta(m)$ onde $m = |E(G)|$.
+
+Isso porque nos dois casos é necessário percorrer a lista de arestas, no primeiro caso apenas verificando se $u$ e $v$ estão na lista $E_{i,j}$. No segundo caso, procura-se por $u$, ao se achar anota-se o vizinho, e continua-se da próxima aresta $E_{i,j}$.
+
+\section{Matriz de Adjacências}
+
+É uma matriz $n$ x $m$ tal que:
+
+$$
+M_{i,j} =   \left\{ \begin{array}{rll}
+			0 & \mbox{se} & i,j \not\in E(G) \\
+			1 & \mbox{se} & i,j \in E(G)
+		    \end{array}\right.
+$$
+
+Essa matriz é simétrica, quadrada e possui sua diagonal preenchida por $0$.
+
+O custo para descobrir a pergunta \ref{rc:p4} ($\{u,v\} \in E(G)$) custa $\Theta(1)$. 
+
+Responder a pergunta \ref{rc:p5} ($N_G(u) \therefore u \in V(G)$), tem o custo $\Theta(m)$ onde $m = |V(G)|$.
+
+Segue a representação do Exemplo \ref{rc:exemplo} por matriz de adjacências:
+
+$$
+\left(
+  \begin{array}{cccccc}
+    \# & 1 & 2 & 3 & 4 & 5 \\
+    1  & 0 & 1 & 0 & 0 & 0 \\
+    2  & 1 & 0 & 0 & 1 & 1 \\
+    3  & 0 & 0 & 0 & 1 & 0 \\
+    4  & 0 & 1 & 1 & 0 & 1 \\
+    5  & 0 & 1 & 0 & 1 & 0 \\
+  \end{array}
+\right)
+$$
+
+\section{Listas de Adjacência}
+
+É um vetor de listas indexado pelos vértices e cada lista representa uma vizinhança.
+
+Na Figura \ref{fig:g_29} podemos observar uma representação por lista de adjacências do Exemplo \ref{rc:exemplo}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=3.7cm]{grafos_yed/g_29.jpg}
+    \caption{Lista de Adjacências.}
+    \label{fig:g_29}
+\end{figure}
+
+Responder a pergunta \ref{rc:p5} ($N_G(u) \therefore u \in V(G)$), tem o custo $\Theta(m)$ onde $m = |N_G(u)|$.
+
+\section{Pesos}
+
+Para atribuir pesos aos vértices ou arestas, podemos utilizar:
+
+\begin{itemize}
+    \item vértices: criar um vetor associado.
+    \item arestas:
+    \begin{enumerate}
+	\item criar um nome para cada aresta e criar também um vetor associado;
+	\item na matriz de adjacências armazenar a informação na célula $M_{i,j}$;
+	\item na lista de adjacências armazenar uma pequena informação em cada vizinho.
+    \end{enumerate}
+\end{itemize}
+
+Uma boa prática é a criação de um vetor associado para armazenar os graus de um vértice.
+
+\section{Vantagens e Desvantagens}
+
+As estruturas ilustradas apresentam vantagens e desvantagens, o que é retornado em um melhor tempo por uma estrutura não retornado por outra, por isso deve-se analisar o algoritmo a ser escrito, para que escolha-se a estrutura mais adequada de acordo com as operações que irão ser feitas.
+
+A matriz de adjacências, apresenta um outro problema que é o espaço desperdiçado quando se tem grafos espaços (com poucas arestas), pois a matriz irá ser preenchida por muitos espaços vazios.
+
+Em algumas implementações, pode se tornar interessante preservar as duas estruturas (matriz de adjacências e listas de adjacências) para se obter um melhor desempenho. A desvantagem é manter a persistência em ambas estruturas, e o espaço ocupado duplicado.

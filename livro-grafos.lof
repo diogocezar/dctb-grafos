@@ -1,0 +1,53 @@
+\select@language {brazil}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Representa\c c\~ao geom\'etrica (ou diagrama) do grafo.}}{7}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Representa\c c\~ao geom\'etrica (ou diagrama) dos grafos completos $K_1$, $K_2$ e $K_3$}}{8}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Representa\c c\~ao geom\'etrica (ou diagrama) do grafo $G$.}}{9}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Representa\c c\~ao geom\'etrica (ou diagrama) do grafo $G_t$.}}{12}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Representa\c c\~ao geom\'etrica (ou diagrama) do grafo $G_c$.}}{14}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces $H$ \'e um subgrafo gerador de $G$.}}{15}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Representa\c c\~ao gr\'afica do grafo $G$.}}{16}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Representa\c c\~ao gr\'afica do grafo $G[S]$.}}{16}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Representa\c c\~ao gr\'afica do grafo $G[M]$.}}{17}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Representa\c c\~ao gr\'afica do grafo $G[M]$.}}{18}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Conjunto independe $U$ no grafo $G$}}{19}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Exemplo de Grafo Bipartido.}}{20}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Exemplo de Grafo Bipartido Completo.}}{21}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Exemplo de Corte em um Grafo.}}{22}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Outro Exemplo de Corte em um Grafo.}}{22}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Exemplo de Isomorfismo.}}{23}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces (a) Grafo orientado. (b) Multigrafo. (c) Grafo dirigido. (d) Grafo subjacente}}{25}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Lista de Adjac\^encias.}}{28}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Grafo de Exemplo para estudo de Caminhos e Circuitos.}}{29}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Grafo $G_1$ de Exemplo para estudo de Busca em Profundidade.}}{33}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Grafo $G_1$ Ordenado Temporalmente}}{33}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Grafo $G_2$ de Exemplo para estudo de Busca em Profundidade.}}{34}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Grafo $G_1$ Ordenado Temporalmente}}{34}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Exemplo de Busca em Largura.}}{34}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Exemplo de componente conexa.}}{37}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Exemplo fecho transitivo.}}{38}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Teorema: grafo conexo remo\c c\~ao de aresta em ciclos.}}{38}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces V\'ertice de articula\c c\~ao.}}{39}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Exemplo de Grafo Euleriano.}}{40}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Exemplo de Grafo com Pesos nas Arestas.}}{41}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Exemplo dos conceitos para algoritmo de Floyd-Warshall.}}{43}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Exemplo de Floresta e \'Arvores.}}{45}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces $M = \{\{2,4\},\{5,6\}\}$ \'e um emparelhamento no grafo G.}}{56}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces N\'umero de v\'ertices par, que n\~ao aceitam emparelhamento perfeito.}}{57}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Grafos Planares}}{60}
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Grafos Planares Semelhantes}}{61}
+\contentsline {figure}{\numberline {9.3}{\ignorespaces Grafos Planares}}{61}
+\contentsline {figure}{\numberline {9.4}{\ignorespaces Busca por Articula\c c\~oes}}{62}
+\contentsline {figure}{\numberline {9.5}{\ignorespaces Representa\c c\~ao Estruturada em uma \'Arvore}}{62}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {11.1}{\ignorespaces caption}}{67}
+\addvspace {10\p@ }

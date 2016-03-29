@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   8 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Emparelhamentos}
+
+Um emparelhamento é um conjunto independente de arestas. É um tópico bastante estudado da Teoria dos Grafos, pela ampla variedade de aplicações. Achar o emparelhamento em um grafo, é em sua essência achar pares de vértices que podem ser conectados.
+
+Os pares de vértices que podem ser conectados (com base em um grafo $G$) formam um aresta.
+
+O conjunto de arestas $M$ de $G$ é chamado de \textbf{emparelhamento}. Obviamente duas arestas do conjunto $M$ não incidem em um mesmo vértice.
+
+Todos os vértices da indução $H = G[M]$ tem grau 1, ou seja, $H$ é um grafo \textit{1-regular}. Ou formalmente: $M \subseteq E(G)$ é um emparelhamento se $G[M]$ é \textit{1-regular}.
+
+\section{Definições}
+
+Um vértice é \textbf{coberto} por um emparelhamento $M$ se está em um conjunto de arestas em $M$. Ou seja, $v \in V(G[M])$.
+
+A Figura \ref{fig:g_47} é um exemplo de emparelhamento.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=3cm]{grafos_yed/g_47.jpg}
+  \caption{$M = \{\{2,4\},\{5,6\}\}$ é um emparelhamento no grafo G.}
+  \label{fig:g_47}
+\end{figure}
+
+Os vértices $2,4,5,6$ são ditos cobertos no exemplo da Figura \ref{fig:g_47}.
+
+Um emparelhamento é \textbf{perfeito} se $V(G[M]) = V(G)$, ou seja, se todos os vértices do grafo original são cobertos por $M$.
+
+Um emparelhamento é \textbf{máximo} se não exsite emparelhamento maior.
+
+Sua notação formal é dada por:
+
+$$ \mu(G) = max\{|M| \therefore M \mbox{ é um emparelhamento em } G\}$$
+
+Temos que o $\mu$ máximo para um caminho $P^n$ tal que $n$ é o tamanho do caminho, é $\displaystyle\frac{n}{2}$. Em circuitos emos que o $\mu$ máximo $C^n$ tal que $n$ é o tamanho do circuito, é também $\displaystyle\frac{n}{2}$.
+
+\paragraph*{Observação:} Se o número de vértices de $G$ for ímpar, um emparelhamento nunca será perfeito. Mas o número de vértices par não garante que exista um emparelhamento perfeito.
+
+Como pode ser observado no grafo $G$ da Figura \ref{fig:g_48}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=4cm]{grafos_yed/g_48.jpg}
+  \caption{Número de vértices par, que não aceitam emparelhamento perfeito.}
+  \label{fig:g_48}
+\end{figure}
+
+Isso acontece pois os vértices $2,4,5,6$ competem por uma mesma aresta. E se um está o outro não pode estar.
+
+\section{Caminho M-Alternante}
+
+$C$ é um caminho \textit{M-Alternante} se é um caminho e suas arestas estão alternadamente em $M$ e fora de $M$.
+
+\begin{eqnarray*}
+  C &=& (v_0, v_1, \ldots, V_k) \mbox{ então } \\
+  &\mbox{ ou }& \{V_0,V_1\},\{V_2,V_3\}, \ldots, \{V_{2_i},V_{2_i + 1}\} \\
+  &\mbox{ ou }& \{V_1,V_2\},\{V_3,V_4\}, \ldots, \{V_{2_i + 1},V_{2_i + 2}\}
+\end{eqnarray*}
+
+são arestas em $M$.
+
+\section{Caminho M-Aumentante}
+
+Um caminho \textit{M-Alternante} $C = (V_0, V_1, V_2, \ldots, V_k)$ tal que $K$ seja impar e $V_0$ não seja coberto por $M$ é um caminho \textit{M-Aumentante}
+
+\section{Teorema do Caminho M-Aumentante}
+
+Dado um grafo $G$ e um emparelhamento $M$ em $G$, se existe um caminho \textit{M-Aumentante} $C$ em $G$ então existe um emparelhamento $M'$ em $G$ tal que o tamanho de $M'$ é o mesmo de $M$ mais um. Ou formalmente $|M'| = |M| + 1$.
+
+\paragraph*{Prova do Teorema do Caminho M-Aumentante} Para uma aresta $e \in M$ tal que $e$ não usa vértices de $C$ coloque $e$ e, $M'$. As arestas de $C$ que não são de $M$ entram em $M'$.
+
+Ou seja, se existe um emparelhamento M-Aumentante, então existe um outro emparelhamento equivalente a esse, entretanto possui uma aresta a mais.
+
+\paragraph*{Observações:} Não existe uma aresta $e$ que pertence a $M$ e que usa vértices de $C$ que não estejam em $C$.
+
+As arestas de $C$ que não estão em $M$ não compartilham vértices com as arestas de $M$ que não usam vértices de $C$.
+
+Para provar a volta do teorema, ou seja, provar que: sendo $G$ um grafo e $M$ um emparelhamento em $G$, $M$ é máximo se e somente se não existe um caminho \textit{M-Aumentante} em $G$.
+
+Para isso, definimos como $M*$  um emparelhamento máximo em $G$.
+
+Seja $H = G[M \cup M*]$, então podemos afirmar que o número máximo de arestas para o subgrafo $H$ é dado por $\Delta(H) \leqslant 2$, pois $H$ pode conter ou arestas vindas de $M$, ou arestas vindas de $M*$, as arestas que coincidem são desconsideradas.
+
+Com isso pode-se perceber que $H$ contém apenas:
+
+\begin{itemize}
+    \item vértices isolados e desconexos;
+    \item arestas isoladas e desconexas;
+    \item caminhos e ciclos:
+    \begin{itemize}
+	\item de tamanho ímpar;
+	\item de tamanho par;
+    \end{itemize}
+\end{itemize}
+
+Como a intenção é provar que o $|M^*| > |M|$ então descarta-se: vértices isolados e arestas isoladas, pois não contribuirão para a contagem.
+
+São componenetes conexas de $H$: caminhos e ciclos.
+
+Nos ciclos pares o número de arestas de $M$ é igual ao número de arestas de $M^*$ então podem ser descartados.
+
+Nos ciclos ímpares uma aresta sempre ficará de fora, logo também podem ser descartados.
+
+Os caminhos de tamanho par tem o número de arestas de $M$ e de $M^*$ igual, então também podem ser descartados.
+
+Os caminhos de tamanho ímpar podem ter:
+
+\begin{enumerate}
+ \item \label{are:m*} mais arestas de $M^*$ do que de $M$;
+ \item \label{are:m} mais arestas de $M$ do que de $M^*$;
+\end{enumerate}
+
+Logo pode-se deduzir que somente a afirmação \ref{are:m*} é verdadeira, pois inicia-se com arestas que estão em $M^*$, então $M^*$ é aumentante e $M$ não é máximo.
+
+\section{Diferença Simétrica}
+
+A prova do teorema do caminho \textit{M-Aumentante} pode ser denotada como uma operação chamada de \textbf{diferença simétrica}.
+
+Sua notação formal é dada por:
+
+$$ M \Delta E(P) = (M \cup E(P)) \smallsetminus (M \cap E(P)) $$
+
+Onde $M$ é o conjunto de arestas do emparelhamento e $E(P)$ é o caminho \textit{M-Aumentante}.
+
+E como o teorema prova, o resultado dessa operação é um $M'$ que é um outro emparelhamento em $G$ com uma aresta a mais que $M$.

@@ -1,0 +1,520 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% A P Ê N D I C E - B %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Exercícios Resolvidos}
+
+\begin{enumerate}
+
+    \item \label{ex:quimico} Um quimico deseja embarcar os produtos $A,B,C,D,E,F,X$ usando o menor número de caixas possível. Alguns produtos não podem ser colocados em uma mesma caixa por que reagem. Os produtos $A,B,C,X$ reagem dois-a-dois e ainda, $A$ reage com $F$ e também com $D$ (e vice-versa); $E$ reage com $F$ e com $D$ (e vice-versa). Descreva o grafo que modela essa situação, mostre um diagrama desse grafo e use esse grafo para descobrir o menor número de caixas necessárias para embarcar os produtos com segurança.
+
+	Para resolver esse exercício, precisamos primeiramente montar um grafo, tendo os produtos como vértices e as arestas como reações, ou seja um grafo $G$ mostra quais produtos reagem com quais.
+
+	Definindo formalmente $G$, temos:
+
+	\begin{eqnarray*}
+	    G    &=& (V,E)\\
+	    V(G) &=& \{A,B,C,D,E,F,X\} \\
+	    E(G) &=& \{\{A,B\},\{A,C\},\{A,D\},\{A,F\},\{A,X\},\\
+		    && \{B,C\},\{B,X\},\{C,X\},\{D,E\},\{E,F\}\}
+	\end{eqnarray*}
+
+	Graficamente temos:
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=4.5cm]{grafos_yed/g_12.jpg}
+	    \caption{Representação gráfica do grafo $G$.}
+	    \label{fig:g_12}
+	\end{figure}
+
+	De $G$, podemos achar seu complementar $\overline{G}$, que representa quais os produtos \textbf{podem} ir na mesma caixa, então temos:
+
+	\begin{eqnarray*}
+	    \overline{G}    &=& (V,E)\\
+	    V(\overline{G}) &=& \{A,B,C,D,E,F,X\} \\
+	    E(\overline{G}) &=& \{\{A,E\},\{B,D\},\{B,E\},\{B,F\},\{C,D\},\\
+			      && \{C,E\},\{C,F\},\{D,F\},\{D,X\},\{E,X\},\\
+			      && \{F,X\}\}
+	\end{eqnarray*}
+
+	Graficamente temos:
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=4.5cm]{grafos_yed/g_13.jpg}
+	    \caption{Representação gráfica do grafo $\overline{G}$.}
+	    \label{fig:g_12}
+	\end{figure}
+
+	Com o grafo $\overline{G}$ basta pegar um produto e seguir quais produtos reagem com ele ou não. Em um caminho se um produto $Y$ pode ir na mesma caixa que um produto $W$, então devemos verificar se mais algum produto pode ir com $Y$ e $W$.
+
+	Iniciando a navegação pelo grafo por $A$, podemos observar que ele pode ser colocado com o elemento $E$, mas o elemento $E$, não permite que nenhum outro produto seja colocado na mesma caixa. Partindo do produto $B$, podemos coloca-lo na mesma caixa que $D$ e ainda na mesma caixa seria possível colocar $F$ que está ligada a ambos. $C$ só pode ir na mesma caixa dos produtos que já foram colocados, e não pode ir com $X$. Então separamos em outras 2 caixas $X$ e $C$.
+
+	Logo, o número mínimo de caixas é 4, dispostas:
+
+	\begin{enumerate}
+	    \item Caixa 1 = $\{A,E\}$
+	    \item Caixa 2 = $\{B,D,F\}$
+	    \item Caixa 3 = $\{C\}$
+	    \item Caixa 4 = $\{X\}$
+	\end{enumerate}
+
+
+    \item Para todo $n \in \mathbb{N}$, qual o máximo de arestas que um grafo com $n$ vértices pode ter?
+
+	Um grafo é definido por $G=(V,E)$ tal que $E \subseteq \binom{V}{2}$.
+
+	Isso significa o número de vezes que se consegue extrair 2 de $V$, ou a combinação de 2 em 2 de vértices.
+
+	Temos:
+
+	$$ \Big|\binom{V}{2}\Big| = \Big( \binom{|V|}{2}\Big) = $$
+
+	$$ \frac{|N|!}{2!(|N|-2)!} = \frac{|N|(|N|-1)}{2} = \frac{|N|^2-2}{2} $$
+
+    \item Dê o complemento dos seguintes grafos:
+
+	\begin{enumerate}
+	    \item
+	    \begin{eqnarray*}
+		V(\overline{G}) &=& \{1,2,3,4,5,6,7\} \\
+		E(\overline{G}) &=& \{\{1,2\}, \{1,3\}, \{2,4\}, \{2,5\}, \{3,6\}, \\
+				  && \{3,7\}\}
+	    \end{eqnarray*}
+
+	    Para achar o grafo complementar basta aplicar a definição:
+	    \begin{eqnarray*}
+		V(\overline{G}) &=& V(G) \\
+		E(\overline{G}) &=& \{\{u,v\} \subset V(G): \{u,v\} \not\in\ E(G)\}
+	    \end{eqnarray*}
+	    assim, obtemos:
+	    \begin{eqnarray*}
+		V(\overline{G}) &=& \{1,2,3,4,5,6,7\} \\
+		E(\overline{G}) &=& \{\{7,1\}, \{7,2\}, \{7,4\}, \{7,5\}, \{7,6\}, \\
+				  && \{6,5\}, \{6,4\}, \{6,2\}, \{6,1\}, \{5,4\}, \\
+				  && \{5,3\}, \{5,1\}, \{4,3\}, \{4,1\}, \{3,2\}\}
+	    \end{eqnarray*}
+
+	    Os grafos estão representados graficamente na Figura \ref{fig:g_6}. O grafo $a$ é o grafo definido e o grafo $b$ é o seu grafo complementar.
+
+	    \begin{figure}[!htb]
+		\centering
+		\includegraphics[width=6.5cm]{grafos_yed/g_6.jpg}
+		\caption{Grafo complementar}
+		\label{fig:g_6}
+	    \end{figure}
+
+	    \item
+	    \begin{eqnarray*}
+		V(\overline{G}) &=& \{1,2,3,4,5\} \\
+		E(\overline{G}) &=& \{\{1,2\}, \{1,3\}, \{1,4\}, \{1,5\}, \{2,3\}, \\
+				  && \{2,4\}, \{2,5\}, \{3,4\}, \{3,5\}, \{4,5\}\}
+	    \end{eqnarray*}
+	    Como o grafo acima é um grafo completo, seu grafo complementar ($\overline{G}$) é dado por:
+	    \begin{eqnarray*}
+		V(\overline{G}) &=& \{1,2,3,4,5\} \\
+		E(\overline{G}) &=& \{\}
+	    \end{eqnarray*}
+	\end{enumerate}
+
+
+    \item Se temos a união dos grafos $G$ e $H$ por $G \cup H = V(G) \cup V (H), E(G) \cup E(H)$. A união $G \cup H$ é um grafo?
+
+	\begin{eqnarray*}
+	    G \cup H &=& \{V(G) \cup V(H), E(G) \cup E(H)\}\\
+	    V' &=& V(G) \cup V(H)\\
+	    E' &=& E(G) \cup V(H)\\
+	    E' &=& \binom{V(G)}{2} \cup \binom{V(H)}{2}\\
+	    V(G) \cup V(G) &=& V'\\
+	    E' &=& \binom{V'}{2}\\
+	    I  &=& \{V', \binom{V'}{2}\}
+	\end{eqnarray*}
+
+    \item Prove que $G \cup \overline{G} = K^n$:
+
+	Seja um grafo completo: Um grafo é chamado de completo sobre $V$ se todo par de vértices de $V$ é uma aresta do grafo.
+
+	Dado determinado $G$ um grafo não completo, e $\overline{G}$ seu grafo complementar, também não completo, logo a união de $G$ e $\overline{G}$ garante que o grafo resultante $G_r = G \cup \overline{G}$ tem todos os vértices conectados a todos, formando um grafo completo.
+
+	Prova formal:
+
+	Um grafo,
+
+	\begin{eqnarray*}
+	    & G(V,E) \\
+	    V & = & V|G| \\
+	    E & = & E|G| \therefore E \subseteq \binom{V}{2}
+	\end{eqnarray*}
+
+	é composto por $V$ e $E$ que são os vértices e arestas do grafo respectivamente, suas arestas formam um subconjunto de cardinalidade dois, compreendidas por dois vértices.
+
+	Um grafo completo é dado por:
+
+	$$E = \binom{V}{2} \therefore E = K^n$$
+
+	Para cada qualquer par de vértices de um grafo completo $G_c$ há uma aresta $v$ que os liga.
+
+	Um grafo complementar é dado por:
+
+	\begin{eqnarray*}
+	    V(\overline{G}) & = & V|G| \\
+	    E(\overline{G}) & = & \{\{u,v\} \subset V(G) : \{u,v\} \not\in\ E(G)\}\}
+	\end{eqnarray*}
+
+	Um grafo complementar $G_c$ possui uma cópia dos vértices do grafo original ($G$) e um vértice é ligado a outro se e somente se no grafo original eles não são ligados.
+
+	Sejam $G$ e $H$ dois grafos distintos, sua união dá origem a um novo grafo $I$.
+
+	\begin{eqnarray*}
+	    I = H \cup G &=& (V(G) \cup V(H), E(G) \cup E(H))
+	\end{eqnarray*}
+
+	Então,
+
+	\begin{eqnarray*}
+	    G \cup \overline{G} &=& (V(G) \cup V(\overline{G}), E(G) \cup E(\overline{G})) \\
+	    V(\overline{G}) &=& V(G) \\
+	    V(G) &=& V(\overline{G}) = V(G) \\
+	    E(\overline{G}) &=& \binom{V(G)}{2} \smallsetminus E(G) \\
+	    E(G) \cup E(\overline{G}) &=& E(G) \cup (\binom{V(G)}{2} \smallsetminus E(G)) \\
+	\end{eqnarray*}
+
+	Um grafo completo com $V(G)$ como seu conjunto de vértices é dado por: $(V(G), \binom{V(G)}{2})$. Então:
+
+	\begin{eqnarray*}
+	    G \cup \overline{G} = (V(G), E(G) \cup (\binom{V(G)}{2} \smallsetminus E(G))
+	\end{eqnarray*}
+
+	Para que $G \cup \overline{G}$ seja completo é preciso que:
+
+	\begin{eqnarray*}
+	    E(G) \cup (\binom{V(G)}{2} \smallsetminus E(G)) = \binom{V(G)}{2} \\
+	    \forall e \in E \binom{V(G)}{2}, e \in E(G) \cup E(\overline{G}) ?
+	\end{eqnarray*}
+
+	Logo, para qualquer aresta $e$ pertencente ao grafo completo, ou $e$ estará no conjunto de arestas de $G$ ou no conjunto de arestas de $\overline{G}$
+
+%        \item Considere o caso geral do exercício \ref{ex:quimico}: Um químico deseja embarcar os produtos $p_1,p_2, \ldots ,p_n$ usando o menor número de caixas. Alguns produtos não podem ser colocados num mesmo caixas porque reagem. Seja G o grafo que modela esse problema, onde vértices são produtos e arestas os pares que reagem, e denote por $X(G)$ o número de mínimo de caixas de modo que seja possível encaixotar os produtos com segurança. Prove que:
+%
+%            $$ X(G) \leq \frac{1}{2} + \sqrt{2m + \frac{1}{4}}$$
+
+    \item Chico e sua esposa foram a uma festa com três outros casais. No encontro deles houveram vários apertos de mão. Ninguém apertou a própria mão ou a mão do(a) esposo(a), e ninguém apertou a mão da mesma pessoa mais de uma vez.
+
+	Após vários cumprimentos Chico perguntou para todos, inclusive a sua esposa, quantas mãos cada um apertou e recebeu de cada pessoa uma resposta diferente. Pergunta-se, quantas mãos Chico apertou, e quantas mãos a esposa de chico apertou?
+
+	A primeira informação relevante para o problema é: "\emph{Após vários cumprimentos Chico perguntou para todos, inclusive a sua esposa, quantas mãos cada um apertou e recebeu de cada pessoa uma resposta diferente.}" Isso significa que, nos é dado o vetor de graus para o grafo a ser construído, que vai de 0 a 6.
+
+	Então: $vet = \{0,1,2,3,4,5,6\}$
+
+	Ainda é possível descobrir qual o grau do vértice que representa chico, pois temos apenas 3 graus ímpares e segundo o Corolário 1 na seção \ref{corolario:1} devemos ter um número par de graus ímpar, ou seja o grau de Chico é impar.
+
+	O próximo passo é desenhar os vértices do grafo que representam as pessoas da festa. Representado graficamente pela Figura \ref{fig:g_16}
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=4cm]{grafos_yed/g_16.jpg}
+	    \caption{Disposição dos casais na festa de Chico.}
+	    \label{fig:g_16}
+	\end{figure}
+
+	Temos ainda que os cônjuges são os pares $\{\{1,2\},\{3,4\},\{4,5\},\{C,ec\}\}$.
+
+	O próximo passo é identificar um padrão para adicionar as arestas em um vértice, pegando aleatoriamente um vértice qualquer no grafo, devemos iniciar as ligações de modo a eliminar todos os graus identificados no vetor de graus.
+
+	O vértice $1$ será ligado a todos, então terá o grau $6$. Sendo assim, precisamos identificar alguém para ser o vértice de grau $0$ que só pode ser a seu cônjuge, pois o vértice $1$ já foi ligado a todos os outros. Eliminamos então os graus $0$ e $6$. Como pode ser visto no grafo da Figura \ref{fig:g_17}
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=4cm]{grafos_yed/g_17.jpg}
+	    \caption{Primeiro casal conectado na festa de Chico.}
+	    \label{fig:g_17}
+	\end{figure}
+
+	Agora precisamos ligar um outro vértice aleatório a $5$ pessoas. Note que todos já tem grau pelo menos 1. Ligamos o vértice $4$ a todos os possíveis, e temos então os vértices de graus $5$ e $1$. Pois sua esposa já tem 1 comprimento e todos os outros agora têm 2. Como pode ser visto no grafo da Figura \ref{fig:g_18}
+
+	  \begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=4cm]{grafos_yed/g_18.jpg}
+	    \caption{Segundo casal conectado na festa de Chico.}
+	    \label{fig:g_18}
+	\end{figure}
+
+	O último casal a ser conectado deve conectar $4$ e $2$ vértices. E assim temos o grafo terminado, e podemos identificar o grau de Chico e de sua esposa. Como pode ser visto no grafo da Figura \ref{fig:g_19}
+
+	  \begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=4cm]{grafos_yed/g_19.jpg}
+	    \caption{Terceiro casal conectado na festa de Chico.}
+	    \label{fig:g_19}
+	\end{figure}
+
+	\item Dados os vetores de grau, diga se podemos construir os grafos:
+
+	\begin{enumerate}
+	    \item \label{ex:vet_a} $\{2,3,3,4,4,5\}$
+	    \item \label{ex:vet_b} $\{2,3,4,4,5\}$
+	    \item \label{ex:vet_c} $\{2,2,3,3\}$
+	    \item \label{ex:vet_d} $\{1,1,2,2,2\}$
+	\end{enumerate}
+
+	O vetor (\ref{ex:vet_a}) não pode ser construído pois o grau $5$ é igual ou maior que o número de vértices do grafo. O vetor (\ref{ex:vet_b}) mostra que a quantidade de graus ímpar é par, então esse grafo também não pode ser construído.
+
+	O grafo (\ref{ex:vet_c}) está disposto na Figura \ref{fig:g_14}:
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=5cm]{grafos_yed/g_14.jpg}
+	    \caption{Grafo construído a partir do vetor de graus (\ref{ex:vet_c}).}
+	    \label{fig:g_14}
+	\end{figure}
+
+	O grafo (\ref{ex:vet_d}) pode ser construído de 2 formas, representadas pela Figura \ref{fig:g_15}.
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=8cm]{grafos_yed/g_15.jpg}
+	    \caption{Grafos construído a partir do vetor de graus (\ref{ex:vet_d}).}
+	    \label{fig:g_15}
+	\end{figure}
+
+	Em vermelho, podemos conferir os graus de cada vértice.
+
+    \item \label{ex:ind} Seja $G$ um grafo e um conjunto $M \subseteq E(G)$, forme o subconjunto $U = \bigcup_{e \in E}{e}$ de vértices de $G$. Prove ou dê um contra-exemplo para $G[U] = G[M]$.
+
+	Seja $G$ um grafo definido por $G = \{1,2,3, \{1,2\},\{2,3\},\{3,1\}\}$.
+
+	Seja $M$ um conjunto de arestas definido por $M = \{\{1,2\},\{2,3\}\}$.
+
+	Se aplicarmos a indução $G[M]$ obtemos:
+
+	\begin{eqnarray*}
+	    G[M] &=& \{V', M)\}\\
+	    V'   &=& \bigcup_{e \in M}e\\
+	    V'   &=& \{1,2,3\}\\
+	    M    &=& \{\{1,2\},\{2,3\}\}
+	\end{eqnarray*}
+
+	Seja um grafo $H$ definido por $H = G[M]$.
+
+	Seja $V$ um conjunto de vértices definido por $\{1,2,3\}$.
+
+	Se aplicarmos $G[V]$ obtemos:
+
+	\begin{eqnarray*}
+	    G[V] &=& \{V, E'\}\\
+	    V    &=& \{1,2,3\}\\
+	    E'   &=& \{e \in E(G) \therefore e \subseteq V\}\\
+	    E'   &=& \{\{1,2\},\{2,3\},\{3,1\}\}
+	\end{eqnarray*}
+
+	Logo:
+
+	\begin{enumerate}
+	    \item $G[M]$ é um subgrafo induzido pelas arestas do conjunto $M$.
+	    \item $G[V]$ é um subgrafo induzido pelos vértices do conjunto $V$.
+	    \item $G[V]$ é formado pelas arestas de $M$ e mais a aresta $e = \{3,1\}$, que está presente em $G$ mas não está presente em $G[M]$.
+	\end{enumerate}
+
+	Então, podemos deduzir que $G[V] \neq G[M]$.
+
+	Os grafos estão representados na Figura \ref{fig:g_23}.
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=7.5cm]{grafos_yed/g_23.jpg}
+	    \caption{Grafos do Exercício \ref{ex:ind}.}
+	    \label{fig:g_23}
+	\end{figure}
+
+
+    \item Descubra um grafo induzido de
+
+	\begin{eqnarray*}
+	    V(G) &=& \{1,2,3,4,5,6,7,8\}\\
+	    E(G) &=& \{\{1,2\},\{1,3\},\{2,3\},\{2,5\},\{3,6\},\\
+		      &&\{8,5\},\{8,6\},\{5,6\},\{3,4\},\{5,7\}\}
+	\end{eqnarray*}
+
+	1-regular e o maior número possível de arestas.
+
+	Um grafo do tipo 1-regular tem todos seus vértices com grau igual a $1$.
+
+	A Figura \ref{fig:g_24} demonstra o grafo $G[1-regular]$.
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=7.5cm]{grafos_yed/g_24.jpg}
+	    \caption{Grafo $G[1-regular]$.}
+	    \label{fig:g_24}
+	\end{figure}
+
+    \item Dado os grafos $A$ e $B$ dispostos na Figura \ref{fig:g_25} prove que $A$ é um subgrafo induzido de $B$.
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=5cm]{grafos_yed/g_25.jpg}
+	    \caption{Grafos $A$ e $B$.}
+	    \label{fig:g_25}
+	\end{figure}
+
+	\begin{eqnarray*}
+	    B &=& (V,E)\\
+	    V(B) &=& \{1,2,3,4,5\}\\
+	    E(B) &=& \{\{1,2\},\{1,4\},\{1,5\},\{2,3\},\{2,5\}, \\
+		      &&\{3,4\},\{3,5\},\{4,5\}\}\\
+	    A &=& (V',E')\\
+	    V'(A) &=& \{1,2,3,4\}\\
+	    E'(A) &=& \{\{1,2\},\{2,3\},\{3,4\},\{1,4\}\\
+	    V'(A) &=& S \subseteq V(B)\\
+	    E'(A) &=& T \subseteq E(B)\\
+	    B[S]  &=& (S,E'')\\
+	    B[T]  &=& (V'',T)\\
+	    E''   &=& \{e \in E(B) \therefore e \subseteq S\}\\
+	    V''   &=& \bigcup_{e \in T}e\\
+	    S     &=& \{1,2,3,4\}\\
+	    T     &=& \{\{1,2\},\{1,4\},\{4,3\},\{2,3\}\}\\
+	\end{eqnarray*}
+
+	Logo, $B[S]$ ou $B[T] = A$.
+
+	\item Prove que $\delta(G) \leqslant d(G) \leqslant \Delta(G)$.
+
+	Seja $G$ um grafo $G(V,E)$, definimos o conjunto $I = \{d_G(u) \therefore u \in V(G)\}$ que é o vetor de graus do grafo definido.
+
+	\begin{eqnarray*}
+	    \delta(G) &=& \mbox{min}(I)\\
+	    d(G)      &=& \frac{\sum i}{V(G)}\\
+	    \Delta(G) &=& \mbox{max}(I)\\
+	\end{eqnarray*}
+
+	Logo,
+
+	\begin{itemize}
+	    \item[$\delta(G)$]
+	    \begin{itemize}
+		\item possui o menor elemento de $I$ ou;
+		\item é igual a $d(G)$ ou ;
+		\item é igual a $\Delta(G)$ ou ;
+		\item é igual a ambos;
+	    \end{itemize}
+
+	    \item[$d(G)$]
+	    \begin{itemize}
+		\item é o somatório de todos os elementos de $I$ dividido pelo tamanho de $I$;
+	    \end{itemize}
+
+	    \item[$\Delta(G)$]
+	    \begin{itemize}
+		\item possui o maior elemento de $I$ ou;
+		\item é igual a $\delta(G)$ ou ;
+		\item é igual a $\Delta(G)$ ou ;
+		\item é igual a ambos;
+	    \end{itemize}
+	\end{itemize}
+
+	Nos casos onde todos elementos seriam iguais a $\delta(G)$ ou $\Delta(G)$, teríamos $d(G) = \delta(G)$ ou $d(G) = \Delta(G)$ respectivamente.
+
+	Então, ou $d(G)$ é igual a $\delta(G)$ ou $\Delta(G)$, ou está entre eles.
+
+	Logo, $\delta(G) \leqslant d(G) \leqslant \Delta(G)$.
+
+	\item Prove que para $G$ e $H$ sendo isomorfos, temos $\overline{G}$ e $\overline{H}$ também isomorfos.
+
+	Seja $G$ e $H$ isomorfos, pois:
+
+	\begin{eqnarray*}
+	    |V(G)| &=& |V(H)|\\
+	    |E(G)| &=& |E(H)|\\
+	    d_G(u) \therefore u \in V(G) &=& d_G(v) \therefore v \in V(H)\\
+	    \mbox{existe} & & f(G) \rightarrow f(H)
+	\end{eqnarray*}
+
+	ou seja, eles têm o mesmo tamanho do conjunto de vértices, o mesmo tamanho do conjunto de arestas, o mesmo vetor de graus e existe uma função bijetora que satisfaça a condição do isomorfismo.
+
+	Se $\overline{G} \cup G = K^n_G$, então $\overline{H} \cup H = K^n_H$ e assim:
+
+	$$ K^n_G \simeq K^n_H$$
+
+	pois:
+
+	\begin{eqnarray*}
+	    |V(K^n_G)| &=& |V(K^n_H)|\\
+	    |E(K^n_G)| &=& |E(K^n_H)|\\
+	    d_G(u) \therefore u \in V(K^n_G) &=& d_G(v) \therefore v \in V(K^n_H)\\
+	    \mbox{existe} & & f(K^n_G) \rightarrow f(K^n_H)
+	\end{eqnarray*}
+
+	Sejam $A$ e $B$:
+
+	\begin{eqnarray*}
+	    A &=& K^n_G \smallsetminus G = \overline{G}\\
+	    B &=& K^n_H \smallsetminus G = \overline{H}\\
+	\end{eqnarray*}
+
+	Logo, $A \simeq B$ e portanto, $\overline{G} \simeq \overline{H}$.
+
+
+	\item Seja $G$ um grafo com 14 vértices e 25 arestas. Se todo vértice de $G$ tem grau 3 ou 5, quantos vértices de grau 3 o grafo $G$ possui?
+
+	Partindo do \ref{teo:1} dado por $$ \sum\limits_{u \in V} d_g(u) = 2|E(G)| $$
+
+	Logo poderíamos obter as combinações:
+
+	\begin{itemize}
+	    \item 10 vértices com grau 3 e 4 vértices com grau 5;
+	    \item 15 vértices com grau 3 e 1 vértices com grau 5;
+	    \item 5 vértices com grau 3 e 7 vértices com grau 5;
+	\end{itemize}
+
+	Entretanto somente a combinação 10 vértices com grau 3 e 4 vértices com grau 5 resulta em 14 vértices.
+
+	O grafo $G$ é demonstrado na Figura \ref{fig:g_30}:
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=7cm]{grafos_yed/g_30.jpg}
+	    \caption{Grafo $G$}
+	    \label{fig:g_30}
+	\end{figure}
+
+	\newpage
+
+	\item Dê exemplo de um grafo 3-regular que não é completo.
+
+	O grafo $G$ é demonstrado na Figura \ref{fig:g_31}:
+
+	\begin{figure}[!htb]
+	    \centering
+	    \includegraphics[width=3.5cm]{grafos_yed/g_31.jpg}
+	    \caption{Grafo $G$}
+	    \label{fig:g_31}
+	\end{figure}
+
+	\item Prove que em todo grafo de ordem pelo menos 2 existem pelo menos dois vértices com o mesmo grau.
+
+	Seja $G$ um grafo, com seu vetor de graus com todos elementos distintos e crescentes, poderíamos ter nesse grafo apenas $n - 1$ graus distintos, ou seja $vet_G = \{0, 1, 2, \ldots, n - 1\}$. Pois se o menor elementos é $0$ ou seja não tem nenhuma aresta ligada a ele, então o maior elemento (suposto $n$) não poderia ter uma aresta ligada ao vértice que tem grau $0$. Com isso esse grafo pode ter no máximo grau $n-1$.
+
+	Logo, podemos classificar o $vet_G$ em categorias, que separam graus distintos, o máximo de categorias que poderiam ser criadas é $n - 1$ categorias.
+
+	Então, se o tamanho do vetor de graus é $n$ ou seja $|vet_G| = n$ (que também é o número de vértices do grafo) e o máximo de categorias com graus distintos que podem se criadas é $n - 1$. Com isso pelo menos 1 grau irá se repetir.
+
+	Prova por absurdo e exemplo:
+
+	Seja $G = \{1,2,3,4, \{1,2\},\{2,3\}\}$
+
+	Seu vetor de graus é dado por $vet_G = \{0, 1, 1, 2\}$.
+
+	Seja $vet_G = |V(G)| = n = 4$.
+
+	Podemos classificar o grafo dado em 3 categorias de graus distintos, ou seja: $\{0, 1, 2\}$, então $vet_G = n - 1 = 3$.
+
+	Então pelo menos 2 categorias do vetor irão se repetir, no exemplo \{1,1\} indicando pelo menos 2 vértices com o mesmo grau.
+
+	\item Dado $G$, o grafo linha de $G$, denotado por $LG$, é o grafo cujos vértices são as arestas de $G$ e um par de vértices define uma aresta em $LG$ se, e somente se, esses vértices são arestas adjacentes em $G$. Dado $G$ determine $|V (LG)|$ e $|E(LG)|$.
+
+	\item Prove que $E(A,B)$ = $E(B,A)$
+
+	\item Mostre que em qualquer grafo $G$ com pelo menos 6 vértices ou existe um 3-clique ou existe um 3-conjunto-independente.
+
+\end{enumerate}

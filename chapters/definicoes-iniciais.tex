@@ -1,0 +1,283 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   1 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Grafos - Definições Iniciais}
+
+Para qualquer conjunto $V$, denotamos $\displaystyle\binom{V}{2}$ o conjunto de todos pares não-ordenados de elementos de $V$. Se $V$ tem $n$ elementos então $\displaystyle\binom{V}{2}$ tem $\displaystyle\frac{n(n-1)}{2}$ elementos. Os elementos de $\displaystyle\binom{V}{2}$ terá a forma $\{v,w\}$, sendo $v$ e $w$ dois elementos distintos de $V$.
+
+Um grafo é um par ordenado de conjuntos finitos $(V,E)$ tal que $E \subseteq \binom{V}{2}$. Isso significa que cada elemento $E$ é um subconjunto de elementos de $V$ ou um binômio de $V$. Cada elemento de $V$ é chamado de \emph{vértice} do grafo e cada elemento de $E$ é chamado de \emph{aresta} do grafo, dessa forma cada aresta $e \in E$ é um subconjunto de $V$ formado por exatamente dois vértices, ou seja, $e \subseteq V$ e $|e| = 2$.
+
+Todo grafo pode ser representado geometricamente por um diagrama. No plano, desenhamos um ponto para cada vértice e um segmento de curva ligando cada par de vértices que determinam uma aresta (Figura \ref{fig:g_1}). Claramente, essa representação geométrica de um grafo não é única.
+
+\paragraph*{Exemplo 1:} Os conjuntos:
+
+\begin{eqnarray*}
+    V &=& \{1,2,3,4,5,6,7,8\} \\
+    E &=& \{\{1,2\},\{1,5\},\{2,5\},\{3,4\},\{6,7\}\}
+\end{eqnarray*}
+
+definem um grafo e um diagrama desse grafo é apresentado na Figura \ref{fig:g_1}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=4.5cm]{grafos_yed/g_1.jpg}
+    \caption{Representação geométrica (ou diagrama) do grafo.}
+    \label{fig:g_1}
+\end{figure}
+
+Se $G$ denota o grafo que é definido pelo par $(V,E)$ então escrevemos $G = (V,E)$.
+
+No que segue $u$ e $v$ denotam vértices e $e$ e $f$ denotam arestas de um grafo:
+
+\begin{itemize}
+    \item se $v \in e$ então dizemos que a aresta $e$ \emph{incide} em $v$;
+    \item se ${u, v}$ é uma aresta, então dizemos que $u$ e $v$ são vértices \emph{adjacentes};
+    \item se $|e \cap f| = 1$, então dizemos que $e$ e $f$ são arestas \emph{adjacentes}, em outras palavras, se existe um vértice $v$ que é comum (faz a intersecção)  às arestas $e$ e $f$ então essas são arestas adjacentes.
+    \item quando $e = {v,u}$, dizemos que $u$ e $v$ são os extremos da aresta $e$.
+\end{itemize}
+
+Quando nos referimos a um grafo conhecido $G$ sem especificarmos o conjunto dos vértices e o conjunto das arestas que definem $G$ esses passam a ser referidos como $V(G)$ e $E(G)$, respectivamente. Assim, se $G = (X,Y)$ então $V(G) = X$ e $E(G) = Y$.
+
+Para um grafo $G$ qualquer, chamamos $|V (G)|$ de ordem de $G$ e chamamos $|V (G)| + |E(G)|$ de tamanho de $G$.
+
+Um expoente em $G$, quando $G$ é um grafo, denota a ordem de $G$, assim quando queremos ressaltar que $G$ é um grafo de ordem $n$, para algum $n \in \mathbb{N}$, escrevemos $G^n$.
+
+Chamamos $G^0 = (\varnothing,\varnothing)$ de grafo vazio e todo grafo de ordem 1 de grafo trivial.
+
+\section{Grafo Completo}
+
+Um grafo é chamado de completo sobre $V$ se todo par de vértices de $V$ é uma aresta do grafo, ou formalmente $E = \binom{V}{2}$ para cada par de vértices $V(G) = \{x,y\}$ existe uma aresta que os liga. Um grafo completo é denotado por $K^n$.
+
+Outra definição para \textbf{grafo completo} é um grafo que tem todas as arestas possíveis em $E(G)$. $ K_n = (V, \binom{V}{2})$ onde $V = \{1,2,3,4,\ldots,n\}$.
+
+São exemplos de grafos completos:
+
+
+\begin{itemize}
+  \item[$K_1$] $ = (V_{k1}, E_{k1}) \therefore V_{k1} = \{1\} \mbox{ e } E_{k1} = \{\{\varnothing, \varnothing\}\}$
+  \item[$K_2$] $ = (V_{k2}, E_{k2}) \therefore V_{k2} = \{1,2\} \mbox{ e } E_{k2} = \{1,2\}$
+  \item[$K_3$] $ = (V_{k3}, E_{k3}) \therefore V_{k3} = \{1,2,3\} \mbox{ e } E_{k3} = \{\{1,2\}, \{2,1\}, \{1,3\}\}$
+\end{itemize}
+
+As representações geométricas dos grafos estão dispostas na Figura \ref{fig:g_5} na qual, $K_1$ é representado por $a$, $K_2$ é representado por $b$ e $K_3$ é representado por $c$.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=6cm]{grafos_yed/g_5.jpg}
+    \caption{Representação geométrica (ou diagrama) dos grafos completos $K_1$, $K_2$ e $K_3$}
+    \label{fig:g_5}
+\end{figure}
+
+As definições de $K$ para um $n$ completo representam um grafo com $n$ vértices completo, então essa definição pode ser aplicada a todos os sucessivos grafos até $K_n$.
+
+
+\section{Complemento de um Grafo}
+
+  O complemento de um grafo $G$, denotado por $\overline{G}$, é o grafo que tem o mesmo conjunto de \emph{vértices} de $G$ e dois vértices formam uma aresta em $\overline{G}$ se e somente se não formam uma aresta de $G$:
+
+\begin{eqnarray*}
+    \overline{G}    &=& (\overline{V}(G), \overline{E}(G))\\
+    \overline{V}(G) &=& V(G)\\
+    \overline{G}    &=& (V(G), \overline{E}(G))\\
+    \overline{E}(G) &=& \{\{u,v\} \subset V(G): \{u,v\} \not\in\ E(G)\} \mbox{ ou}\\
+    \overline{E}(G) &=& \binom{V(G)}{2} \smallsetminus E(G) \mbox{ ou}\\
+    \overline{E}(G) &=& \{e \in \binom{V(G)}{2} \therefore e \not\in E(G)\}
+\end{eqnarray*}
+
+\section{Graus de um Grafo}
+
+Os graus de um grafo indicam o número de arestas conectadas a ele, por isso é um importante parâmetro para estudo.
+
+Em um grafo definido por:
+
+\begin{eqnarray*}
+    G &=& (V(G), E(G)) \\
+    V(G) &=& \{1,2,3,4,5,6\} \\
+    E(G) &=& \{\{1,3\}, \{1,6\}, \{2,4\}, \{5,1\}, \{4,3\}\}
+\end{eqnarray*}
+
+Disposto graficamente na Figura \ref{fig:g_2}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5.5cm]{grafos_yed/g_2.jpg}
+    \caption{Representação geométrica (ou diagrama) do grafo $G$.}
+    \label{fig:g_2}
+\end{figure}
+
+Defini-se como \textbf{vértices vizinhos} os vértices que estão conectados as mesmas arestas que o vértice em questão:
+
+$$ N_G(u) = \{w \in V(G) \therefore uw \in E(G)\}$$
+
+Ou seja, para descobrir os vértices vizinhos (vizinhança) de um vértice $u$ verifica-se se existe um vértice $w$ que pertence ao conjunto de vértices de $G$ tal que a aresta identificada por $uw$ pertença ao conjunto de arestas de $G$.
+
+\paragraph*{Exemplo 2:} Para exemplificar a identificação da vizinhança, utiliza-se o vértice $1$ da Figura \ref{fig:g_2}:
+
+\begin{eqnarray*}
+    N_G(u) &=& N_G(1) \\
+    N_G(1) &=& \{6,5,3\}
+\end{eqnarray*}
+
+O \textbf{grau de um vértice} (denotado por $d_G(u)$) é obtido pelo tamanho do conjunto de sua vizinhança, no exemplo:
+
+\begin{eqnarray*}
+    d_G(1) &=& |N(1)| \\
+    d_G(1) &=& 3
+\end{eqnarray*}
+
+Defini-se como \textbf{arestas vizinhas} as arestas que incidem no vértice em questão:
+
+$$ E_G(u) = \{e \in E(G) \therefore u \in e\} $$
+
+Ou seja, para identificar as arestas vizinhas de um vértice $u$ verifica-se se uma aresta $e$ pertence ao conjunto de arestas de $G$ tal que o vértice $u$ esteja no conjunto de arestas $e$ em questão.
+
+\paragraph*{Exemplo 3:} Para exemplificar a identificação das arestas vizinhas, utiliza-se o vértices $1$ da Figura \ref{fig:g_2}:
+
+\begin{eqnarray*}
+    E_G(u)   &=& E_G(1) \\
+    E_G(1)   &=& \{\{1,6\},\{1,5\},\{1,3\}\}
+\end{eqnarray*}
+
+\subsection{Vetor de Graus}
+
+Um vetor de grau de um grafo, é um vetor contendo os graus de todos os vértices do grafo.
+
+O tamanho do vetor de graus é também o número de vértices do grafo, no exemplo da Figura \ref{fig:g_2}, o vetor de grau é dado por:
+
+$$ vet_G = \{1,1,1,2,2,3\}$$
+
+Pois existem $3$ vértices com grau $1$, $2$ vértices com grau $2$ e $1$ vértices com grau $3$.
+
+Sua notação formal é obtida por:
+
+$$ d_G(u) \therefore u \in V(G)  $$
+
+Ainda é possível identificar se um vetor de graus é ou não um grafo:
+
+\begin{itemize}
+    \item é um grafo se a somatória dos graus de valor ímpar é par (Teorema \ref{teo:1});
+    \item não é um grafo se o maior grau do vetor de graus é igual ou maior que o tamanho do vetor de graus.
+\end{itemize}
+
+\subsection{Grau Mínimo}
+
+Para achar o \textbf{grau mínimo} (denotado por $\delta$) em um grafo, deve-se identificar o menor grau do seu vetor de graus.
+
+Dado o grafo da Figura \ref{fig:g_2}, temos:
+
+\begin{eqnarray*}
+    \delta(G) &=& min\{1,1,1,2,2,3\} \\
+    \delta(G) &=& 1
+\end{eqnarray*}
+
+Definindo-se formalmente, temos:
+
+$$ \delta(G) = min\{d_g(u) \therefore u \in V(G) \} $$
+
+\subsection{Grau Máximo}
+
+Para achar o \textbf{grau máximo} (denotado por $\Delta$) em um grafo, deve-se identificar o maior grau do seu vetor de graus.
+
+Dado o grafo da Figura \ref{fig:g_2}, temos:
+
+\begin{eqnarray*}
+    \Delta(G) &=& max\{1,1,1,2,2,3\} \\
+    \Delta(G) &=& 3
+\end{eqnarray*}
+
+Definindo-se formalmente, temos:
+
+$$ \Delta(G) = max\{d_g(u) \therefore u \in V(G) \} $$
+
+\subsection{Grau Médio}
+
+Para achar o \textbf{grau médio} (denotado por $d$) em um grafo $G$ determina-se $\displaystyle\frac{1}{|V(G)|}$ (1 sobre a quantidade de vértices) vezes o somatório de todos os graus do vetor de graus ($\displaystyle\sum\limits_{u \in V(G)} d_g(u)$).
+
+Formalmente, temos:
+
+$$ d(G) = \frac{1}{|V(G)|} \sum\limits_{u \in V(G)} d_g(u) $$
+
+No exemplo da Figura \ref{fig:g_2}, temos:
+
+\begin{eqnarray*}
+    d(G) &=& \frac{1}{6} \sum\limits_{u \in V(G)} d_g(u) \\
+    d(G) &=& \frac{1}{6} (8) \\
+    d(G) &=& \frac{8}{6} \therefore \frac{4}{3}
+\end{eqnarray*}
+
+Outra forma mais simples para achar o \emph{grau médio} é somar os graus do vetor de graus e dividir pelo tamanho do vetor de graus.
+
+\subsection{Grafo n-regular}
+
+Um grafo $G$ é dito n-regular, para um $n \in \mathbb{N}$ se todos seus vértices têm grau igual a $n$.
+
+\section{Teorema da Soma dos Graus}
+\label{teo:1}
+
+$$ \sum\limits_{u \in V} d_g(u) = 2|E(G)| $$
+
+Prove que o somatório dos graus de um vértice do grafo $G$ com $u \in V(G)$ é igual a 2 vezes o tamanho das arestas de $G$.
+
+Para entender melhor esse teorema vamos usar o seguinte grafo:
+
+\begin{eqnarray*}
+    G_t &=& (V(G_t), E(G_t)) \\
+    V(G_t) &=& \{1,2,3,4,5\} \\
+    E(G_t) &=& \{\{1,4\}, \{1,3\}, \{4,3\}, \{3,5\}, \{3,2\}\}
+\end{eqnarray*}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=4.5cm]{grafos_yed/g_3.jpg}
+    \caption{Representação geométrica (ou diagrama) do grafo $G_t$.}
+    \label{fig:g_3}
+\end{figure}
+
+Analisando o teorema temos que o somatório dos graus do vértice deve ser igual a $2$ vezes o número de arestas do grafo. No caso o somatório dos graus do vértice é $\sum\limits_{u \in V} d_g(u)= 10$ e o número de arestas é $5$, então $10 = 2(5)$.
+
+Para cada aresta $e \in E(G)$ removida do grafo, consequentemente remove-se a ligação entre dois vértices, o que diminui $2$ graus no grafo todo, logo podemos identificar uma relação de $2$ para $1$ (dois graus para uma aresta) entre as arestas e graus. O que confirma o teorema.
+
+\paragraph*{Demonstração:} Seja $(V,E)$ um grafo, podemos definir o conjunto $X = \{(u,e) \in V x E \therefore u \in e\}$. O conjunto $X$ é um conjunto de um vértice $u$ ligado a uma aresta $e$ tal que esse vértice pertence a essa aresta. Ainda poderíamos pensar que o conjunto $X$, por um momento, relaxa as definições de grafos e duplica as arestas para que cada vértice seja separado do grafo no conjunto $X$, e leve consigo as arestas a ele conectadas. Podemos contar os elementos de $X$ de duas formas:
+
+\begin{enumerate}
+    \item \label{teo:1_1} Cada vértice $u$ participa de $d_g(u)$ dos elementos de $X$, portanto podemos deduzir que o tamanho de $X$ ($|X|$) é o mesmo que o somatório dos graus do grafo, ou formalmente $$ |X| = \sum\limits_{u \in V} d_g(u) $$
+    \item \label{teo:1_2} Cada aresta $e$ está presente em dois elementos de $X$, logo: $|X| = 2|E(G)|$.
+\end{enumerate}
+
+De \ref{teo:1_1} e \ref{teo:1_2} provamos o Teorema na Seção \ref{teo:1}.
+
+\subsection{Corolário dos Graus} \label{corolario:1}
+
+Em todo grafo o número de vértices com grau ímpar é par.
+
+\paragraph*{Demonstração:}Seja $G$ um grafo, denote por $I$ o subconjunto formado pelos vértices em $V(G)$ de grau ímpar e denote por $P$ o subconjunto dos vértices de grau par.
+
+\begin{eqnarray*}
+    I &=& \{v \in V(G) \therefore d_g (v)\mbox{ impar}\} \\
+    P &=& \{v \in V(G) \therefore d_g (v)\mbox{ par}\} \\
+\end{eqnarray*}
+
+Usando que $I \cap P = \varnothing$ e $I \cup P = V(G)$, e o Teorema da Seção \ref{teo:1} temos:
+
+\begin{eqnarray*}
+    \sum\limits_{u \in V(G)} d_g(u) = 2|E(G)| \\
+    \sum\limits_{u \in I} d_g(u) + \underbrace{\sum\limits_{u \in P} d_g(u)}_{par} = \underbrace{2|E(G)|}_{par} \\
+\end{eqnarray*}
+
+Portanto devemos ter $ \displaystyle\sum\limits_{u \in I} d_g(u) $ par, o que somente é possível quando o tamanho de $I$ ($|I|$) é par.
+
+Entretanto podemos avançar um pouco mais na demonstração e definir:
+
+\begin{itemize}
+    \item Temos um número $n$ qualquer \emph{par} se definido como $n = 2k$;
+    \item Temos um número $n$ qualquer \emph{ímpar} se definido como $n = 2k+1$.
+\end{itemize}
+
+$$ \sum\limits_{u \in I} d_g(u) = \sum\limits_{u \in I} (2kv + 1) $$
+
+Então,
+
+$$ \underbrace{2|E(G)|}_{par} = \biggl(\underbrace{\sum\limits_{u \in I} 2kv}_{par} + \sum\limits_{u \in I} 1 \biggl) + \underbrace{\sum\limits_{u \in P} d_g(u)}_{par}$$
+
+Logo, o tamanho do resto do subconjunto dos \emph{ímpares} ($|I|$) deve ser \emph{par}.

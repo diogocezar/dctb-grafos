@@ -1,0 +1,153 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   9 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Planaridade}
+
+Um grafo diz-se planar se for possível desenhá-lo de tal forma que duas arestas não se cruzem no plano. 
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=7.5cm]{grafos_yed/g_49.jpg}
+  \caption{Grafos Planares}
+  \label{fig:g_49}
+\end{figure}
+
+O grafo $G$ da Figura \ref{fig:g_49}, temos um cubo planar. O grafo $H$ é um $K^4$ desenhado de forma planar.
+
+\section{Definições}
+
+Um grafo planar divide o plano em \textbf{regiões}, delimitado por suas arestas. Cada uma destas divisões é denominada por \textbf{face} do grafo.
+
+Dois vértices $u$ e $v$ estão na mesma face, se existe uma aresta $\{u,v\}$ que não cruza nenhuma outra aresta do grafo.
+
+No grafo $G$, existem 6 faces, pois a face "exterior" também é contabilizada. Essa face esta é denominada por face infinita, ou face exterior.
+
+Um grafo $I$ pode ser semelhante $~$ a um grafo $I'$ ou formalmente $I ~ I'$, se a disposição de seus vértices e arestas não alteram suas faces.
+
+Para exemplificar a semelhança entre os grafos planares, os grafos $I$ e $I'$ da Figura \ref{fig:g_51} mostram um exemplo.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=6cm]{grafos_yed/g_51.jpg}
+  \caption{Grafos Planares Semelhantes}
+  \label{fig:g_51}
+\end{figure}
+
+\section{Teorema de Kuratowski}
+
+O teorema diz que $G$ é planar se e somente se não existe $H$ que é subgrafo de $G$ que seja uma subdivisão do grafo completo $K_5$ ou do grafo $K_{3,3}$.
+
+Com isso, sempre que identificarmos subgrafos do tipo $K_5$ ou $K_{3,3}$ podemos descatar a possibilidade da construção planar do grafo.
+
+Os grafos $K_5$ ou $K_{3,3}$ estão dispostos respectivamente como $G$ e $H$ na Figura \ref{fig:g_50}.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=6cm]{grafos_yed/g_50.jpg}
+  \caption{Grafos Planares}
+  \label{fig:g_50}
+\end{figure}
+
+\section{Algoritmo de Hopcroft Tarjan}
+
+Em 1974, Hopcroft e Tarjan apresentaram o primeiro algoritmo linear para decidir se um dado grafo é planar. Uma das etapas para a execussão do algoritmo é a identificação de componentes biconexas de um grafo.
+
+\section{Encontrar Blocos Bi-conexos de um Grafo}
+
+Define-se como um bloco uma componente bi-conexa ou um caso especial definido por uma aresta e dois vértices.
+
+Para encontrar esses blocos devemos encontrar as articulações de um grafo.
+
+Cada um desses blocos formam uma árvore, e assim podem ser subdivididos.
+
+\subsection{Encontrar as Articulações}
+
+Para encontrar as articulações em um grafo devemos definir duas funções chamadas de $f$ e $n$ tal que:
+
+$$f: V(G) \rightarrow V(G)$$
+
+$$n: V(G) \rightarrow \mathbb{N}$$
+
+A função $f$ retorna o vértice mais próximo da raiz que pode ser alcançado a partir de $v$ com $0$ ou mais arestas de árvore (para baixo) e com apenas $1$ aresta de retorno para cima.
+
+A função $n$ é a distância da raiz até o vértice em questão, utilizando somente arestas de árvore.
+
+Para exemplificar a utilização das funções $f$ e $n$ vamos utilizar o grafo da Figura \ref{fig:g_52}
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=6cm]{grafos_yed/g_52.jpg}
+  \caption{Busca por Articulações}
+  \label{fig:g_52}
+\end{figure}
+
+A partir desse grafo, podemos gerar o mesmo grafo estruturado de forma diferente com base em uma busca em profundidade. A Figura \ref{fig:g_53} mostra esse novo grafo.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=5cm]{grafos_yed/g_53.jpg}
+  \caption{Representação Estruturada em uma Árvore}
+  \label{fig:g_53}
+\end{figure}
+
+\paragraph*{Observações:} Se um vértice $x$ e tem mais que um filho então $x$ é uma articulação.
+
+Se $x$ não é raiz e existe pelo menos um ramo de descendentes sem arestas de retorno para ancestrais de $x$ então $x$ é uma articulação.
+
+A Tabela \ref{tab:t_2} mostra as funções $f$ e $n$ preenchidas para o exemplo da Figura \ref{fig:g_53}.
+
+\begin{table}[!htb]
+    \small{
+    \centering
+      \begin{tabular}{|c|c|c|}
+      \hline
+      $v$ & $f(v)$ & $n(v)$ \\ 
+      \hline
+      1 & 1 & 0 \\ 
+      \hline
+      2 & 1 & 1 \\ 
+      \hline
+      3 & 1 & 2 \\ 
+      \hline
+      4 & 4 & 1 \\ 
+      \hline
+      5 & 4 & 2 \\ 
+      \hline
+      6 & 4 & 3 \\ 
+      \hline
+      7 & 4 & 4 \\ 
+      \hline
+      8 & 8 & 5 \\ 
+      \hline
+      9 & 6 & 4 \\ 
+      \hline
+      10 & 6 & 5 \\ 
+      \hline
+      \end{tabular}
+    \caption{Tabela com os valores das funções $f$ e $n$ para $v$.}
+    \label{tab:t_2}
+    }
+\end{table}
+
+Para afirmar se um vértice $v$ é ou não articulação verifica-se:
+
+Se $n(v) \neq \emptyset$ e existe um filho de $v$ que tem $n(f(w)) \geqslant n(v)$ então $v$ é uma articulação. Mesmo que essa comparação funcione apenas para um de seus filhos.
+
+No exemplo os vértices $1,4,6,7$ são articulações.
+
+\subsection{Como calcular a Função $f$}
+
+Para calcular a função $f$ temos as seguintes opções:
+
+\begin{enumerate}
+ \item atribuir $v$ - caso inicial;
+ \item atribuir $f(w) \therefore w \mbox{ é filho de } v$;
+ \item atribuir $u$ se $\{u,w\}$ é uma aresta de retorno partindo de $v$. 
+\end{enumerate}
+
+Um possível problema a ser tratado em um algorítmo recursivo é a questão de como saber o $f$ de meu filho se ainda não foi calculado. Isso é garantido pela pilha de recursão em profundidade.
+
+\section{Aplicações}
+
+Escrever as aplicações de planaridade.

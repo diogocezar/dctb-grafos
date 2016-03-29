@@ -1,0 +1,335 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   3 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Propriedades dos Grafos}
+
+
+\section{Clique}
+
+Em um grafo, podemos encontrar pequenos subgrafos que formam grafos completos (que são chamados de cliques em $G$).
+
+Um subconjunto de vértices de um grafo $G$, denotado por $U$ é uma \textbf{clique} de $G$ se $G[U]$ é um grafo completo.
+
+Em um mesmo grafo, podemos encontrar cliques de diferentes \emph{ordens}, pois podem existir diferentes subgrafos que podem ser induzidos de $G$ tal que formem um subgrafo completo.
+
+O \textbf{tamanho da clique} é denotado pelo tamanho do conjunto de vértices que formam o subgrafo induzido de um determinado $G$.
+
+Para exemplificar vamos analisar o grafo da Figura \ref{fig:g_11}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5.5cm]{grafos_yed/g_11.jpg}
+    \caption{Representação gráfica do grafo $G[M]$.}
+    \label{fig:g_11}
+\end{figure}
+
+No grafo da Figura \ref{fig:g_11} podemos observar dois destaques, a aresta $\{1,6\}$ (destaca em azul e pontilhado) forma uma clique de tamanho 2. Isso pois se analisarmos o subgrafo induzido por vértices $G[S]$, com $S=\{1,6\}$ ele é um grafo completo. Outras cliques de tamanho 2 também estão presentes no grafo. O destaque em vermelho e pontilhado denota uma clique de tamanho 3, pois se analisarmos o subgrafo induzido por vértices $G[S]$, com $S=\{2,4,5\}$ ele é também um grafo completo.
+
+\section{Conjunto Independente}
+
+O conjunto independente pode ser definido com o oposto de uma clique em um grafo $G$ qualquer.
+
+Dado um grafo $G$, e $U$ um conjunto de vértices de $V(G)$, $U$ é dito conjunto independente se $G[U] = (V, \varnothing)$.
+
+Ou seja, um subconunto de vértices que não possui ligação de uma aresta entre eles.
+
+Para exemplificar um conjunto independente podemos analisar o grafo da Figura \ref{fig:g_20}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5cm]{grafos_yed/g_20.jpg}
+    \caption{Conjunto independe $U$ no grafo $G$}
+    \label{fig:g_20}
+\end{figure}
+
+O conjunto $U$ é dado por:
+
+\begin{eqnarray*}
+    U &=& \{1,4\}
+\end{eqnarray*}
+
+Assim como na clique o tamanho ou ordem do conjunto independente é dado pelo tamanho do conjunto de vértices do subgrafo induzido que forma o conjunto independente.
+
+\subsection{Teorema da Clique e Conjunto Independente Máximos} \label{teo:2}
+
+Seja:
+
+\begin{eqnarray*}
+    \omega(G) &=& \mbox{max}\{|A| \therefore A \subseteq V(G) \mbox{ e } A \mbox{ é clique}\\
+    \alpha(G) &=& \mbox{max}\{|A| \therefore A \subseteq V(G) \mbox{ e } A \mbox{ é um conj. indep.}\\
+\end{eqnarray*}
+
+\begin{center}
+    Prove que $\omega(G) = \alpha(\overline{G})$.
+\end{center}
+
+\paragraph*{Prova:} Seja $S$ uma clique de $G$ com $|S| = \omega(G)$. Logo $G[S] = (S, \displaystyle\binom{S}{2})$.
+
+Em $\overline{G}$ uma aresta que pertence a $G$ é uma aresta se e somente se não pertence a $E(G)$. Logo, ($e \in E(\overline{G}) \Leftrightarrow \not\in E(G)$). Se $S$ é uma clique em $G$, em seu grafo complementar $\overline{G}$, $S$ será um conjunto independente. Logo, $\overline{G}[S] = (S, \varnothing)$.
+
+Como $\omega(G) = |S|$ e $\alpha(\overline{G}) \geqslant S$. Ou seja o tamanho do conjunto $S$ criado é o tamanho da clique máxima encontrada em $G$ e como essa clique é um conjunto independente em $\overline{G}$, então existe pelo menos um conjunto independente em $\overline{G}$ do mesmo tamanho ou maior que $S$.
+
+Logo, $\omega(G) \leqslant \alpha(\overline{G})$.
+
+Seja $U$ um conjunto independente em $\overline{G}$ com $|U| = \alpha(\overline{G})$. Logo $\overline{G}[U] = (U, \varnothing)$.
+
+Logo $G[U] = (U, \displaystyle\binom{U}{2})$.
+
+Em $G$ uma aresta que pertence a $\overline{G}$ é uma aresta se e somente se não pertence a $E(\overline{G})$. Logo, ($e \in E(G) \Leftrightarrow \not\in E(\overline{G})$). Se $U$ é um conjunto independente em $G$, em seu grafo complementar $\overline{G}$, $U$ será uma clique.
+
+Como $\alpha(\overline{G}) = |U|$ e $\omega(G) \geqslant |U|$. Logo $\omega(G) \geqslant \alpha(\overline{G})$.
+
+Então, como:
+
+\begin{eqnarray*}
+    \omega(G) &\geqslant& \alpha(\overline{G}) \mbox{ e}\\
+    \omega(G) &\leqslant& \alpha(\overline{G}) \mbox{ então}\\
+    \omega(G) &=& \alpha(\overline{G})
+\end{eqnarray*}
+
+\section{Grafo Bipartido}
+
+Um grafo $G$ é bipartido se existem dois conjuntos independentes $A$ e $B$ em $G$ que particionam $V(G)$, ou seja $A \cup B = V(G)$ e $A \cap B = \varnothing$.
+
+\paragraph*{Exemplo 4:}Para exemplificar o conceito de grafo bipartido, vamos analisar o grafo da Figura \ref{fig:g_21}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5cm]{grafos_yed/g_21.jpg}
+    \caption{Exemplo de Grafo Bipartido.}
+    \label{fig:g_21}
+\end{figure}
+
+É possível identificar dois conjuntos no grafo, os elementos do conjunto $A$ são $V(A) = \{1,2,3\}$ e apenas se interligam com os elementos do conjunto $B$ dado por $V(B) = \{4,5,6,7\}$.
+
+
+O Algoritmo \ref{alg:1} mostra um algoritmo para achar dois conjuntos $A$ e $B$ em um grafo bipartido.
+
+%    \begin{table*}
+%    \texttt{\lstinputlisting[language=C, label=alg:bipartido,
+%    caption={Algoritmo para encontrar dois conjuntos $A$ e $B$ em um grafo bipartido.}]{cods/alg_bipartido.txt}}
+%    \end{table*}
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    $Bipartido(G)$\;
+    \Inicio{
+	$A[] \leftarrow $ lista vazia de vértices\;
+	$B[] \leftarrow $ lista vazia de vértices\;
+	$u \leftarrow $vértice aleatório de $V(G)$\;
+	\Enqto{$u$ não for o último vértice de $V(G)$}{
+	    \Se{$N_G(u)$ está em $A$ e $N_G(u)$ está em $B$}{
+		o grafo $G$ não é bipartido\;
+	    }
+	    \eSe{$N_G(u)$ está em $A$}{
+		adicione $u$ em $B$\;
+	    }{
+		adicione $u$ em $A$\;
+	    }
+	    $u \leftarrow$ o próximo vértice vizinho não visitado de $u \in V(G)$\;
+	}
+    }
+    \caption{Verifica se $G$ é bipartido ou não}
+    \label{alg:1}
+    }
+\end{algorithm}
+
+No Algoritmo \ref{alg:1}, criamos duas listas de vértices $A$ e $B$ que serão os conjuntos que no final da execução conterão os elementos que não se conectam. Inicialmente se escolher um $u$ qualquer, e para todo $u$ do conjunto de vértices se verifica se algum de seus vizinhos está no grupo $A$, se estiver ele é colocado em $B$, caso contrário em $A$.
+
+\paragraph*{Exemplo 5:}O seguinte $G$ é definido por:
+
+\begin{eqnarray*}
+    V(G) &=& \{1,2,3,4,5,6,7,8\}\\
+    E(G) &=& \{\{1,6\},\{6,2\},\{3,7\},\{3,8\},\{7,4\},\\
+	      &&\{7,5\}\}
+\end{eqnarray*}
+
+é bipartido, pois $V(G) = A \cup B$ e $V(A) = \{1,2,3,4\}$ e $V(B) = {6,7,8}$ e tanto $A$, como $B$ são conjuntos independentes.
+
+No mesmo grafo ainda é possível identificar outros conjuntos que deixam o grafo bipartido. Seja $A'$ e $B'$, se $V(A') = \{1,2,7,6\}$ e $V(B') = \{2,3,5,4\}$ então $A'$ e $B'$ formam conjuntos independentes.
+
+Um grafo pode ser bipartido formando diferentes conjuntos independentes. Como pode ser observado com os conjuntos $A$ e $B$ e $A'$ e $B'$.
+
+\subsection{Subgrafo Bipartido Completo}
+
+Um grafo bipartido $G$ com partes $A$ e $B$ é dito \textbf{completo} se tem $|A| \cdot |B|$ arestas. ou seja, $E(G) = \{\{a,b\} \subseteq V(G) \therefore a \in A \mbox{ e } b \in B$. Um grafo bipartido completo com partes de cardinalidade $n$ e $m$ é denotado por $K^{n,m}$.
+
+Todos os elementos do conjunto $A$ devem se ligar a todos elementos do conjunto $B$ e vice versa, como podemos observar no grafo da Figura \ref{fig:g_26}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5cm]{grafos_yed/g_26.jpg}
+    \caption{Exemplo de Grafo Bipartido Completo.}
+    \label{fig:g_26}
+\end{figure}
+
+No grafo de exemplo da Figura \ref{fig:g_26}, podemos representar esse subgrafo bipartido completo por $K^{n,m}$.
+
+\section{Corte}
+
+Um corte é um conjunto de arestas que "separam"{} dois conjuntos de vértices.
+
+Dados $A,B \subseteq V(G)$ e $A \cap B = \varnothing$. Então, $E(A,B) = \{\{u,v\} \in E(G) \therefore u \in A \mbox{ e } v \in B\}$.
+
+Para exemplificar o conceito de corte vamos usar o grafo $G$ da Figura \ref{fig:g_22}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=6.5cm]{grafos_yed/g_22.jpg}
+    \caption{Exemplo de Corte em um Grafo.}
+    \label{fig:g_22}
+\end{figure}
+
+Então o corte $E(A,B)$ para o grafo $G$ indicado na Figura \ref{fig:g_22}, é dado por: $E(A,B) = \{\{1,2\}, \{5,4\}\}$.
+
+Para identificar um corte em um grafo $G$ definido por:
+
+\begin{eqnarray*}
+    V(G) &=& \{1,2,3,4,5\}\\
+    E(G) &=& \{\{1,2\},\{2,5\},\{5,4\},\{4,3\},\{4,2\}\\
+	      &&\{1,5\}\}
+\end{eqnarray*}
+
+podemos seguir 2 passos:
+
+\begin{enumerate}
+    \item Identificar 2 conjuntos de vértices tais que, se um conjunto for o conjunto $T \subseteq V(G)$, então $\overline{T} = V(G) \smallsetminus T$;
+    \item Verificar se existem uma ou mais arestas que ligam os elementos do conjunto $T$ com o conjunto $\overline{T}$.
+\end{enumerate}
+
+Sejam dois conjuntos $T$ e $\overline{T}$ dados por:
+
+\begin{eqnarray*}
+    T &=& \{1,2\}\\
+    \overline{T} &=& \{3,4,5\}
+\end{eqnarray*}
+
+Então, um corte do tipo $E(T,\overline{T}) = \{u,v\} \subseteq V(G) \therefore u \in T e v \in \overline{T})$ ou seja, $E(T,\overline{T}) = \{\{3,1\},\{2,4\},\{2,5\}\}$.
+
+O grafo $G$ e os cortes (destacados em pontilhado) podem ser observados na Figura \ref{fig:g_28}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5cm]{grafos_yed/g_28.jpg}
+    \caption{Outro Exemplo de Corte em um Grafo.}
+    \label{fig:g_28}
+\end{figure}
+
+\paragraph*{Observação:} Os cortes interessantes são do tipo $E(S, \overline{S})$.
+
+Com o conceito de corte, podemos definir um \textbf{grafo bipartido} de outra nova maneira:
+
+$G$ é um grafo bipartido se existe $S \subset V(G)$ não vazio tal que $E(G) = E(S, \overline{S})$ e não exista arestas entre $S$ e $\overline{S}$.
+
+\section{Isomorfismo}
+
+Dizemos que os grafos $G$ e $H$ são \textbf{isomorfos}, e nesse caso escrevemos $G \simeq H$, se existe uma função bijetora.
+
+Uma função bijetora garante que cada elemento do conjunto $A$ vai possuir um elemento \textbf{correspondente} no conjunto $B$.
+
+$$ f: V(G) \rightarrow V(H)$$
+
+tal que,
+
+$$ \{u,v\} \in E(G) \Leftrightarrow \{f(u),f(v)\} \in E(H) $$
+
+Para que dois grafos sejam isomorfos, devem ter:
+
+\begin{itemize}
+    \item o mesmo tamanho de arestas;
+    \item o mesmo tamanho de vértices;
+    \item o mesmo vetor de graus;
+    \item uma função bijetora do tipo $f: V(G_1) \rightarrow V(H)$.
+\end{itemize}
+
+\paragraph*{Exemplo 6:} Sejam $G_1$, $G_2$ e $G_3$ os grafos definidos por:
+
+\begin{eqnarray*}
+    V(G_1) &=& \{1,2,3,4,5,6\}\\
+    V(G_2) &=& V(G_1)\\
+    V(G_3) &=& V(G_2)\\
+    E(G_1) &=& \{\{1,2\}, \{2,3\}, \{3,4\}, \{4,5\}, \{5,6\},\\
+	    & &   \{6,1\}\}\\
+    E(G_2) &=& \{\{1,3\}, \{3,5\}, \{5,1\}, \{2,4\}, \{4,6\},\\
+	    & &   \{6,2\}\}\\
+    E(G_3) &=& \{\{1,3\}, \{3,5\}, \{5,6\}, \{6,2\}, \{2,4\},\\
+	    & &   \{4,1\}\}\\
+\end{eqnarray*}
+
+e dispostos na Figura \ref{fig:g_27}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=8cm]{grafos_yed/g_27.jpg}
+    \caption{Exemplo de Isomorfismo.}
+    \label{fig:g_27}
+\end{figure}
+
+Pergunta-se, $G_1$, $G_2$ e $G_3$ são isomorfos entre sí?
+
+Os grafos $G_1$ e $G_3$ são isomorfos, pois têm o mesmo formato, além do mesmo vetor de graus, mesmo número de arestas, mesmo número de vértices e pode-se identificar a seguinte função bijetora:
+
+$$ f: V(G_1) \rightarrow V(G_3) $$
+
+\begin{center}
+\begin{tabular}{|c|c|}
+  \hline
+  1 & 1 \\
+  \hline
+  2 & 3 \\
+  \hline
+  3 & 5 \\
+  \hline
+  4 & 6 \\
+  \hline
+  5 & 2 \\
+  \hline
+  6 & 4 \\
+  \hline
+\end{tabular}
+\end{center}
+
+Pois se testarmos para cada aresta do grafo $G_1$ existe uma correspondente no grafo $G_3$. Por exemplo a aresta $\{1,2\}$ ao aplicarmos a função se transforma na aresta $\{1,3\}$ que está presente no conjunto de arestas de $G_3$. Para que eles sejam isomorfos, ao se aplicar a função bijetora em todas as arestas de $G_1$ devemos obter uma equivalente em $G_3$.
+
+O grafo $G_2$ não é isomorfo a $G_1$ ou $G_3$, pois em $G_2$, o conjunto de vértices $\{1,3,5\}$ forma um triângulo $K_3$ que não está presente em $G_1$ ou $G_3$.
+
+Grafos isomorfos entre si possuem o mesmo desenho (visualmente), entretanto a localização dos vértices podem ser diferentes como é possível observar em $G_1$ e $G_3$. Grafos são quase iguais, o que os torna diferentes é o nome dado aos seus vértices.
+
+Para montar a tabela da função bijetora, devemos testar todas as combinações possíveis entre os vértices dos grafos dados. Para um grafo com um número expressivo de vértices, uma alternativa mais eficiente é:
+
+\begin{itemize}
+    \item identificar e separar vértices do mesmo grau nos dois grafos;
+    \item fazer a permutação entre esses vértices;
+    \item testar as combinações entre todas as permutações dos graus.
+\end{itemize}
+
+Outra definição para \textbf{isomorfismo} é que dois grafos $G$ e $H$ são isomorfos se existe um \textbf{isomorfismo} entre eles. Em outras palavras, dois grafos são isomorfos se é possível alterar os nomes dos vértices de um deles de tal modo que os dois grafos fiquem iguais.
+
+Para decidir se dois grafos $G$ e $H$ são isomorfos, basta examinar todas as bijeções de $V(G)$ em $V(H)$. Se cada um dos grafos tem $n$ vértices, esse algoritmo consome tempo proporcional a $n!$. Como $n!$ cresce explosivamente com $n$, esse algoritmo é decididamente insatisfatório na prática. Infelizmente, não se conhece um algoritmo substancialmente melhor.
+
+\section{Outras Noções de Grafos}
+
+Em algumas situações podemos ter um modelo para um problema a ser resolvido e esse modelo seria um grafo se desconsiderassemos algumas peculiaridades da situação. Por exemplo, um mapa rodoviário pode ser modelado definindo-se um vértice para cada cidade e duas cidades formam uma aresta no grafo (modelo) se existe rodovia ligando essas cidades correspondentes aos vértices. Normalmente, distância é um parâmetro importante nesses mapas e assim as arestas devem ter um comprimento associado a elas.
+
+Entretanto, "comprimento de aresta"{} não faz parte da definição de um grafo. Num outro exemplo, se estamos interessados em rotas de tráfego dentro de uma cidade podemos definir um vértice por esquina e duas esquinas consecutivas numa mesma rua formam uma aresta. Nesse caso, as ruas têm sentido (mão e contra-mão) e as arestas também deveriam ter mas, novamente, essa característica não faz parte da definição de grafos.
+
+Esses problemas e muitos outros podem ser modelados com "outros tipos"{} de grafos. Alguns desses outros tipos são:
+
+\begin{itemize}
+    \item \textbf{Grafo com pesos nas arestas} é um tripla $(V,E,\rho)$ de modo que $(V,E)$ é um grafo e $\rho: E \rightarrow R$ é uma função que assume valores em $R \subseteq \mathbb{R}$. O conjunto $R$ em geral depende do problema sendo considerado. Por exemplo, se os pesos representam distância então tomamos $R + \mathbb{R}^+$ (reais não-negativos). O grafo $(V,E)$ é chamado grafo subjacente do grafo com pesos nas arestas;
+
+    \item \textbf{Grafo orientado} é aquele onde as arestas têm uma orientação (são pares ordenados) de modo que se $u$ e $v$ são vértices, então $(u,v) \neq (v,u)$ e além disso se $(u,v)$ é uma aresta então $(v,u)$ não é aresta. Removendo o sentido das arestas temos o grafo subjacente ao grafo orientado;
+
+    \item \textbf{Grafos dirigido} ou digrafo é dado $(V,E)$ onde $E \subseteq V × V \smallsetminus {(v,v) \therefore v \in V }$;
+
+    \item \textbf{Multigrafo} é dado por um conjuntode vértices e podemos ter mais de uma aresta incidente ao mesmo par de vértices. Removendo as arestas repetidas de um multigrafo temos o \textit{grafo subjacente} ao multigrafo.
+\end{itemize}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=7cm]{grafos_yed/g_32.jpg}
+    \caption{(a) Grafo orientado. (b) Multigrafo. (c) Grafo dirigido. (d) Grafo subjacente}
+    \label{fig:g_32}
+\end{figure}

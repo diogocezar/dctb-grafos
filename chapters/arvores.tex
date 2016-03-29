@@ -1,0 +1,564 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   7 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Árvores}
+
+As árvores estudadas em grafos podem ser consideradas \textbf{árvores genéricas}. Nesse tipo de árvore pouco importa quem é o seu nodo raiz, pois a qualquer momento pode-se eleger um nodo e tornalo raiz. Esse recurso é disponível pela estrutura com que o grafo está disposo.
+
+Uma árvore é um grafo que possui apenas o número suficiente de arestas para que esse grafo não seja desconexo, e ao mesmo tempo não contenha ciclos.
+
+Para introduzir os conceitos de árvores, vamos primeiro definir uma \textbf{floresta}.
+
+\section{Floresta}
+
+Uma \textbf{floresta} é um grafo cujas componentes conexas não contém circuito (ciclo).
+
+\section{Árvores}
+
+Defini-se como \textbf{árvore}, os componentes conexos de uma floresta, ou seja, uma árvore é um grafo conexo e sem circuitos.
+
+\section{Folha}
+
+Uma \textbf{folha} é um vértice de grau um na árvore.
+
+\paragraph*{Exemplo 12:} O Grafo $G$ da Figura \ref{fig:g_46}, é uma floresta, e cada uma de suas componentes conexas são árvores. As folhas dessa floresta são: $2,3,8,7,5,10,13,12$.
+
+\begin{figure}[!htb]
+  \centering
+  \includegraphics[width=6cm]{grafos_yed/g_46.jpg}
+  \caption{Exemplo de Floresta e Árvores.}
+  \label{fig:g_46}
+\end{figure}
+
+\section{Árvore Geradora}
+
+Uma árvore geradora de um grafo $G$ é um subgrafo gerador $T$ de $G$ tal que $T$ é gerador e é uma árvore.
+
+\subsection{Teorema ($n-1$)}
+
+Provar que uma árvore possui o número de arestas igual ao número de vértices menos um. Ou formalmente $|E(G) = |V(G)| - 1$. Defini-se $n = |V(G)|$.
+
+\paragraph*{Prova:} Por definição uma árvore $G$ possui as propriedades:
+
+\begin{itemize}
+  \item $G$ é acíclico, o que implica em $|E(G)| \leqslant n - 1$
+  \item $G$ é conexo, o que implica em $|E(G)| \geqslant n - 1$
+\end{itemize}
+
+Como $G$ possui as duas propriedades, logo:
+
+\begin{eqnarray*}
+  |E(G)| &\leqslant& n - 1 \\
+  |E(G)| &\geqslant& n - 1 \\
+  |E(G)| &=& n-1
+\end{eqnarray*}
+
+\subsection{Teorema da Folha}
+\label{teo:grau1arv}
+
+Toda árvore com mais de um vértice tem pelo menos uma folha.
+
+\paragraph*{Prova:} Seja uma árvore $G$ e suponha que $\delta(G) \geqslant 2$.
+
+Todo grafo $G$ contém um caminho de comprimento pelo menos $\delta(G)$ e se $\delta(G) \geqslant 2$ esse grafo também possui um ciclo de tamanho $\delta(G) + 1$.
+
+Logo, $G$ contém ciclos e não é uma árvore.
+
+\subsubsection{Colorário da Folha}
+
+Todo grafo acíclico com pelo menos uma aresta tem pelo menos um vértice de grau 1.
+
+\paragraph*{Prova:} Seja $G$ um grafo acíclico com pelo menos 1 aresta, tome uma componente conexa $H$ de $G$ que contenha pelo menos uma aresta.
+
+$H$ é acíclica, pois é subgrafo de $G$. $H$ contém pelo menos dois vértices, já que possui arestas.
+
+Logo, $H$ é uma árvore e contém folhas.
+
+\subsubsection{Lema da Folha}
+
+Todo grafo conexo e com $m = n-1$ tal que $n > 1$, tem um vértice de grau 1. Sendo que $m$ é $|E(G)$ e $n$ é $|V(G)|$.
+
+\paragraph*{Prova:} Seja $G$ um grafo conexo com $m = n-1$.
+
+Sabe-se que $\displaystyle\sum_{v \in V(G)} d_G(v) = 2|E(G)|$. Logo podemos deduzir que: $\displaystyle\sum_{v \in V(G)} d_G(v) = 2n-2$.
+
+\begin{eqnarray*}
+  \sum_{v \in V(G)} d_G(v) = \sum_{v \in V(G)} (d_G(v) - \delta(G)) + n \delta(G) = 2n-2 \\
+  \sum_{v \in V(G)} (d_G(v) - \delta(G)) = n(2 - \delta(G)) - 2 \\
+  \sum_{v \in V(G)} (d_G(v) - \delta(G)) \geqslant 0, \mbox{ pois } d_G(v) \geqslant 0
+\end{eqnarray*}
+
+Logo, $n(2 - \delta(G)) - 2 > 0$. Para isso: $\delta(G) < 2$.
+
+Ao mesmo tempo, como $G$ é conexo, temos que $\delta(G) \geqslant 1$, logo $\delta(G) = 1$.
+
+\subsection{Teorema da Prova dos 3}
+
+Seja $G$ um grafo com $n$ vértices e $m$ arestas, se $G$ tem duas das seguintes propriedades, então também tem a terceira:
+
+\begin{enumerate}
+\item\label{t1} $m = n-1$;
+\item\label{t2} $G$ é conexo;
+\item\label{t3} $G$ é acíclico.
+\end{enumerate}
+
+Provar que:
+
+\begin{itemize}
+  \item[I)] \ref{t1} e \ref{t2} $\rightarrow$ \ref{t3};
+
+  \paragraph*{Base:} Seja o grafo $G$ trivial ($n=1$). Obviamente é acíclico.
+
+  \paragraph*{Hipótese de Indução:} Suponha que todo grafo conexo com $n = k-1$ e $m = k-2$ seja acíclico.
+
+  \paragraph*{Passo:} Seja $G$ um grafo conexo com $n = k$. Tome uma folha $v \in V(G)$. Considere o grafo $G' = G \smallsetminus v$. Assim temos que:
+
+  \begin{eqnarray*}
+      |V(G')| &=& |V(G)| - 1 = k - 1 \\
+      |E(G')| &=& |E(G)| - d_G(v) = k - 1 - 1 = k - 2
+  \end{eqnarray*}
+
+  Como chega-se a $k-1 = n$ e $k-2 = m$, descrito pela \textit{Hipótese de Indução}, podemos afirmar que:
+
+  $G$ é conexo e $d_G(v) = 1$ logo, $G'$ é conexo.
+
+  Pela \textit{Hipótese de Indução} $G'$ é acíclico.
+
+  Como $d_G(v) = G$, $G$ também é acíclico.
+
+  \item[II)] \ref{t1} e \ref{t3} $\rightarrow$ \ref{t2};
+
+  \paragraph*{Base:} Seja o grafo $G$ trivial ($n=1$). Obviamente é conexo.
+
+  \paragraph*{Hipótese de Indução:} Suponha que todo grafo acíclico com $n = k-1$ e $m = k-2$ seja conexo.
+
+  \paragraph*{Passo:} Seja $G$ um grafo acíclico com $n = k$. Tome uma folha $v \in V(G)$. Considere o grafo $G' = G \smallsetminus v$. Assim temos que:
+
+  \begin{eqnarray*}
+      |V(G')| &=& |V(G)| - 1 = k - 1 \\
+      |E(G')| &=& |E(G)| - d_G(v) = k - 1 - 1 = k - 2
+  \end{eqnarray*}
+
+  Como chega-se a $k-1 = n$ e $k-2 = m$, descrito pela \textit{Hipótese de Indução}, podemos afirmar que:
+
+  $G$ é acíclico logo, $G'$ é acíclico.
+
+  Pela \textit{Hipótese de Indução} $G'$ é conexo.
+
+  Logo, $G$ também é conexo.
+
+  \item[III)] \ref{t2} e \ref{t3} $\rightarrow$ \ref{t1}.
+
+  \paragraph*{Base:} Seja o grafo $G$ trivial ($n=1$). Obviamente $m = 0$ e $m = n - 1$.
+
+  \paragraph*{Hipótese de Indução:} Suponha que todo grafo acíclico e conexo (árvore) com $n = k-1$ tenha $m = k-2$.
+
+  \paragraph*{Passo:} Seja $G$ uma árvore com $n = k$. Tome uma folha $v \in V(G)$. Considere o grafo $G' = G \smallsetminus v$. Assim temos que:
+
+  $G$ é conexo e $d_G(v) = 1$ $\rightarrow$ $G'$ é conexo;
+
+  $G$ é acíclico $\rightarrow$ $G'$ é acíclico, pois a remoção de um vértice nunca poderá tornar um grafo acíclico.
+
+  \begin{eqnarray*}
+      |V(G')| &=& |V(G)| - 1 = k - 1 \\
+      |E(G')| &=& \big[ |V(G) -1 \big] - 1 = k-2
+  \end{eqnarray*}
+
+  Como $G'$ é acíclico e conexo, e a retirada de uma de suas folhas, comprova a \textit{Hipótese de Indução} por:
+
+  \begin{eqnarray*}
+      n &=& |V(G)| - 1\\
+      d_G(v) &=& 1\\
+      |V(G')| &=& n = k - 1\\
+      |E(G')| &=& n - d_G(v) = k-2\\
+      m &=& n-1
+  \end{eqnarray*}
+
+  A demonstração $n = k-1$ prova a primeira \textit{Hipótese de Indução}. e a demonstração $n - d_G(v) = k-2$ prova a segunda \textit{Hipótese de Indução}.
+
+  Logo, pode-se inferir $m = n-1$
+
+\end{itemize}
+
+\subsection{Teorema da Prova dos 4}
+
+Antes de enunciar e provar uma caracterização define-se a operação:
+
+$G$ é um grafo e $x,y \in V(G)$. Denota-se:
+
+$$ G + xy = (V(G), E(G)\cup\{x,y\})$$
+
+As seguintes afirmações são equivalentes para todo grafo $G = (V,E)$:
+
+\begin{itemize}
+  \item[(1)] $G$ é árvore;
+  \item[(2)] para quaisquer $x,y \in V(G)$ existe um único caminho em $G$ com extremos $x$ e $y$;
+  \item[(3)] $G$ é conexo minimal: $G$ é conexo e $G \smallsetminus e$ é desconexo, para qualquer $e \in E(G)$;
+  \item[(4)] $G$ é acíclico maximal: $G$ é acíclico e $G + xy$ contém um circuito, para quaisquer $x,y \in V(G)$ não adjacentes. 
+\end{itemize}
+
+Para provar que essas afirmações são equivalentes devemos mostrar que:
+
+$$ (1) \rightarrow (2) \rightarrow (3) \rightarrow (4) \rightarrow (1) $$
+
+\paragraph*{Provar que $(1) \rightarrow (2)$}
+
+Como $G$ é conexo, existe um caminho 
+
+$$P = (x = x_0, x_1, \ldots, x_n-1, x_n = y)$$
+
+Suponha a existência de um outro caminho 
+
+$$Q = (x = y_0, y_1, \ldots, y_m-1, y_m = y)$$
+
+Pode ser que esses caminhos tenham seus vértices iniciais contidos em um mesmo caminho, por isso é necessário definir bem os índices para explicitar que pelo menos um ciclo irá ser identificado.
+
+Então, sejam os índices:
+
+\begin{eqnarray*}
+  r &=& min(i: i \geqslant 0 \mbox{ e } x_{i+1} \neq y_{i+1}) \\
+  s &=& min(j: i > p \mbox{ e } x_j = y_l \mbox{ para algum } l > p)
+\end{eqnarray*}
+
+O índice $r$ identifica o primeiro vértice do caminho $P$ que seja diferente no caminho $Q$.
+
+O índice $s$ identifica o primeiro vértice maior que o vértice indexado pelo índice $r$, tal que exista um vértice $x_j$ do caminho $P$ igual a um vértice $y_l$ do caminho $Q$ tal que o indice l seja maior que o indice p definido.
+
+Esses índices estão bem definidos, como os caminhos são distintos, temos: $0 \leqslant r < min\{m,n\}$ e $r < s \leqslant n+1$.
+
+Dessa forma conseguimos montar um circuito dado por:
+
+$T = (x_r, x_{r+1}, \ldots, x_s = y_l, y_{l-1}, y_{l-2},y_r)$
+
+Assim temos uma contradição, e podemos afirmar que o caminho com extremos $x,y$ é único.
+
+\paragraph*{Demonstração:} Pode ser dada por:
+
+Seja $V(G) = X \cup \overline{X} \therefore X \cap \overline{X} = \emptyset$.
+
+Seja $C_1$ um caminho de um vértice $v$ a um vértice $a \subset X$.
+
+Seja $C_2$ um caminho de um vértice $y$ a um vértice $b \subset \overline{X}$.
+
+É possível adicionar os sucessores de de $a$ e $b$ ao caminho $C_1$ e $C_2$ respectivamente, até que entre $a_n$ e $b_n$ possua apenas um vértice $c$ que possui as arestas $\{a_n,c\},\{b_n,c\}$.
+
+Dessa forma só existe um caminho de $v$ a $a_n$ pois todos os sucessores de $a$ foram adicionados ao conjunto $X$. e também só existe um caminho de $y$ a $b_n$ pelo mesmo motivo com $\overline{X}$.
+
+Como o vértice $c$ é o único que liga $a_n$ e $b_n$, logo só existe um caminho entre $v$ e $y$.
+
+\paragraph*{Provar que $(2) \rightarrow (3)$}
+
+Seja $G$ tal que $(2)$ vale, então $G$ é conexo então existe um caminho para qualquer par de vértices $x$ e $y$ tal que $x,y \in V(G)$.
+
+Tome $\{x,y\} \in E(G)$ temos que
+
+$C = (x = v_0, v_1, \ldots, v_{n-1}, v_n = y)$ é o único caminho entre $x$ e $y$.
+
+Temos que ao remover uma aresta de um caminho único torna o grafo desconexo, então:
+
+$C \smallsetminus e$ é desconexo, para qualquer $e \in E(G)$.
+
+Se existe um único caminho ligando $x$ a $y$, o grafo é conexo, logo podemos afirmar que $(2) \rightarrow (3)$.
+
+\paragraph*{Provar que $(3) \rightarrow (4)$}
+
+Suponha que $G$ seja cíclico. Então é possível retirar qualquer aresta pertencente a um ciclo de $G$ e $G \smallsetminus e \therefore e \in E(G)$ continua conexo.
+
+Logo, $G$ é acíclico, pois não é possível retirar qualquer aresta pela definição $(3)$.
+
+Sejam $x$ e $y$ não adjacentes em $G$, como $G$ é conexo, então existe um caminho $C = (x = v_0, v_1, \ldots, v_{n-1}, v_n = y)$.
+
+Considere o grafo $G' = G + \{x,y\}$. Logo, $C' = (x = v_0, v_1, \ldots, v_{n-1}, v_n = y, x)$. Então $C'$ é um ciclo em $G'$.
+
+Logo, $G$ é um grafo acíclico maximal.
+
+Como só é possível adicionar a aresta entre as extremidades do caminho achado, o grafo $G$ é acíclico e maximal.
+
+\paragraph*{Provar que $(4) \rightarrow (1)$}
+
+Suponha que $G$ seja desconexo. $x$ e $y$ são dois vértices entre os quais não há caminho em $G$.
+
+Seja $G' = G + \{x,y\}$, temos que $G'$ é acíclico, contrariando que $G$ pudesse ser maximal, logo, $G$ é conexo.
+
+Sendo conexo, o grafo $G$ é uma árvore.
+
+\section{Árvores Geradoras de Custo Mínimo em Grafos com Pesos nas Aresta}
+
+Defini-se como custo de um subgrafo $H$ de $G$ conexo e com peso nas arestas $G = (V,E,\omega)$, onde $\omega : E \rightarrow \mathbb{R}$:
+
+$$
+c(H) = \sum_{e \in E(H)} \omega(e)
+$$
+
+O problema a ser atacado é a resposta para a pergunta: Qual é o menor custo do subgrafo gerador conexo de $G$?
+
+Ou formalmente, $S \subseteq E(G)$ que induz a uma árvore geradora de $G$ tal que:
+
+$$ 
+c(G[S]) = min\{c(T): T \mbox{ é árvore geradora de } G\}
+$$
+
+Uma árvore geradora de $G$ de custo mínimo também é chamada de \textbf{árvore geradora mínima} do grafo $G$.
+
+Apresenta-se a seguir os algorítmos de \textit{Jarník-Prim} e \textit{Kruskal} para resolver o problema de determinar a árvore geradora mínima.
+
+Esses algoritmos são gulosos, que é uma técnica de projeto de algoritmos para resolver problemas de otimização. os códigos baseam-se na escolha que parece ser a melhor no momento (ótimo local) e terminam com a solução ótima (ótimo global).
+
+\section{Algoritmo de Jarník-Prim para árvore geradora mínima}
+
+Seja $X$ um conjunto de vértices tal que $X \subset V(G)$ e $X$ não é vazio. Temos ainda $\overline{X}$ que é o complemento de $X$.
+
+\subsection{Teoremas de Prim}
+
+\begin{enumerate}
+  \item\label{teo:prim:1} Toda árvore geradora possui pelo menos uma aresta de $E(X,\overline{X})$;
+  \item\label{teo:prim:2} Uma árvore geradore mínima, possui uma das arestas de menor peso em $E(X,\overline{X})$.
+\end{enumerate}
+
+Com os teoremas \ref{teo:prim:1} e \ref{teo:prim:2} podemos estabelecer uma relação com o corte $E(X,\overline{X})$ e as arestas de menor peso da árvore geradora mínima.
+
+O algorítmo de \textit{Jarník-Prim} divide o grafo em dois conjuntos, os vértices que foram visistados $U$, e os que não foram visistados $\overline{U}$. E a cada iteração adiciona para o conjunto $U$ o vértice que tinha a aresta de menor peso dentre todas as arestas do corte $E(U,\overline{U})$. Esse processo é repetido até que $U = V(G)$. No final do processo $G[U]$ é uma árvore geradora mínima.
+
+O Algorítmo \ref{alg:9} descreve a estratégia de Jarník-Prim.
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    \Entrada{um grafo $G$ com peso $\omega$ nas arestas.}
+    \Saida{arvore geradora de custo mínimo.}
+    \Inicio{
+	escolha $v \in V(G)$\;
+	$U \leftarrow \{v\}$\;
+	$S \leftarrow \emptyset$\;
+    
+	\Enqto{$U \neq V(G)$}{
+	  escolha $\{u,w\} \in E(U,\overline{U})$ de peso mínimo no corte\;
+	  insira $\{u,w\}$ em $S$\;
+	  $v \leftarrow \{u,w\} \cap \overline{U}$\;
+	  insira $v$ em $U$\;
+	}
+	devolva $(V,S)$
+    }
+    \caption{Jarník-Prim($G$)}
+    \label{alg:9}
+    }
+\end{algorithm}
+
+O principal gasto computacional está relacionado a escolha das arestas de menor peso. Claramente é inviável que a cada procura para achar a aresta de menor peso, visite-se todas as arestas que incidem no vértice em questão.
+
+Para melhorar essa implementação, propõe-se o uso de uma fila de prioridades que armazena as arestas priorizando o seu peso. Recomenda-se a utilização de uma estrutura \textit{Heap} para melhorar a eficiência do algoritmo.
+
+Então basta encontrar na lista de prioridades uma ocorrência do vértice em questão, e sacar essa aresta.
+
+O Algoritimo \ref{alg:10} é uma implementação da fila de prioridades baseado no Algoritimo \ref{alg:9}.
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    \Entrada{um grafo $G$ com peso $\omega$ nas arestas.}
+    \Saida{arvore geradora de custo mínimo.}
+    \Inicio{
+	escolha $v \in V(G)$\;
+	$U \leftarrow \{v\}$\;
+	$S \leftarrow \emptyset$\;
+	$L \leftarrow$ lista de prioridades por pesos das arestas\;
+    
+	\Enqto{$U \neq V(G)$}{
+	  $w \leftarrow$ o outro vértice da aresta $\{u,w\}$ que seja a primeira ocorrência em $L$\;
+	  insira $\{u,w\}$ em $S$\;
+	  $v \leftarrow w$\;
+	  insira $v$ em $U$\;
+	}
+	devolva $(V,S)$
+    }
+    \caption{Jarník-Prim($G$)}
+    \label{alg:10}
+    }
+\end{algorithm}
+
+\subsection{Avaliação de Corretude}
+
+\paragraph*{Teorema de Jarník-Prim:}\label{teo:prim} Para $k \in \mathbb{N}$, após $k$ iterações do "enquanto"{} do algoritmo de \textit{Jarník-Prim}, as arestas escolhidas induzem uma sub árvore de uma árvore geradora mínima.
+
+\paragraph*{Definições}
+
+Para provar o teorema, vamos fazer algumas definições:
+
+\begin{itemize}
+  \item $S_0 = \emptyset$;
+  \item $S_1 = \{v\}$;
+  \item $A_0 = \emptyset$;
+  \item $A_1 = \emptyset$.
+\end{itemize}
+
+Sendo que o conjunto $S$ é o conjunto de vértices visistados, e o conjunto $A$ é o conjunto de arestas que formarão uma árvore geradora mínima.
+
+A cada volta do algoritmo, escolhe-se uma aresta $e$ do corte com peso mínimo.
+
+Então temos:
+
+\begin{eqnarray*}
+    e &=& \{u,w\} \in E(S_i, \overline{S_i}) \\
+    u &\in& S_i \\
+    w &\in& \overline{S_i} \\
+    S_{i+1} &=& S_i \cup \{w\} \\
+    A_{i+1} &=& A \cup \{\{u,w\}\}
+\end{eqnarray*}
+
+\subsubsection{Prova do Teorema de Jarník-Prim}
+
+Podemos então reescrever o Teorema \ref{teo:prim} da seguinte maneira: $(S_k, A_k)$ é uma subárvore de uma árvore geradora mínima.
+
+Devemos provar que:
+
+\begin{itemize}
+  \item $(S_k, A_k)$ é uma árvore;
+  \item $(S_k, A_k) \subset T_{min}$;
+\end{itemize}
+
+Sendo que $T_{min}$ é uma árvore geradora mínima.
+
+Para provar que $(S_k, A_k)$ é uma árvore, temos que provar que a cada passo, cada vértice ou aresta adicionados em $S$ e $A$ ainda deixam a árvore conexa e acíclia.
+
+\begin{itemize}
+  \item \textit{Acíclico}: Como $S$ só possui aresta de menor peso entre seus elementos, então os elementos de $S$ não mais mais de uma aresta para qualquer outro elemento de $S$. O que garante a não existência de ciclos.
+  \item \textit{Conexo}: A conexidade é garantida pois, como $S$ começa com um vértice (por definição conexo), e a cada inserção em $S$ tem-se uma aresta que liga os elementos do corte $E(S,\overline{S})$, então ao final da execução, a árvore geradora mínima permanecerá conexa.
+\end{itemize}
+
+Para provar que $(S_k, A_k) \subset T_{min}$.
+
+Tomamos como \textbf{base} um grafo trivial.
+
+Temos a seguinte \textbf{hipótese}:
+
+Para $0 \leqslant k \leqslant a$ então $(S_k, A_k) \subseteq T_{min}$.
+
+$(S_{a+1}, A_{a+1}) = (S_a + w \in V(G), A_a + \{u,w\} \in E(G))$
+
+Suponha que $\{u,w\} \not\in T_{min}$. Assim temos que $T_{min} + \{u,w\}$ é um ciclo, e $\exists \mbox{ } e \in T_{min} \therefore e \in E(S_a, \overline{S_a})$.
+
+E ainda $e$ faz parte do mesmo ciclo que $\{u,w\}$.
+
+Seja $T* = T_{min} + {u,w} - e$.
+
+Como $\{u,w\}$ e $e$ estão no corte $E(S_a, \overline{S_a})$ e o algoritmo escolheu $\{u,w\}$, logo $c(\{u,w\}) \leqslant c(e)$.
+
+Podemos ainda deduzir que $c(T*) = c(T_{min}) + c(\{u,w\}) - c(e)$.
+
+Logo, $c(\{u,w\}) - c(e) \leqslant 0$.
+
+Logo, $c(T*) \leqslant c(T_{min})$.
+
+Como $T_{min}$ tem o custo mínimo, logo, $c(T*) = c(T_{min})$ e $T*$ é uma árvore geradora mínima.
+
+A cada passo tem-se então uma árvore geradora mínima, logo ao final teremos também a árvore geradora mínima.
+
+A complexidade do algoritmo, se utilizada a estrutura \textit{Heap}, é dada por $\theta(m \log^* n)$.
+
+\section{Algoritmo de Kruskal para para árvore geradora mínima}
+
+A idéia do algorítmo de Kruskal também é bastante simples, a cada passo escolhemos a aresta mais barata dentre as que ainda não foram escolhidas, com a única condição que essa aresta não forme um ciclo com as arestas que já foram escolhidas.
+
+O Algorítmo \ref{alg:11} descreve a estratégia de Kruskal.
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    \Entrada{um grafo $G$ com peso $\omega$ nas arestas.}
+    \Saida{arvore geradora de custo mínimo.}
+    \Inicio{
+      $S \leftarrow \emptyset$\;
+      $F \leftarrow$ fila das arestas em ordem não-decrescente de peso\;
+      \ParaCada{$e \in F$}{
+	\Se{$S \cup \{e\}$ não induz circuito em $G$}{
+	  insira $e$ em $S$\;
+	}
+      }
+      devolva $(V,S)$
+    }
+    \caption{Kruskal($G$)}
+    \label{alg:11}
+    }
+\end{algorithm}
+
+No algoritimo nota-se que a procura por um ciclo em um grafo (do ponto de vista computacional) não é algo trivial de ser implementado, por esse motivo, precisamos de estruturas de dados que, dinamicamente, representem e manipulem conjuntos distintos de vértices de modo eficiente.
+
+Estruturas como essas são conhecidas como união-e-busca. Essas estrutruas mantêm dinamicamente uma família de subconjuntos distintos com um elemento de cada subconjuto eleito como representando do subconjunto, e temos as operações:
+
+\begin{itemize}
+  \item $faz(x)$ cria o conjunto unitário $\{x\}$, com representante $x$;
+  \item $busca(x)$ devolve o representante do conjunto ao qual $x$ pertence;
+  \item $uniao(x,y)$ substitui os conjuntos que contém $x$ e $y$ pela união desses conjuntos (e determina um representane para essa união).
+\end{itemize}
+
+Com isso é possível obter o Algoritmo \ref{alg:11} que é uma modificação do Algoritmo \ref{alg:12} com a diferença de implementar a estrutura de união-e-busca.
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    \Entrada{um grafo $G$ com peso $\omega$ nas arestas.}
+    \Saida{arvore geradora de custo mínimo.}
+    \Inicio{
+      $S \leftarrow \emptyset$\;
+      $F \leftarrow$ fila das arestas em ordem não-decrescente de peso\;
+      \ParaCada{$e \in F$}{
+	\Se{$busca(u) \neq busca(v)$}{
+	  insira $e$ em $S$\;
+	  $uniao(u,v)$\;
+	}
+      }
+      devolva $(V,S)$
+    }
+    \caption{Kruskal($G$)}
+    \label{alg:12}
+    }
+\end{algorithm}
+
+\subsection{Avaliação de Corretude}
+
+\subsubsection{Teorema de Kruskal} 
+
+\textit{Kruskal devolve uma árvore geradora mínima.}
+
+Suponha que o algoritmo devolve $T = (V, A)$.
+
+Devemos provar que:
+
+\begin{itemize}
+  \item $T$ é uma árvore;
+  \item $T$ é mínima.
+\end{itemize}
+
+Para provar que $T$ é uma árvore, basta provar que o grafo é acíclico e conexo.
+
+\begin{itemize}
+  \item \textit{Acíclico}: Isso é garantido pela restição da seleção das arestas que não formam ciclos.
+  \item \textit{Conexo}: Se a árvore gerada a cada passo é acíclica, tenta-se então mostrar que o árvore deve ter $|E(G)| = |V(G)| - 1$ ou $m = n -1$. Tendo assim duas propriedades (acíclico e $m = n - 1$) infere-se a terceira, a conexidade. Ao tentar colocar a aresta $n - 1$ conecta-se duas componentes anteriormente desconexas. O ato de conectar as componenetes não gera ciclos, então temos duas propriedades e inferimos a terceira.
+\end{itemize}
+
+Para provar que $T$ é mínima, vamos supor a existência de uma outra árvore geradora mínima denotada por $T*$.
+
+\subsubsection{Prova do Teorema de Kruskal} 
+
+Seja $e$ uma aresta de $T$ que não está em $T*$ e que entrou em $T$ antes.
+
+Seja $(e_1, e_2, \ldots, e_{n-1})$ a sequência em que as arestas entraram na árvore $T$.
+
+Seja $e_1, e_2, \ldots, e_{j-1} \in E(T*)$.
+
+Seja $e = e_j$ que é a primeira aresta que está em $T$ mas não está em $T*$.
+
+Então $T* + e_j$ tem um ciclo.
+
+E nesse ciclo existe uma aresta $f$ que não está em $T$.
+
+Logo, $f$ foi analisada depois de $e_j$ e portanto $c(e_j) \leqslant c(f)$.
+
+Seja $T' = T* - f + e$.
+
+Logo, $c(T') \leqslant c(T*)$.
+
+Como $T*$ é mínima.
+
+Então, $c(T') = c(T*)$ e $T'$ é mínima.

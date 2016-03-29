@@ -1,0 +1,439 @@
+%%%%%%%%%%%%%%%%%%%%%%%
+% C A P Í T U L O   5 %
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Percursos em Grafos}
+
+Para ilustrar os estudos dos percursos vamos utilizar o grafo disposto na Figura \ref{fig:g_33}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=4.5cm]{grafos_yed/g_33.jpg}
+    \caption{Grafo de Exemplo para estudo de Caminhos e Circuitos.}
+    \label{fig:g_33}
+\end{figure}
+
+Dado um grafo $G(V,E)$ com uma aresta ${v,w} \in V(G)$, então podemos definir o conceito de \textbf{alcansável}:
+
+O vértice $v$ é alcansável pelo vértice $w$ no grafo $G$ se existe um conjunto de vértices denotado por um conjunto $P$ ou seja $P(v_1, v_2, v_3, \ldots, v_n)$ tal que:
+
+\begin{itemize}
+    \item $v_i \in V(G) \mbox{ para } i \in \{1,2,3,\ldots,n\}$
+	  Os vértices a serem percorridos estão presentes no conjunto de vértices do grafo dado;
+    \item $v_1 = v$
+	  O primeiro vértice do conjunto se torna o vértice inicial dado, no caso $v$;
+    \item $v_n = w$
+	  O último vértice do conjunto é o vértice final dado, no caso $w$;
+    \item $\{v_i, v_{i+1}\} \in E(G), \mbox{ para } i \in \{1,2,3,\ldots,n\}$
+	  Existe uma aresta que liga o vértice $v_i$ com o vértice $v_{i+1}$ no conjunto de arestas dado.
+\end{itemize}
+
+No exemplo da Figura \ref{fig:g_33}, o vértice 4 é alcansável pelo vértice 6. Entretanto o vértice 8 não é alcansável pelo vértice 7.
+
+Um \textbf{passeio} em um grafo é uma sequência de arestas do tipo $\{\{v_0,v_1\},\{v_1,v_2\}, \ldots, \{v_{s-1},v_s\}\}$ onde $s$ é o comprimento do passeio. Um passeio não possui um limite, é possível passear pelo grafo repetindo vértices e arestas.
+
+No exemplo da Figura \ref{fig:g_33}, poderíamos definir um passeio $P_1\{\{6,3\}, \{3,1\}, \{1,4\}, \{4,1\}\}$.
+
+Um \textbf{caminho} em um grafo é um passeio que não possui repetição de vértices. Sua definição formal é dada por:
+
+$$ v_i \neq v_j \mbox{ para } i \neq j$$
+
+O limite de um caminho se refere a situação de estar em determinado vértice $v$ e não poder inserir outro vizinho $v$ por todos já estarem contidos no caminho. Um caminho normalmente visa atingir um determinado objetivo, ou seja ir de um vértice para outro.
+
+No exemplo da Figura \ref{fig:g_33}, poderíamos definir um caminho $C_1\{6,7,8,4,2\}$.
+
+Uma \textbf{trilha} em um grafo é um passeio que não possui repetição de arestas. Sua definição formal é dada por:
+
+$$ \{v_i,v_{i+1}\} \neq \{v_j,v_{j+1}\} \mbox{ para } i \neq j$$
+
+No exemplo da Figura \ref{fig:g_33}, poderíamos definir uma trilha $C_1\{\{6,3\}, \{3,1\}, \{1,4\}, \{4,2\}\}$. Note que o vértice 4 foi repetido, entretanto para arestas diferentes.
+
+A \emph{diferença} entre trilha e caminho é que a trilha permite repetição de vértices, desde que não se repitam arestas.
+
+Uma trilha pode ser imaginada como um desenho marcado em determinado grafo, que indica um caminho marcado.
+
+Um \textbf{circuito ou ciclo} é um caminho que começa e acaba com o mesmo vértice. Ciclos de comprimento 1 são laços. No grafo de exemplo, $\{1,4,5,2,1\}$ é um ciclo de comprimento 4 (o comprimento de um ciclo é dado pela contagem de arestas). Sua definição formal é dada por:
+
+\begin{eqnarray*}
+    v_1 &\neq& v_j, \mbox{ para } i \neq j \\
+    v_1 &=& v_n
+\end{eqnarray*}
+
+A \textbf{distância} de um vértice $u$ a um vértice $w$ é o número de arestas de um caminho mínimo de $u$ a $w$. Sua definição formal é dada por:
+
+$ {dist}_G(u,w) = min\{k\} $, onde $u$ e $w$ são extremos de um caminho de tamanho $k$.
+
+\paragraph*{Observação} Não faz sentido dizer "\emph{a menor distância}"{} ou "\emph{a distância mínima}":  distância já é mínima por definição. Portanto, dizer que a distância de $u$ a $w$ é $k$ significa duas coisas:
+
+\begin{enumerate}
+    \item existe um caminho de $u$ a $w$ com exatamente $k$ arestas;
+    \item não existe caminho de $u$ a $w$ com menos que $k$ arestas.
+\end{enumerate}
+
+Caso $u$ não seja alcansável por $w$ então podemos dizer que a distância ${dist}_G(u,w) = \infty$.
+
+No exemplo da Figura \ref{fig:g_33}, ${dist}_G(7,8) = \infty$ e ${dist}_G(6,1) = 2$.
+
+%     \subsection{Teoremas}
+
+%     \begin{enumerate}
+%         \item ${dist}_G(u,v) = {dist}_G(v,u)$
+%         \item ${dist}_G(u,v) = 0 \leftrightarrow u=v$
+%         \item ${dist}_G(u,v) \leqslant {dist}_G(u,v) + {dist}_G(v,w)$
+%         \item Dado o grafo $G=(V,E)$, existe um caminho de tamanho pelo menos $\delta(G)$ e um circuito de tamanho pelo menos $\delta(G)+1$ para $\delta(G) \geqslant 2$.
+%     \end{enumerate}
+
+\section{Algoritmo Genérico de Busca}
+
+Nessa sessão vamos estudar um algoritmo genérico para percorrer um grafo dado. Para isso iremos tomar como exemplo base o seguinte problema:
+
+Dado um grafo $G$ e um vértice $s \in E(G)$, encontrar $S \subseteq V(G)$ tal que para todo $v \in S$ existe um caminho de $s$ a $v$.
+
+Com um grafo e um vértice qualquer, devemos descobrir todos os vértices alcansáveis para o vértice passado.
+
+\begin{itemize}
+    \item visite(G,s);
+    \item dado: um grafo $G$ e um vértice $s \in V(G)$;
+    \item devole: um conjunto $S$ de vértices alcansáveis a partir de $s$;
+\end{itemize}
+
+O algoritmo visite(G,s) está descrito no Algoritmo \ref{alg:2}.
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    $visite(G, s)$\;
+    \Inicio{
+	$L[] \leftarrow $ conjunto de vértices vazio\;
+	$L \leftarrow s$\;
+	marque $s$ como visistado e $V(G) \smallsetminus s$ como não-visistado\;
+	marque as arestas de $E(G)$ como não-visistads\;
+	\Enqto{$L \neq \emptyset$}{
+	    escolha $v$ pertencente a $L$\;
+	    \eSe{em $E_G(v)$ existe uma aresta não visistada a partir de $v$}{
+		escolha $\{v,w\}$ em $E_G(v)$ não visistada a partir de $v$\;
+		marque $\{v,w\}$ como visitada a partir de $v$\;
+		\Se{$w$ é não-visistado}{
+		    insista $w$ em $L$\;
+		    marque $w$ como visistado\;
+		}
+	    }
+	    {
+		remova $v$ de $L$\;
+	    }
+	}
+    }
+    \caption{Algoritmo de Busca ou Percurso}
+    \label{alg:2}
+    }
+\end{algorithm}
+
+%    \begin{table*}
+%    \texttt{\lstinputlisting[language=C, label=alg:busca,
+%    caption={Algoritmo de Busca ou Percurso.}]{cods/alg_busca.txt}}
+%    \end{table*}
+
+\subsection{Custo do Algoritmo}
+
+O número de vezes que um vértice $u$ é escolhido como $v$ é $d_G(u)+1$. Isso por que ele é escolhido 1 vez para visistar cada aresta incidente a $u$ e uma vez para ser eliminado do conjunto $L$.
+
+Como cada vértice entra no máximo 1 vez em $L$, o número de vezes que um vértice é escolhido, é no máximo $\displaystyle\sum_{v \in S}|d_G(v)+1|$.
+
+\begin{eqnarray*}
+    \sum_{v \in S}|d_G(v)+1| &=& \sum_{v \in S}|d_G(v)| + \sum_{v \in S}|1|\\
+    &=& 2|E(G[S])| + |S| \leqslant 2m + n
+\end{eqnarray*}
+
+A complexidade de tempo do algoritmo visite(G,s) é $\Theta(2|E(G[S])| + |S|)$ ou $\Theta(m+n)$, como $m$ sendo o número de arestas e $n$ sendo o número de vértices.
+
+\section{Tipo de Busca}
+
+A forma como a estrutura de dados será implementada indica o tipo de busca que será efetuada, se a estrutura que armazena $L$ for implementada em uma pilha, então a busca se dará em profundidade:
+
+\begin{itemize}
+    \item o algoritmo começa pelo nó raiz e explora tanto quanto possível cada um dos seus ramos, antes de retroceder (\emph{backtracking});
+\end{itemize}
+
+  caso a estrutura que armazena $L$ seja implementada como uma fila, então a busca se dará em largura:
+
+\begin{itemize}
+    \item o algoritmo começa pelo nó raiz e explora todos os nós vizinhos; então, para cada um desses nós mais próximos, explora-se os seus nós vizinhos inexplorados e assim por diante.
+\end{itemize}
+
+\subsection{Busca em Profundidade}
+
+Esse tipo de busca usar um percurso utilizando uma pilha como estrutura de dados.
+
+O algoritmo para uma busca em profundidade é recursivo, como pode ser visto no ALgoritmo \ref{alg:3}.
+
+\begin{itemize}
+    \item bp(G,w);
+    \item dado: um grafo $G$ e um vértice $w \in V(G)$;
+    \item devole: uma busca em profundidade em $G$ a partir de $w$ com rótulos \emph{chega}, \emph{sai} e \emph{pai} em cada vértice;
+\end{itemize}
+
+Os rótulos darão origem a uma tabela que representará qual o percurso que o algoritmo tomou a partir de uma marcação \emph{temporal} (baseada no estado dos elmentos).
+
+\begin{algorithm}
+    \small{
+    \SetAlgoNoEnd
+    $bp($G, w$)$\;
+    \Inicio{
+	$chega[] \leftarrow \emptyset$\;
+	$sai[] \leftarrow \emptyset$\;
+	$pai[] \leftarrow \emptyset$\;
+	$cont \leftarrow \emptyset$\;
+	$cont \leftarrow cont + 1$\;
+	$chega[w] \leftarrow cont$\;
+	\ParaCada{$u, N_G(w)$}{
+	    \Se{$chega[w] = \emptyset$}{
+		$pai[u] \leftarrow w$\;
+		$bp(G,u)$\;
+	    }
+	}
+	$cont \leftarrow cont + 1$\;
+	$sai[w] \leftarrow cont$\;
+    }
+    \caption{Algoritmo de Busca em Profundidade}
+    \label{alg:3}
+    }
+\end{algorithm}
+
+%    \begin{table*}
+%    \texttt{\lstinputlisting[language=C, label=alg:buscapro,
+%    caption={Algoritmo de Busca em Profundidade.}]{cods/alg_buscapro.txt}}
+%    \end{table*}
+
+A partir do Algoritmo \ref{alg:3} seja $\{w,v\} \in E(G)$:
+
+\begin{enumerate}
+    \item cenário 1: $sai[w] < chega[v]$
+    \item cenário 2: $chega[w] < chega[v] \mbox{ e } sai[v] < sai[w]$
+    \item cenário 3: $chega[u] < chega[w] \mbox{ e } sai[w] < sai[u]$
+    \item cenário 4: $chega[w] < chega[v] \mbox{ e } sai[w] < sai[u]$
+\end{enumerate}
+
+Os cenários representam a ordem que $w$ ou $v$ são executados. O primeiro cenário diz que $w$ é executado, termina sua execução e depois $u$ é executado. Isso se torna impossível pois quando o algoritmo está executando $w$ encontra seu vizinho $u$ e chama o algoritmo recursivo para $u$. Logo $w$ só terminará a sua execução depois de $u$.
+
+O segundo cenário é o padrão de comportamento do algoritmo, um vértice $w$ invoca a recursividade para seu vizinho $u$, $u$ termina sua execução e e devolve a vez para $w$ que por sua vez também termina a sua execução.
+
+O terceiro cenário só irá acontecer quando um vértice $v$ estiver procurando por seus vizinhos e identificar que $w$ é seu antecessor.
+
+O quarto cenário é impossível pela explicação dada para o primeiro cenário.
+
+\paragraph*{Exemplo 8:}
+
+Seja um grafo $G_1$ representado pela Figura \ref{fig:g_34}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=3cm]{grafos_yed/g_34.jpg}
+    \caption{Grafo $G_1$ de Exemplo para estudo de Busca em Profundidade.}
+    \label{fig:g_34}
+\end{figure}
+
+A busca em profundidade aplicada ao algoritmo passando bp($G_1$,1), retorna a Tabela \ref{tab:t_1}:
+
+\begin{table}[!htb]
+    \small{
+    \centering
+	\begin{tabular}{|l|l|l|l|}
+	    \hline
+	    \multicolumn{1}{|c|}{\#} & \multicolumn{1}{c|}{chega} & \multicolumn{1}{c|}{sai} & \multicolumn{1}{c|}{pai} \\
+	    \hline
+	    \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{-} \\
+	    \hline
+	    \multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{9} & \multicolumn{1}{c|}{1} \\
+	    \hline
+	    \multicolumn{1}{|c|}{3} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{2} \\
+	    \hline
+	    \multicolumn{1}{|c|}{4} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{3} \\
+	    \hline
+	    \multicolumn{1}{|c|}{5} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{4} \\
+	    \hline
+	\end{tabular}
+    \caption{Tabela de Chega, Sai e Pai para a execução do algoritmo bp($G_1$,1).}
+    \label{tab:t_1}
+    }
+\end{table}
+
+As arestas $\{1,5\}$ e $\{2,4\}$ não são visitadas de forma explícita pelo algoritmo, então essas arestas são chamadas de \textbf{arestas de retorno}, pois relacionam um vértice com um ancestral que não é o seu pai.
+
+A Figura \ref{fig:g_35} mostra uma outra representação do grafo levando em consideração as informações temporais.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1.2cm]{grafos_yed/g_35.jpg}
+    \caption{Grafo $G_1$ Ordenado Temporalmente}
+    \label{fig:g_35}
+\end{figure}
+
+Uma forma de conseguir atingir as arestas de retorno é a inserção de um "SENÃO"{} entre as linhas 13 e 14 do Código \ref{alg:buscapro}.
+
+As arestas que formam ligações diretas com seus ancestrais são chamadas de arestas de árvore. Por exemplo a aresta $\{1,2\}$.
+
+\paragraph*{Exemplo 9:}
+
+Seja um grafo $G_2$ representado pela Figura \ref{fig:g_36}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=2.5cm]{grafos_yed/g_36.jpg}
+    \caption{Grafo $G_2$ de Exemplo para estudo de Busca em Profundidade.}
+    \label{fig:g_36}
+\end{figure}
+
+\begin{table}[!htb]
+    \centering
+	\begin{tabular}{|l|l|l|l|}
+	    \hline
+	    \multicolumn{1}{|c|}{\#} & \multicolumn{1}{c|}{chega} & \multicolumn{1}{c|}{sai} & \multicolumn{1}{c|}{pai} \\
+	    \hline
+	    \multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{10} & \multicolumn{1}{c|}{-} \\
+	    \hline
+	    \multicolumn{1}{|c|}{2} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{1} \\
+	    \hline
+	    \multicolumn{1}{|c|}{3} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{9} & \multicolumn{1}{c|}{1} \\
+	    \hline
+	    \multicolumn{1}{|c|}{4} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{6} & \multicolumn{1}{c|}{3} \\
+	    \hline
+	    \multicolumn{1}{|c|}{5} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{8} & \multicolumn{1}{c|}{3} \\
+	    \hline
+	\end{tabular}
+    \caption{Tabela de Chega, Sai e Pai para a execução do algoritmo bp($G_2$,1).}
+    \label{tab:t_2}
+\end{table}
+
+A Figura \ref{fig:g_37} mostra uma outra representação do grafo levando em consideração as informações temporais.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=2.2cm]{grafos_yed/g_37.jpg}
+    \caption{Grafo $G_1$ Ordenado Temporalmente}
+    \label{fig:g_37}
+\end{figure}
+
+A aresta $\{1,5\}$ são \textbf{arestas de retorno}, pois relaciona um vértice com um ancestral que não é o seu pai.
+
+\subsection{Busca em Largura}
+
+Para implementar a busca em largura basta trocar a escolha de um vértice no algoritmo base (Código \ref{alg:busca}) por uma fila.
+
+A busca em largura acontece em camadas (níveis) no grafo.
+
+\paragraph*{Exemplo 10:} A Figura \ref{fig:g_38} mostra o mesmo grafo da busca em profundidade, entretanto a construção da árvore de busca é dada de forma diferente.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=5.5cm]{grafos_yed/g_38.jpg}
+    \caption{Exemplo de Busca em Largura.}
+    \label{fig:g_38}
+\end{figure}
+
+As arestas pontilhadas são chamadas de \textbf{arestas de cruzamento}, e as demais arestas são chamadas de \textbf{arestas de árvore}.
+
+\paragraph*{Observações:}
+
+\begin{itemize}
+    \item ao entrar na fila, um vértice tem o nível no máximo 1 a mais que o primeiro da fila;
+    \item o nível dos vértices da fila é crescente.
+\end{itemize}
+
+\paragraph*{Conclusão:}
+
+\begin{itemize}
+    \item os vértices da fila são de no máximo 2 níveis;
+    \item qualquer aresta do primeiro da fila para qualquer vértice na fila, liga vértices do mesmo nível ou 1 nível abaixo.
+\end{itemize}
+
+\paragraph*{Teorema:} Em uma busca em largura o nível em que se encontra um vértice é a distância para o vértice inicial?
+
+\subsection{Algoritmos para Identificar Aresta de Ávore ou de Não-árvore}
+
+Os algoritmos que identificam as arestas de árvore e de não árvore a partir de um grafo e um vértice inicial, estão dispostas nos Algoritmos \ref{alg:4} e \ref{alg:5}, que representam uma busca em largura e em profundidade respectivamente.
+
+%    \begin{table*}
+%        \texttt{\lstinputlisting[language=C, label=alg:aresta_lar,
+%        caption={Identificar arestas para busca em largura.}]{cods/alg_aresta_lar.txt}}
+%    \end{table*}
+%
+%    \begin{table*}
+%        \texttt{\lstinputlisting[language=C, label=alg:aresta_pro,
+%        caption={Identificar arestas para busca em profundidade.}]{cods/alg_aresta_pro.txt}}
+%    \end{table*}
+
+\begin{algorithm*}
+    \small{
+    \SetAlgoNoEnd
+    $bfs(G,u)$\;
+    \Inicio{
+	$lista\_arestas\_visitadas[] \leftarrow \emptyset$\;
+	$lista\_vertices\_visitados[] \leftarrow \emptyset$\;
+	$lista\_arestas\_arvore[] \leftarrow \emptyset$\;
+	$lista\_arestas\_nao\_arvore[] \leftarrow \emptyset$\;
+	$lista\_auxiliar[] \leftarrow \emptyset$\;
+	$lista\_vizinhos[] \leftarrow \emptyset$\;
+	    adicione $v$ em lista\_vertices\_visitados\;
+	    adicione $v$ em lista\_auxiliar\;
+	\Enqto{lista\_auxiliar $\neq \emptyset$}{
+	    $u$ = último elemento da lista\_auxiliar\;
+	    remove o último elemento da lista\_auxiliar\;
+	    lista\_vizinhos $\leftarrow n_g(u)$\;
+	    \Enqto{lista\_vizinhos $\neq \emptyset$}{
+		$w \leftarrow n_g(u)$\;
+		\Se{na lista\_arestas\_visitadas $\not\in \{u,v\}$}{
+		    adicione ${u,w}$ em lista\_arestas\_visistadas\;
+		    \eSe{na lista\_vertices\_visitados $\not\in w$}{
+			adicione $w$ na lista\_auxiliar\;
+			adicione $w$ na lista\_vertices\_visitados\;
+			adicione $\{u,w\}$ lista\_arestas\_nao\_arvore\;
+		    }{
+			adicione $\{u,w\}$ lista\_arestas\_arvore\;
+		    }
+		}
+	    }
+	}
+    }
+    \caption{Identificar arestas para busca em largura}
+    \label{alg:4}
+    }
+\end{algorithm*}
+
+\begin{algorithm*}
+    \small{
+    \SetAlgoNoEnd
+    $dfs(G,u)$\;
+    \Inicio{
+	$lista\_arestas\_visitadas[] \leftarrow \emptyset$\;
+	$lista\_vertices\_visitados[] \leftarrow \emptyset$\;
+	$lista\_arestas\_arvore[] \leftarrow \emptyset$\;
+	$lista\_arestas\_nao\_arvore[] \leftarrow \emptyset$\;
+	$lista\_auxiliar[] \leftarrow \emptyset$\;
+	$lista\_vizinhos[] \leftarrow \emptyset$\;
+	\Enqto{lista\_auxiliar $\neq \emptyset$}{
+	    $w$ é o vértice atual\;
+	    $a$ é a aresta $\{v,w\}$\;
+	    \Se{na lista\_arestas\_visitadas $\not\in a$}{
+		adicione $a$ na lista\_arestas\_visitadas\;
+		\eSe{na lista\_vertices\_visitados $\not\in w$}{
+		    adicione $w$ na lista\_vertices\_visitados\;
+		    adicione $a$ lista\_arestas\_arvore\;
+		}{
+		    adicione $a$ lista\_arestas\_nao\_arvore\;
+		}
+	    }
+	}
+    }
+    \caption{Identificar arestas para busca em profundidade}
+    \label{alg:5}
+    }
+\end{algorithm*}
+
+\subsection{Aplicações}
+
+Dependendo do algoritmo que vá percorrer o grafo, os dois tipos de busca são eficientes e têm o mesmo custo computacional, entretanto algumas particularidades de cada busca pode ser favorável para:
+
+\begin{itemize}
+    \item encontrar ciclos: utiliza-se busca em profundidade;
+    \item caminho mínimo: utiliza-se busca em largura.
+\end{itemize}
